@@ -2,6 +2,8 @@ package tla;
 
 import java.util.ArrayList;
 import java.util.List;
+import exception_tla.LexicalErrorException;
+import exception_tla.IllegalCharacterException;
 
 public class AnalyseLexicale {
 
@@ -64,7 +66,7 @@ public class AnalyseLexicale {
                 } else if (e == 102) {
                     tokens.add(new Token(TypeDeToken.tiret));
                 } else if (e == 103) {
-                    tokens.add(new Token(TypeDeToken.diese));
+                    tokens.add(new Token(TypeDeToken.finLieu));
                 } else if (e == 104) {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
