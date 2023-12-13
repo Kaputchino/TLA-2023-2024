@@ -1,3 +1,10 @@
+### Tâches :
++ [ ] Implémenter analyser lexicale
++ [ ] Implémenter analyse syntaxique
++ [ ] Transformer en noeud
++ [ ] Transformer les noeuds en lieu
++ [ ] Ecrire l'histoire dans notre grammaire
+
 ## Grammaire
 | | | | |
 |-|-|-|-|
