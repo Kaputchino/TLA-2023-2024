@@ -113,22 +113,16 @@ public class AnalyseLexicale {
             return 0;
         if (Character.isWhitespace(c))
             return 0;
-        if (c == '+')
+        if (c == '<')
             return 1;
-        if (c == '*')
+        if (c == '-')
             return 2;
-        if (c == '(')
+        if (c == '#')
             return 3;
-        if (c == ')')
-            return 4;
-        if (c == ',')
-            return 5;
         if (Character.isDigit(c))
-            return 6;
-        if (Character.isLetter(c))
-            return 7;
-        System.out.println("Symbole inconnu : " + c);
-        throw new IllegalCharacterException(c.toString());
+            return 4;
+
+        return 5;
     }
 
 }
