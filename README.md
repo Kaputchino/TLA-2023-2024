@@ -3,10 +3,10 @@
 |-|-|-|-|
 |Grammaire| Transitions |First|Follow|
 |S|LIEU ## S’|{intVal}|{intVal, $}|
-|S’|S "| ε|{intVal, $}|{intVal, $}|
+|S’|S \| ε|{intVal, $}|{intVal, $}|
 |LIEU|intVal string < PROPOSITION|{intVal}|{##}|
 |PROPOSITION|- intVal string < F P’|{-}|{##, -}|
-|P’|PROPOSITION "| ε|{$}|{-, $}|
+|P’|PROPOSITION \| ε|{$}|{-, $}|
 |F|ε|{$}|{-, $}|
 
 ## Symboles terminaux
