@@ -9,17 +9,19 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractereAutre
-            /* 0 */ { 0, 101, 102, 1, 2, 3 },
+            // espace < - # chiffre caractereAutre lettre
+            /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
             /* 1 */ { 3, 3, 3, 103, 3, 3 },
             /* 2 */ { 104, 104, 104, 2, 104, 104 },
-            /* 3 */ { 105, 105, 105, 105, 105, 3 }
+            /* 3 */ { 105, 105, 105, 105, 105, 3 },
+            /* 4 */ { 106, 106, 106, 106, 103, 4 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
             // 103 acceptation d'un # (retour Arriere)
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
+            // 105 acceptation d'une lettre (retourArriere)
 
     };
 
@@ -67,7 +69,7 @@ public class AnalyseLexicale {
                 } else if (e == 104) {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
-                } else if (e == 105) {
+                } else if (e == 105 || e == 106) {
                     tokens.add(new Token(TypeDeToken.stringVal, buf));
                     retourArriere();
                 }
@@ -121,6 +123,8 @@ public class AnalyseLexicale {
             return 3;
         if (Character.isDigit(c))
             return 4;
+        if (Character.isLetter(c))
+            return 6;
 
         return 5;
     }
