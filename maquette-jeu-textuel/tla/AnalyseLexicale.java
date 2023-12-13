@@ -59,28 +59,16 @@ public class AnalyseLexicale {
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
                 if (e == 101) {
-                    tokens.add(new Token(TypeDeToken.add));
+                    tokens.add(new Token(TypeDeToken.separateurLigne));
                 } else if (e == 102) {
-                    tokens.add(new Token(TypeDeToken.multiply));
+                    tokens.add(new Token(TypeDeToken.tiret));
                 } else if (e == 103) {
-                    tokens.add(new Token(TypeDeToken.leftPar));
+                    tokens.add(new Token(TypeDeToken.diese));
                 } else if (e == 104) {
-                    tokens.add(new Token(TypeDeToken.rightPar));
-                } else if (e == 105) {
-                    tokens.add(new Token(TypeDeToken.comma));
-                } else if (e == 106) {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
-                } else if (e == 107) {
-                    if (buf.equals("input")) {
-                        tokens.add(new Token(TypeDeToken.kInput));
-                    } else if (buf.equals("print")) {
-                        tokens.add(new Token(TypeDeToken.kPrint));
-                    } else if (buf.equals("pow")) {
-                        tokens.add(new Token(TypeDeToken.kPow));
-                    } else {
-                        tokens.add(new Token(TypeDeToken.ident, buf));
-                    }
+                } else if (e == 105) {
+                    tokens.add(new Token(TypeDeToken.stringVal, buf));
                     retourArriere();
                 }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
