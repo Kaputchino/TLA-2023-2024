@@ -4,7 +4,7 @@ import exception_tla.IncompleteParsingException;
 
 import java.util.List;
 
-public class AnalyqeSyntaxique {
+public class AnalyseSyntaxique {
     private int pos;
     private List<Token> tokens;
 
