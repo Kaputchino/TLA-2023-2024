@@ -1,10 +1,11 @@
 package tla;
 
 public enum TypeDeToken {
-    string,
-    tiretDu6,
+    stringVal,
+    tiret,
     diese,
-    inferieur,
-    endLine,
-    intVal
+    EOF,
+    separateurLigne,
+    intVal,
+    finLieu
 }
