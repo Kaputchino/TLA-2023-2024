@@ -69,7 +69,10 @@ public class AnalyseLexicale {
                 } else if (e == 104) {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
-                } else if (e == 105 || e == 106) {
+                } else if (e == 105) {
+                    tokens.add(new Token(TypeDeToken.stringVal, buf));
+                    retourArriere();
+                } else if (e == 106) {
                     tokens.add(new Token(TypeDeToken.stringVal, buf));
                     retourArriere();
                 }
