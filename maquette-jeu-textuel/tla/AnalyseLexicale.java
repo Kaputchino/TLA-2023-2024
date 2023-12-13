@@ -21,8 +21,7 @@ public class AnalyseLexicale {
             // 103 acceptation d'un # (retour Arriere)
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
-            // 105 acceptation d'une lettre (retourArriere)
-
+            // 106 acceptation d'une lettre (retourArriere)
     };
 
     private String entree;
