@@ -19,21 +19,45 @@ public class AnalyseSyntaxique {
         return expr;
     }
 
+    /*
+     * S -> LIEU ## S'
+     */
     private Noeud S(){
+        Noeud nvNoeud = new Noeud(TypeDeNoeud.statement)
         return null;
     }
+
+    /*
+     * S' -> S | ε
+     */
     private Noeud S_prime(){
         return null;
     }
+
+    /*
+     * LIEU -> intVal string < PROPOSITION
+     */
     private Noeud Lieu(){
         return null;
     }
+
+    /*
+     * PROPOSITION -> - intVal string < F P’
+     */
     private Noeud Proposition(){
         return null;
     }
+    
+    /*
+     * P' -> PROPOSITION | ε
+     */
     private Noeud P_prime(){
         return null;
     }
+
+    /*
+     * F -> ε
+     */
     private Noeud F(){
         return null;
     }
