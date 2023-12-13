@@ -10,7 +10,7 @@
 |F|ε|{$}|{-, $}|
 
 ## Symboles terminaux
-intVal , string , $ , ε , - , ##
+intVal , string , $ , ε , -, < , ##
 
 ## Symboles non terminaux
 S, S', LIEU, PROPOSITION, P', F
