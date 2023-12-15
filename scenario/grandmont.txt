@@ -31,6 +31,7 @@
 6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle <
 - 7 lui poser une question <
 - 7 fuir <
+
 ##
 7 Mr Brouard vous parle jusqu'à la fin des temps. FIN <
 - 7 RIP <
@@ -48,7 +49,7 @@
 - 18 apprendre sur le syndicalisme <
 - 2 partir <
 ##
-11 La machine à café bug et vous ne recevez rien<
+11 La machine à café bug et vous ne recevez rien <
 - 8 recommencer <
 - 2 partir <
 - 3 frapper la machine <
@@ -191,4 +192,3 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 42 Le steak haché était de vendredi, la chaine du froid étant non respectée, vous attrapez une bactérie mortel et vous mourrer. FIN <
 - 42 Player was slain by Steack Haché <
 ##
-
