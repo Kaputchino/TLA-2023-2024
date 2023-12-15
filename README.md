@@ -32,4 +32,4 @@
 |LIEU|intVal string < PROPOSITION| | | | | |
 |PROPOSITION| | |- intVal string < F P'| | | |
 |P’| | |PROPOSITION|ε| | |
-|F| | |PROPOSITION|ε| | |
+|F| | |ε|ε| | |
