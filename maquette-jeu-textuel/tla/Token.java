@@ -23,6 +23,9 @@ public class Token {
     }
 
     public String toString() {
-        return "TODO";
+        String res = typeDeToken.toString();
+        if (valeur != null)
+            res = res + "(" + valeur + ")";
+        return res;
     }
 }
