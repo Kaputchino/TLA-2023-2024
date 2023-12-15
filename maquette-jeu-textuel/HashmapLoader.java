@@ -11,7 +11,7 @@ public class HashmapLoader {
 
     public static HashMap<Integer, Lieu> getHashMap(Noeud noeudHistoire) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
-        lieuxHistoire.traiterHistoire(noeudHistoire);
+        lieuxHistoire.entryPoint(noeudHistoire);
 
         // traitement des erreurs toussa toussa
 
@@ -32,20 +32,6 @@ public class HashmapLoader {
 
             traiterLieu(n);
         }
-    }
-
-    private Noeud traiterHistoire(Noeud histoire) throws Exception {
-        for (int i = 0; i < histoire.nombreEnfants(); i++) {
-            Noeud enfant = histoire.enfant(i);
-
-            if (enfant.getTypeDeNoeud() == TypeDeNoeud.lieu) {
-                return (histoire.enfant(i));
-            } else {
-                throw new Exception("Noeud de type lieu attendu.");
-            }
-        }
-
-        return null;
     }
 
     private Proposition traiterProposition(Noeud n) throws Exception {
