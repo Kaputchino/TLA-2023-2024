@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HashmapLoader {
+
+    private HashMap<Integer, Lieu> lieux = new HashMap<>();
+
     public HashMap<Integer, Lieu> getLieux() {
         return lieux;
     }
-
-    private HashMap<Integer, Lieu> lieux = new HashMap<>();
 
     public static HashMap<Integer, Lieu> getHashMap(Noeud noeudHistoire) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
