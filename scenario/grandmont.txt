@@ -41,12 +41,12 @@
 ##
 9 Amphi Bio <
 - 0 sortir dehors <
-- 2 sortir par la porte du batiment f
-- 17 faire un dessin
+- 2 sortir par la porte du batiment f <
+- 17 faire un dessin <
 ##
 10 Stande de solidaire <
-- 18 apprendre sur le syndicalisme
-- 2 partir
+- 18 apprendre sur le syndicalisme <
+- 2 partir <
 ##
 11 La machine à café bug et vous ne recevez rien<
 - 8 recommencer <
@@ -146,8 +146,8 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 - 28 Ah ok <
 ##
 30 Il vous demande un mouton <
-- 33 OK
-- 34 NON
+- 33 OK <
+- 34 NON <
 ##
 31 Vous etes mort de cringe FIN <
 - 31 RIP <
@@ -178,7 +178,7 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 - 1 retourner au batiment L <
 ##
 39 Il y a toujours de la nourriture à la SCP ! <
-- 39 Manger plus!
+- 39 Manger plus! <
 - 1 retourner au batiment L <
 ##
 40 Vous rentrer chez vous <
