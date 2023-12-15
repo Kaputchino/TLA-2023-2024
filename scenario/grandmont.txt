@@ -1,0 +1,79 @@
+0 Vous etes dehors <
+- 4 prendre le bus <
+- 1 aller au batiment l <
+- 2 aller au batiment f <
+- 3 aller au batiment e <
+- 4 aller au RU <
+##
+1 batiment l <
+- 0 aller dehors <
+- 6 aller voir Mr Brouard <
+##
+2 batiment f <
+- 8 aller à la machine à café <
+- 0 sortir <
+- 9 aller à l'amphi bio <
+- 10 aller au stand de solidaire <
+##
+3 batiment e <
+- 0 aller dehors <
+- 14 aller au département de Math <
+##
+4 arret de bus <
+- 0 aller à la fac <
+- 13 prendre le bus <
+##
+5 RU <
+- 15 aller à l'étage <
+- 16 aller à la brasserie < 
+##
+6 bureau brouard <
+- 7 lui poser une question <
+- 7 fuir <
+##
+7 Mr Brouard vous parle jusqu'à la fin des temps. FIN <
+- 7 RIP <
+##
+8 Machine à café <
+- 2 ne rien prendre <
+- 3 prendre un café <
+##
+9 Amphi Bio <
+- 0 sortir dehors <
+- 2 sortir par la porte du batiment f
+- 17 faire un dessin
+##
+10 Stande de solidaire <
+- 18 apprendre sur le syndicalisme
+- 2 partir
+##
+11 bug machine café <
+- 8 recommencer <
+- 2 partir <
+- 3 frapper la machine <
+##
+12 La machine à café vous à tué FIN <
+- 12 RIP <
+##
+13 Quel bus <
+- le 2 <
+- le 16 <
+- 4 finalement je vas rester <
+##
+14 département de math <
+- 3 partir <
+- 19 aller voir Boris <
+##
+15 étage ru <
+##
+16 brasserie < 
+##
+17 dessin <
+##
+18 apprendre sur le syndicalisme <
+##
+19 boris < 
+##
+
+
+
