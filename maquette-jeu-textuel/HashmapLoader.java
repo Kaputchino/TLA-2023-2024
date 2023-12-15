@@ -14,6 +14,10 @@ public class HashmapLoader {
         return lieux;
     }
 
+    private HashmapLoader() {
+        // this is very secret u can't use it ;c
+    }
+
     public static HashMap<Integer, Lieu> getHashMap(Noeud noeudHistoire) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
         lieuxHistoire.entryPoint(noeudHistoire);
