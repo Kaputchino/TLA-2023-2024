@@ -1,0 +1,49 @@
+0 Vous etes dehors <
+- 4 prendre le bus <
+- 1 aller au batiment l <
+- 2 aller au batiment f <
+- 3 aller au batiment e <
+- 4 aller au RU <
+##
+1 batiment l <
+- 0 aller dehors <
+- 6 aller voir Mr Brouard <
+##
+2 batiment f <
+- 8 aller à la machine à café <
+- 0 sortir <
+- 9 aller à l'amphi bio <
+- 10 aller au stand de solidaire <
+##
+3 batiment e <
+##
+4 arret de bus <
+##
+5 RU <
+##
+6 bureau brouard <
+- 7 lui poser une question
+- 7 fuir
+##
+7 Mr Brouard vous parle jusqu'à la fin des temps. FIN <
+- 7 RIP <
+##
+8 Machine à café <
+- 2 ne rien prendre <
+- 3 prendre un café <
+##
+9 Amphi Bio <
+##
+10 Stande de solidaire < 
+##
+11 bug machine café <
+- 8 recommencer <
+- 2 partir <
+- 3 frapper la machine <
+##
+12 La machine à café vous à tué FIN <
+- 12 RIP
+##
+
+
+
