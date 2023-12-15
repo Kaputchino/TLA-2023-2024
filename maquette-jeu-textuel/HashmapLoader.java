@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HashmapLoader {
+    public HashMap<Integer, Lieu> getLieux() {
+        return lieux;
+    }
+
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
 
     public static HashMap<Integer, Lieu> getHashMap(Noeud noeudHistoire) throws Exception {
@@ -15,7 +19,7 @@ public class HashmapLoader {
 
         // traitement des erreurs toussa toussa
 
-        return lieuxHistoire.lieux;
+        return lieuxHistoire.getLieux();
     }
 
     // noeud histoire -> decompose en lieu
