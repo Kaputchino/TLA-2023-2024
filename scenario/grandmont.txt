@@ -64,16 +64,69 @@
 - 3 partir <
 - 19 aller voir Boris <
 ##
-15 étage ru <
+15 Quel stand <
+- 21 végétarien <
+- 20 grillade <
 ##
-16 brasserie < 
+16 c'était pas ouf <
+- 0 sortir < 
 ##
-17 dessin <
+17 Vous faites un dessin <
+- 24 assumer <
+- 2 fuir <
 ##
 18 apprendre sur le syndicalisme <
+- 25 lutes des classes <
+- 26 gouvernement <
+- 27 rejoindre la lutte <
+- 2 partir <
 ##
-19 boris < 
+19 boris <
+- 19 c'est louche <
+- 28 lui poser une question <
+- 14 partir <
 ##
-
+20 grillade <
+- 22 attendre <
+##
+21 végétarien <
+- 23 attendre <
+##
+22 grillade_attendre <
+##
+23 végétarien_attendre <
+##
+24 bourreau entre <
+- 30 lui demander ce qu'il veut <
+- 2 fuir
+- 31 le regarder dans les yeux <
+- 32 lui demander si ca lui plait <
+##
+25 lutes des classes <
+- 27 rejoindre la lutte <
+##
+26 gouvernement <
+- 27 rejoindre la lutte <
+##
+27 rejoindre la lutte <
+##
+28 Vous lui poser des questions, cela vous plonge dans la folie des maths, dont il est impossible de sortir FIN <
+- 28 Ah ok
+##
+30 Il vous demande un mouton <
+- 33 OK
+- 34 NON
+##
+31 Vous etes mort de cringe FIN <
+- 31 RIP <
+##
+32 lui demander si ca lui plait <
+##
+33 Il est content, en revanche il doit effacer pour son court, vous partez <
+- 2 aurevoir <
+##
+34 il est très en colère et vous enferme dans le batiment a FIN <
+- 34 RIP <
+##
 
 
