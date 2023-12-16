@@ -5,5 +5,6 @@ public enum TypeDeNoeud {
     proposition,
     lieu,
     string,
-    facultatif
+    facultatif,
+    histoire
 }
