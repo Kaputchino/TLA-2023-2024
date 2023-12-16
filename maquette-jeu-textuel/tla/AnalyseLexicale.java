@@ -14,12 +14,12 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractereAutre lettre
+            // espace < - # chiffre caractere Autre lettre
             /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
             /* 1 */ { 3, 3, 3, 103, 3, 3 },
-            /* 2 */ { 104, 104, 104, 2, 104, 104 },
-            /* 3 */ { 105, 105, 105, 105, 105, 3 },
-            /* 4 */ { 106, 106, 106, 106, 103, 4 }
+            /* 2 */ { 104, 104, 104, 2, 104, 104, 106 },
+            /* 3 */ { 105, 105, 105, 105, 105, 3, 106 },
+            /* 4 */ { 106, 106, 106, 106, 103, 4, 106 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
