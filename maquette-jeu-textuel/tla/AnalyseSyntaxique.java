@@ -36,6 +36,7 @@ public class AnalyseSyntaxique {
         /*
          * Lire ##
          */
+
         if (getTypeDeToken() == TypeDeToken.finLieu){
             Token t = lireToken();
 			Noeud n = new Noeud(TypeDeNoeud.lieu);
