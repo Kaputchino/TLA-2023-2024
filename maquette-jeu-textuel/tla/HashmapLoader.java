@@ -1,7 +1,4 @@
-import tla.Lieu;
-import tla.Noeud;
-import tla.Proposition;
-import tla.TypeDeNoeud;
+package tla;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,29 +15,13 @@ public class HashmapLoader {
         // this is very secret u can't use it ;c
     }
 
-    public static HashMap<Integer, Lieu> getHashMap(Noeud noeudHistoire) throws Exception {
+    public static HashMap<Integer, Lieu> getHashMap(Noeud premierLieu) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
-        lieuxHistoire.entryPoint(noeudHistoire);
+        lieuxHistoire.traiterLieu(premierLieu);
 
         // traitement des erreurs toussa toussa
 
         return lieuxHistoire.getLieux();
-    }
-
-    // noeud histoire -> decompose en lieu
-    public void entryPoint(Noeud n) throws Exception {
-
-        if (n.getTypeDeNoeud() != TypeDeNoeud.histoire) {
-            throw new Exception("Noeud racine inconnu.");
-        }
-
-        for (int i = 0; i < n.nombreEnfants(); i++) {
-            if (n.getTypeDeNoeud() != TypeDeNoeud.lieu) {
-                throw new Exception("Erreur. Noeud lieu attendu");
-            }
-
-            traiterLieu(n);
-        }
     }
 
     private Proposition traiterProposition(Noeud n) throws Exception {
@@ -66,7 +47,7 @@ public class HashmapLoader {
     }
 
 
-    private Noeud traiterLieu(Noeud n) throws Exception {
+    private void traiterLieu(Noeud n) throws Exception {
         int numeroLieu = - 1;
         String texte = null;
         ArrayList<Proposition> propositions = new ArrayList<>();
@@ -82,6 +63,8 @@ public class HashmapLoader {
                 propositions.add(
                         traiterProposition(enfant)
                 );
+            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.lieu) {
+                traiterLieu(enfant);
             } else {
                 throw new Exception("Noeud inconnu dans un noeud de type lieu.");
             }
