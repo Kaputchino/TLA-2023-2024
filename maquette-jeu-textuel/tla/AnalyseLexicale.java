@@ -1,5 +1,8 @@
 package tla;
 
+import exception_tla.IllegalCharacterException;
+import exception_tla.LexicalErrorException;
+
 import java.util.ArrayList;
 import java.util.List;
 import exception_tla.LexicalErrorException;

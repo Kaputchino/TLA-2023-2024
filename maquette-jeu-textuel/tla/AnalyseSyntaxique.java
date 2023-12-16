@@ -36,7 +36,7 @@ public class AnalyseSyntaxique {
         /*
          * Lire ##
          */
-        if (getTypeDeToken() == TypeDeToken.diese){
+        if (getTypeDeToken() == TypeDeToken.separateurLigne){
             Token t = lireToken();
 			Noeud n = new Noeud(TypeDeNoeud.lieu);
 			n.ajout(S_prime());
