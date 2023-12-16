@@ -2,7 +2,6 @@ package tla;
 
 import exception_tla.IncompleteParsingException;
 import exception_tla.UnexpectedTokenException;
-import exception_tla.UnexpectedTokenException;
 
 import java.util.List;
 
@@ -129,9 +128,12 @@ public class AnalyseSyntaxique {
     private Noeud P_prime() throws UnexpectedTokenException {
         if (finAtteinte()){
             return null;
-        } else {
-            return Proposition();
         }
+        Token t = lireToken();
+        if(t.getTypeDeToken() == TypeDeToken.finLieu){
+            return null;
+        }
+        return Proposition();
     }
 
     /*
