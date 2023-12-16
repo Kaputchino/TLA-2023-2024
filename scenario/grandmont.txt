@@ -3,7 +3,7 @@
 - 1 aller au batiment l <
 - 2 aller au batiment f <
 - 3 aller au batiment e <
-- 4 aller au RU <
+- 5 aller au RU <
 ##
 1 batiment l <
 - 0 aller dehors <
