@@ -94,21 +94,25 @@ public class AnalyseSyntaxique {
      */
     private Noeud Proposition() throws UnexpectedTokenException{
         Token t = lireToken();
+        Noeud noeud = new Noeud(TypeDeNoeud.proposition);
         if (t.getTypeDeToken() == TypeDeToken.tiret) {
             Token t1 = lireToken();
             if (t1.getTypeDeToken() == TypeDeToken.intVal) {
+                noeud.ajout(new Noeud(TypeDeNoeud.intVal, "" + t1.getValeur()));
                 Token t2 = lireToken();
                     if (t2.getTypeDeToken() == TypeDeToken.stringVal) {
                         Token t3 = lireToken();
-                            if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        noeud.ajout(new Noeud(TypeDeNoeud.string, "" + t2.getValeur()));
+                        if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                                 Noeud n = F();
                                 Noeud pp = P_prime();
+                                if (n != null){
+                                    n.ajout(n);
+                                }
                                 if (pp != null){
-                                    return P_prime(); 
+                                    n.ajout(pp);
                                 }
-                                else {
-                                    return F();
-                                }
+                                return noeud;
 		                        
                             }
                             throw new UnexpectedTokenException("< attendu");
