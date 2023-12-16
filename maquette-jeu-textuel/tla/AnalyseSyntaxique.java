@@ -39,17 +39,13 @@ public class AnalyseSyntaxique {
 
         if (getTypeDeToken() == TypeDeToken.finLieu){
             Token t = lireToken();
-			Noeud n = new Noeud(TypeDeNoeud.lieu);
-			n.ajout(S_prime());
-			return n;
+			Noeud n = S_prime();
+            if(n != null){
+                nvLieu.ajout(n);
+            }
+			return nvLieu;
         }
-
-        Noeud nextS = S_prime();
-        if (nextS != null) {
-			nvLieu.ajout(nextS);
-		}
-
-        return nvLieu;
+        throw new UnexpectedTokenException("'##' attendu");
     }
 
     /*
