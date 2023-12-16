@@ -55,8 +55,7 @@ public class AnalyseSyntaxique {
         if (finAtteinte()){
             return null;
         } else {
-            Noeud s = new Noeud(TypeDeNoeud.lieu);
-            return s;
+            return S();
         }
 		
     }
@@ -127,12 +126,11 @@ public class AnalyseSyntaxique {
     /*
      * P' -> PROPOSITION | ε
      */
-    private Noeud P_prime(){
+    private Noeud P_prime() throws UnexpectedTokenException {
         if (finAtteinte()){
             return null;
         } else {
-            Noeud p = new Noeud(TypeDeNoeud.proposition);
-            return p;
+            return Proposition();
         }
     }
 
@@ -140,12 +138,7 @@ public class AnalyseSyntaxique {
      * F -> ε
      */
     private Noeud F(){
-        Noeud f = new Noeud(TypeDeNoeud.facultatif);
-        if (finAtteinte()){
-            return f;
-        } else { /*Gerer dans le cas contraire */
-            return f;
-        }
+        return null;
     }
 
     /*
