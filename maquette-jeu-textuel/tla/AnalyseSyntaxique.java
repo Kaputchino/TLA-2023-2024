@@ -39,17 +39,13 @@ public class AnalyseSyntaxique {
 
         if (getTypeDeToken() == TypeDeToken.finLieu){
             Token t = lireToken();
-			Noeud n = new Noeud(TypeDeNoeud.lieu);
-			n.ajout(S_prime());
-			return n;
+			Noeud n = S_prime();
+            if(n != null){
+                nvLieu.ajout(n);
+            }
+			return nvLieu;
         }
-
-        Noeud nextS = S_prime();
-        if (nextS != null) {
-			nvLieu.ajout(nextS);
-		}
-
-        return nvLieu;
+        throw new UnexpectedTokenException("'##' attendu");
     }
 
     /*
@@ -59,8 +55,7 @@ public class AnalyseSyntaxique {
         if (finAtteinte()){
             return null;
         } else {
-            Noeud s = new Noeud(TypeDeNoeud.lieu);
-            return s;
+            return S();
         }
 		
     }
@@ -69,20 +64,22 @@ public class AnalyseSyntaxique {
      * LIEU -> intVal string < PROPOSITION
      */
     private Noeud Lieu() throws UnexpectedTokenException{
+        Noeud noeud = new Noeud(TypeDeNoeud.lieu);
         Token t = lireToken();
         /*On lit intval */
 		if (t.getTypeDeToken() == TypeDeToken.intVal) {
             /*On lit le token suivant */
 			Token t1 = lireToken();
+            noeud.ajout(new Noeud(TypeDeNoeud.intVal,""+t.getValeur()));
             /*On lit String */
 			if (t1.getTypeDeToken() == TypeDeToken.stringVal) {
                 /*On lit le token suivant */
                 Token t2 = lireToken();
+                noeud.ajout(new Noeud(TypeDeNoeud.string,t1.getValeur()));
                  /*On lit < */
                     if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                        Noeud n = new Noeud(TypeDeNoeud.proposition);
-                        n.ajout(new Noeud(TypeDeNoeud.proposition, t1.getValeur()));
-                        return n;
+                        noeud.ajout(Proposition());
+                        return noeud;
 			        }
                     throw new UnexpectedTokenException("< attendu");
             }
@@ -96,21 +93,25 @@ public class AnalyseSyntaxique {
      */
     private Noeud Proposition() throws UnexpectedTokenException{
         Token t = lireToken();
+        Noeud noeud = new Noeud(TypeDeNoeud.proposition);
         if (t.getTypeDeToken() == TypeDeToken.tiret) {
             Token t1 = lireToken();
             if (t1.getTypeDeToken() == TypeDeToken.intVal) {
+                noeud.ajout(new Noeud(TypeDeNoeud.intVal, "" + t1.getValeur()));
                 Token t2 = lireToken();
                     if (t2.getTypeDeToken() == TypeDeToken.stringVal) {
                         Token t3 = lireToken();
-                            if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        noeud.ajout(new Noeud(TypeDeNoeud.string, "" + t2.getValeur()));
+                        if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                                 Noeud n = F();
                                 Noeud pp = P_prime();
+                                if (n != null){
+                                    n.ajout(n);
+                                }
                                 if (pp != null){
-                                    return P_prime(); 
+                                    n.ajout(pp);
                                 }
-                                else {
-                                    return F();
-                                }
+                                return noeud;
 		                        
                             }
                             throw new UnexpectedTokenException("< attendu");
@@ -125,12 +126,11 @@ public class AnalyseSyntaxique {
     /*
      * P' -> PROPOSITION | ε
      */
-    private Noeud P_prime(){
+    private Noeud P_prime() throws UnexpectedTokenException {
         if (finAtteinte()){
             return null;
         } else {
-            Noeud p = new Noeud(TypeDeNoeud.proposition);
-            return p;
+            return Proposition();
         }
     }
 
@@ -138,12 +138,7 @@ public class AnalyseSyntaxique {
      * F -> ε
      */
     private Noeud F(){
-        Noeud f = new Noeud(TypeDeNoeud.facultatif);
-        if (finAtteinte()){
-            return f;
-        } else { /*Gerer dans le cas contraire */
-            return f;
-        }
+        return null;
     }
 
     /*
