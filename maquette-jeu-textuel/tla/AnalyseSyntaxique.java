@@ -24,7 +24,7 @@ public class AnalyseSyntaxique {
      * S -> LIEU ## S'
      */
     private Noeud S() throws UnexpectedTokenException{
-        Noeud nvLieu = new Noeud(TypeDeNoeud.lieu);
+        Noeud nvLieu = new Noeud(TypeDeNoeud.lieuContainer);
         
         if (getTypeDeToken() == TypeDeToken.intVal){
             nvLieu.ajout(Lieu());
@@ -35,7 +35,6 @@ public class AnalyseSyntaxique {
         /*
          * Lire ##
          */
-
         if (getTypeDeToken() == TypeDeToken.finLieu){
             Token t = lireToken();
 			Noeud n = S_prime();
@@ -102,16 +101,15 @@ public class AnalyseSyntaxique {
                         Token t3 = lireToken();
                         noeud.ajout(new Noeud(TypeDeNoeud.string, "" + t2.getValeur()));
                         if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                                Noeud n = F();
+                                Noeud f = F();
                                 Noeud pp = P_prime();
-                                if (n != null){
-                                    n.ajout(n);
+                                if (f != null){
+                                    noeud.ajout(f);
                                 }
                                 if (pp != null){
-                                    n.ajout(pp);
+                                    noeud.ajout(pp);
                                 }
                                 return noeud;
-		                        
                             }
                             throw new UnexpectedTokenException("< attendu");
                     }
@@ -129,8 +127,7 @@ public class AnalyseSyntaxique {
         if (finAtteinte()){
             return null;
         }
-        Token t = lireToken();
-        if(t.getTypeDeToken() == TypeDeToken.finLieu){
+        if(getTypeDeToken() == TypeDeToken.finLieu){
             return null;
         }
         return Proposition();

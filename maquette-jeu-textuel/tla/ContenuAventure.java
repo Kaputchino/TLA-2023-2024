@@ -47,12 +47,35 @@ public class ContenuAventure {
         System.out.println(tokens);
 
         tokens = List.of(new Token[]{
-                new Token(TypeDeToken.intVal, "0"),
+                new Token(TypeDeToken.intVal, "1"),
                 new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
                 new Token(TypeDeToken.separateurLigne),
                 new Token(TypeDeToken.tiret),
                 new Token(TypeDeToken.intVal, "0"),
-                new Token(TypeDeToken.stringVal, "Test"),
+                new Token(TypeDeToken.stringVal, "Aller en 0"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.finLieu),
+
+                new Token(TypeDeToken.intVal, "0"),
+                new Token(TypeDeToken.stringVal, "Ceci est un lieu ddd"),
+                new Token(TypeDeToken.separateurLigne),
+                    new Token(TypeDeToken.tiret),
+                    new Token(TypeDeToken.intVal, "3"),
+                    new Token(TypeDeToken.stringVal, "Aller en 3"),
+                    new Token(TypeDeToken.separateurLigne),
+
+                    new Token(TypeDeToken.tiret),
+                    new Token(TypeDeToken.intVal, "0"),
+                    new Token(TypeDeToken.stringVal, "Aller en 0"),
+                    new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.finLieu),
+
+                new Token(TypeDeToken.intVal, "3"),
+                new Token(TypeDeToken.stringVal, "Ceci est un lieu qwdqwd"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.tiret),
+                new Token(TypeDeToken.intVal, "1"),
+                new Token(TypeDeToken.stringVal, "Aller 1"),
                 new Token(TypeDeToken.separateurLigne),
                 new Token(TypeDeToken.finLieu)
         });
@@ -63,7 +86,7 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
-        System.out.println(entryPoint.enfant(0));
+        Noeud.afficheNoeud(entryPoint, 0);
 
 
         try {
@@ -71,6 +94,8 @@ public class ContenuAventure {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println(lieux);
 
         return lieux;
     }
