@@ -52,6 +52,7 @@ public class Noeud {
      * depth+1
      */
     static void afficheNoeud(Noeud n, int profondeur) {
+
         String s = "";
         // identation
         for (int i = 0; i < profondeur; i++)
@@ -65,5 +66,7 @@ public class Noeud {
             afficheNoeud(n.enfant(i), profondeur + 1);
         }
     }
+
+
 
 }

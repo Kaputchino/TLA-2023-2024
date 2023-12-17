@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.*;
 
 /*
@@ -45,10 +46,26 @@ public class App implements ActionListener {
 
     public static void main(String[] args) {
         App app = new App();
-        SwingUtilities.invokeLater(() -> app.init());
+        SwingUtilities.invokeLater(app::init);
     }
 
     private void init() {
+        final JFileChooser fc = new JFileChooser();
+        boolean fileSelected = false;
+        fc.setDialogTitle("Selectioner votre aventure");
+        fc.setCurrentDirectory(new File("scenario"));
+        fc.setApproveButtonText("En avant pour l'aventure");
+        while(!fileSelected){
+            int returnVal = fc.showOpenDialog(frame);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                ContenuAventure.setFile(file);
+                fileSelected = true;
+                //This is where a real application would open the file.
+            }
+        }
+
 
         // Charge le contenu de l'aventure
         lieux = ContenuAventure.init();
