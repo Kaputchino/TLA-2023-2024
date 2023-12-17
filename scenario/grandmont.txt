@@ -26,7 +26,7 @@
 ##
 5 RU <
 - 15 aller à l'étage <
-- 16 aller à la brasserie < 
+- 16 aller à la brasserie <
 ##
 6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle <
 - 7 lui poser une question <
@@ -174,7 +174,7 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 ##
 38 Maintenant que vous avez adherer vous avez accès au ressource de l'association <
 - 39 Manger <
-- 38 accèder au github de la scp < 
+- 38 accèder au github de la scp <
 - 1 retourner au batiment L <
 ##
 39 Il y a toujours de la nourriture à la SCP ! <
@@ -182,7 +182,7 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 - 1 retourner au batiment L <
 ##
 40 Vous rentrer chez vous <
-- 40 c'est quand même mieux chez soit ! < 
+- 40 c'est quand même mieux chez soit ! <
 - 0 retourner à la fac <
 ##
 41 Vous attendez jusqu'a la fin de vos jours le 16. FIN <

@@ -79,10 +79,14 @@ public class AnalyseSyntaxique {
                         noeud.ajout(Proposition());
                         return noeud;
 			        }
-                    System.out.println(t2.getTypeDeToken()+" "+t2.getValeur());
+                    System.out.println("ca glitch");
+                System.out.println(pos);
+
+                System.out.println(t2.getTypeDeToken()+" "+t2.getValeur());
                     System.out.println(t1);
                     throw new UnexpectedTokenException("< attendu");
             }
+            System.out.println(pos);
 			throw new UnexpectedTokenException("String attendu");
 		} 
 		throw new UnexpectedTokenException("intVal attendu");
@@ -123,7 +127,15 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        throw new UnexpectedTokenException("- attendu");
+        System.out.println(t);
+        System.out.println(t.getValeur());
+        System.out.println(pos);
+        System.out.println(tokens.size());
+        System.out.println(tokens.get(pos - 3));
+        if(!t.getValeur().equals("\n")){
+            throw new UnexpectedTokenException("- attendu");
+        }
+        return null;
     }
     
     /*

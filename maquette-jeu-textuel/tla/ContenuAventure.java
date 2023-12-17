@@ -37,7 +37,7 @@ public class ContenuAventure {
         scanner.useDelimiter("\\Z");
         data = scanner.next();
         scanner.close();
-        System.out.println(data);
+        // System.out.println(data);
 
         try {
             tokens = analyseLexicale.analyse(data);
