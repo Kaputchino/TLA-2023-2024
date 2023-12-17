@@ -52,6 +52,9 @@ public class App implements ActionListener {
     private void init() {
         final JFileChooser fc = new JFileChooser();
         boolean fileSelected = false;
+        fc.setDialogTitle("Selectioner votre aventure");
+        fc.setCurrentDirectory(new File("scenario"));
+        fc.setApproveButtonText("En avant pour l'aventure");
         while(!fileSelected){
             int returnVal = fc.showOpenDialog(frame);
 
