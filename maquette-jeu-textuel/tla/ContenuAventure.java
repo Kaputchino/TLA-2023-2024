@@ -30,14 +30,12 @@ public class ContenuAventure {
         String data;
 
         try {
-            scanner = new Scanner(new File("scenario/grandmont.txt"));
+            scanner = new Scanner(new File("scenario/grandmont.txt"));        scanner.useDelimiter("\\Z");
+            data = scanner.next();
+            scanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        scanner.useDelimiter("\\Z");
-        data = scanner.next();
-        scanner.close();
-        // System.out.println(data);
 
         try {
             tokens = analyseLexicale.analyse(data);
@@ -45,7 +43,6 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
-        System.out.println(tokens);
         /**
         tokens = List.of(new Token[]{
                 new Token(TypeDeToken.intVal, "1"),
@@ -86,9 +83,6 @@ public class ContenuAventure {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        Noeud.afficheNoeud(entryPoint, 0);
-
 
         try {
             lieux = HashmapLoader.getHashMap(entryPoint);
