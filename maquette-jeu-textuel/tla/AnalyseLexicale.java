@@ -19,7 +19,7 @@ public class AnalyseLexicale {
             /* 1 */ { 3, 3, 3, 103, 3, 3 },
             /* 2 */ { 104, 104, 104, 2, 104, 104, 106 },
             /* 3 */ { 105, 105, 105, 105, 105, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 103, 4, 106 }
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -74,10 +74,14 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
                 } else if (e == 105) {
-                    tokens.add(new Token(TypeDeToken.stringVal, buf));
+                    if(!buf.equals(" ")){
+                        tokens.add(new Token(TypeDeToken.stringVal, buf));
+                    }
                     retourArriere();
                 } else if (e == 106) {
-                    tokens.add(new Token(TypeDeToken.stringVal, buf));
+                    if(!buf.equals(" ")){
+                        tokens.add(new Token(TypeDeToken.stringVal, buf));
+                    }
                     retourArriere();
                 }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
@@ -120,6 +124,9 @@ public class AnalyseLexicale {
     private static int indiceSymbole(Character c) throws IllegalCharacterException {
         if (c == null)
             return 0;
+        if(c ==' '){
+            return 5;
+        }
         if (Character.isWhitespace(c))
             return 0;
         if (c == '<')
