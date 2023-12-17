@@ -185,7 +185,7 @@ Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à
 - 40 c'est quand même mieux chez soit ! <
 - 0 retourner à la fac <
 ##
-41 Vous attendez jusqu'a la fin de vos jours le 16. FIN < 
+41 Vous attendez jusqu'a la fin de vos jours le 16. FIN <
 - 41 fallait prendre le 2 <
 ##
 42 Le steak haché était de vendredi, la chaine du froid étant non respectée, vous attrapez une bactérie mortel et vous mourrer. FIN <
