@@ -12,19 +12,17 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractere Autre lettre
-            /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
+            // espace < - # chiffre caractere
+            /* 0 */ { 0, 101, 102, 1, 2, 3 },
             /* 1 */ { 3, 3, 3, 103, 3, 3 },
-            /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
-            /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
+            /* 2 */ { 104, 104, 104, 104, 2, 104 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
             // 103 acceptation d'un # (retour Arriere)
             // 104 acceptation d'un entier (retourArriere)
-            // 105 acceptation d'un caractere (retourArriere)
-            // 106 acceptation d'une lettre (retourArriere)
+            // 105 acceptation d'une chaîne de caracteres (retourArriere)
     };
 
     private String entree;
@@ -68,7 +66,7 @@ public class AnalyseLexicale {
                 if (e == 101) {
                     tokens.add(new Token(TypeDeToken.separateurLigne));
                 } else if (e == 102) {
-                    if(first){
+                    if (first) {
                         tokens.add(new Token(TypeDeToken.tiret));
                     }
                 } else if (e == 103) {
@@ -78,12 +76,12 @@ public class AnalyseLexicale {
                     retourArriere();
                 } else if (e == 105) {
                     String buf2 = buf.replaceAll("\\s", "");
-                    if(!buf2.equals("\n")&&!buf2.equals("")){
+                    if (!buf2.equals("\n") && !buf2.equals("")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
                 } else if (e == 106) {
-                    if(!buf.equals(" ")){
+                    if (!buf.equals(" ")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
@@ -120,7 +118,8 @@ public class AnalyseLexicale {
     private void retourArriere() {
         pos = pos - 1;
     }
-    private List<Token> fixMultiLine(List<Token> tokens){
+
+    private List<Token> fixMultiLine(List<Token> tokens) {
         List<Token> fixedToken = new ArrayList<>();
         boolean previous = false;
         Token save = null;
@@ -148,7 +147,7 @@ public class AnalyseLexicale {
     private static int indiceSymbole(Character c) throws IllegalCharacterException {
         if (c == null)
             return 0;
-        if(c ==' '){
+        if (c == ' ') {
             return 5;
         }
         if (Character.isWhitespace(c))
@@ -161,8 +160,6 @@ public class AnalyseLexicale {
             return 3;
         if (Character.isDigit(c))
             return 4;
-        if (Character.isLetter(c))
-            return 6;
 
         return 5;
     }
