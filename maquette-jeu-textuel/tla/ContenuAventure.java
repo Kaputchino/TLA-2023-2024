@@ -19,6 +19,15 @@ import java.util.*;
 public class ContenuAventure {
 
     final public static String titre = "Le mystère de la statue maudite";
+    private static File file;
+
+    public static File getFile() {
+        return file;
+    }
+
+    public static void setFile(File file) {
+        ContenuAventure.file = file;
+    }
 
     static Map<Integer, Lieu> init() {
         HashMap<Integer, Lieu> lieux = null;
@@ -30,7 +39,7 @@ public class ContenuAventure {
         String data;
 
         try {
-            scanner = new Scanner(new File("scenario/grandmont.txt"));
+            scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
