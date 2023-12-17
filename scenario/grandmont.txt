@@ -26,7 +26,7 @@
 ##
 5 RU <
 - 15 aller à l'étage <
-- 16 aller à la brasserie < 
+- 16 aller à la brasserie <
 ##
 6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle <
 - 7 lui poser une question <

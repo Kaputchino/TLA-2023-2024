@@ -75,7 +75,8 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
                 } else if (e == 105) {
-                    if(!buf.equals(" ")){
+                    String buf2 = buf.replaceAll("\\s", "");
+                    if(!buf2.equals("\n")&&!buf2.equals("")){
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
@@ -100,7 +101,7 @@ public class AnalyseLexicale {
 
         } while (c != null);
 
-        return tokens;
+        return fixMultiLine(tokens);
     }
 
     private Character lireCaractere() {
@@ -116,6 +117,26 @@ public class AnalyseLexicale {
 
     private void retourArriere() {
         pos = pos - 1;
+    }
+    private List<Token> fixMultiLine(List<Token> tokens){
+        List<Token> fixedToken = new ArrayList<>();
+        boolean previous = false;
+        Token save = null;
+        for (Token token : tokens) {
+            if (token.getTypeDeToken() != TypeDeToken.stringVal) {
+                fixedToken.add(token);
+                previous = false;
+            } else {
+                if (!previous) {
+                    previous = true;
+                    save = token;
+                    fixedToken.add(save);
+                } else {
+                    save.merge(token);
+                }
+            }
+        }
+        return fixedToken;
     }
 
     /*
