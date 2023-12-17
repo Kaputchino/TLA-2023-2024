@@ -54,8 +54,9 @@ public class AnalyseLexicale {
 
         Integer etat = ETAT_INITIAL;
 
-        Character c;
+        Character c = 'a';
         do {
+            boolean first = c == '\n';
             c = lireCaractere();
 
             Integer e = TRANSITIONS[etat][indiceSymbole(c)];
@@ -63,12 +64,15 @@ public class AnalyseLexicale {
                 System.out.println("pas de transition depuis état " + etat + " avec symbole " + c);
                 throw new LexicalErrorException("pas de transition depuis état " + etat + " avec symbole " + c);
             }
+
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
                 if (e == 101) {
                     tokens.add(new Token(TypeDeToken.separateurLigne));
                 } else if (e == 102) {
-                    tokens.add(new Token(TypeDeToken.tiret));
+                    if(first){
+                        tokens.add(new Token(TypeDeToken.tiret));
+                    }
                 } else if (e == 103) {
                     tokens.add(new Token(TypeDeToken.finLieu));
                 } else if (e == 104) {

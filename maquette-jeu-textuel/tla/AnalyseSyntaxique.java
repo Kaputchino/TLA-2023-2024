@@ -131,7 +131,7 @@ public class AnalyseSyntaxique {
         System.out.println(t.getValeur());
         System.out.println(pos);
         System.out.println(tokens.size());
-        System.out.println(tokens.get(pos - 1));
+        System.out.println(tokens.get(pos - 3));
         if(!t.getValeur().equals("\n")){
             throw new UnexpectedTokenException("- attendu");
         }
