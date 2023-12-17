@@ -2,6 +2,7 @@ package tla;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class HashmapLoader {
 
@@ -17,33 +18,48 @@ public class HashmapLoader {
 
     public static HashMap<Integer, Lieu> getHashMap(Noeud premierLieu) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
-        lieuxHistoire.traiterLieu(premierLieu);
+        lieuxHistoire.entryPoint(premierLieu);
 
         // traitement des erreurs toussa toussa
 
         return lieuxHistoire.getLieux();
     }
 
-    private Proposition traiterProposition(Noeud n) throws Exception {
+    private List<Proposition> traiterProposition(Noeud n, List<Proposition> propositions) throws Exception {
+
         int numeroLieu = -1;
         String texte = null;
+        Proposition proposition;
 
+        numeroLieu = Integer.parseInt(n.enfant(0).getValeur());
+        texte = n.enfant(1).getValeur();
+
+        if (numeroLieu != -1 && texte != null) {
+            proposition = new Proposition(texte, numeroLieu);
+            propositions.add(proposition);
+            if (n.nombreEnfants() == 3 && n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
+                return traiterProposition(n.enfant(2), propositions);
+            }
+
+            return propositions;
+        }
+
+
+        throw new Exception("Prosition non complete.");
+    }
+
+    private void entryPoint(Noeud n) throws Exception {
         for (int i = 0; i < n.nombreEnfants(); i++) {
             Noeud enfant = n.enfant(i);
 
-            if (enfant.getTypeDeNoeud() == TypeDeNoeud.intVal) {
-                numeroLieu = Integer.parseInt(enfant.getValeur());
-            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.string) {
-                texte = enfant.getValeur();
+            if (enfant.getTypeDeNoeud() == TypeDeNoeud.lieu) {
+                traiterLieu(enfant);
+            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.lieuContainer) {
+                entryPoint(enfant);
+            } else {
+                throw new Exception("Noeud inconnu.");
             }
-
         }
-
-        if (numeroLieu != -1 && texte != null) {
-            return new Proposition(texte, numeroLieu);
-        }
-
-        throw new Exception("Prosition non complete.");
     }
 
 
@@ -52,31 +68,26 @@ public class HashmapLoader {
         String texte = null;
         ArrayList<Proposition> propositions = new ArrayList<>();
 
-        for (int i = 0; i < n.nombreEnfants(); i++) {
-            Noeud enfant = n.enfant(i);
+        numeroLieu = Integer.parseInt(n.enfant(0).getValeur());
+        texte = n.enfant(1).getValeur();
 
-            if (enfant.getTypeDeNoeud() == TypeDeNoeud.intVal) {
-                numeroLieu = Integer.parseInt(enfant.getValeur());
-            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.string) {
-                texte = enfant.getValeur();
-            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.proposition) {
-                propositions.add(
-                        traiterProposition(enfant)
-                );
-            } else if (enfant.getTypeDeNoeud() == TypeDeNoeud.lieu) {
-                traiterLieu(enfant);
-            } else {
-                throw new Exception("Noeud inconnu dans un noeud de type lieu.");
-            }
+
+        if (  n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
+            propositions = (ArrayList<Proposition>) traiterProposition(n.enfant(2), new ArrayList<Proposition>());
+        } else {
+            throw new Exception("Noeud inconnu dans un noeud de type lieu.");
         }
 
         if (numeroLieu != -1 && texte != null) {
             lieux.put(
                     numeroLieu, new Lieu(texte, propositions)
             );
+        } else {
+            System.out.println(n);
+            System.out.println(texte);
+            System.out.println(numeroLieu);
+            throw new Exception("Lieu incomplet");
         }
-
-        throw new Exception("Lieu incomplet");
     }
 
 }
