@@ -123,7 +123,15 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        throw new UnexpectedTokenException("- attendu");
+        System.out.println(t);
+        System.out.println(t.getValeur());
+        System.out.println(pos);
+        System.out.println(tokens.size());
+        System.out.println(tokens.get(pos - 8));
+        if(!t.getValeur().equals("\n")){
+            throw new UnexpectedTokenException("- attendu");
+        }
+        return null;
     }
     
     /*

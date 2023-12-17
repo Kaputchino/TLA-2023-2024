@@ -18,7 +18,7 @@ public class AnalyseLexicale {
             /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
             /* 1 */ { 3, 3, 3, 103, 3, 3 },
             /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
-            /* 3 */ { 105, 105, 105, 105, 105, 3, 106 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
             /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
 
             // 101 acceptation d'un <
@@ -57,6 +57,7 @@ public class AnalyseLexicale {
         Character c;
         do {
             c = lireCaractere();
+
             Integer e = TRANSITIONS[etat][indiceSymbole(c)];
             if (e == null) {
                 System.out.println("pas de transition depuis état " + etat + " avec symbole " + c);
