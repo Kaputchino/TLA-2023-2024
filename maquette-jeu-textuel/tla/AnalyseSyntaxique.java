@@ -79,6 +79,8 @@ public class AnalyseSyntaxique {
                         noeud.ajout(Proposition());
                         return noeud;
 			        }
+                    System.out.println(t2.getTypeDeToken()+" "+t2.getValeur());
+                    System.out.println(t1);
                     throw new UnexpectedTokenException("< attendu");
             }
 			throw new UnexpectedTokenException("String attendu");
@@ -111,8 +113,12 @@ public class AnalyseSyntaxique {
                                 }
                                 return noeud;
                             }
+                            System.out.println(t2.getTypeDeToken()+" "+t2.getValeur());
+                            System.out.println(t1);
                             throw new UnexpectedTokenException("< attendu");
                     }
+                    System.out.println(t2.getTypeDeToken()+" "+t2.getValeur());
+                    System.out.println(t1);
                     throw new UnexpectedTokenException("stringVal attendu");
             }
             throw new UnexpectedTokenException("intVal attendu");

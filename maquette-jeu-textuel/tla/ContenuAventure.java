@@ -37,6 +37,7 @@ public class ContenuAventure {
         scanner.useDelimiter("\\Z");
         data = scanner.next();
         scanner.close();
+        System.out.println(data);
 
         try {
             tokens = analyseLexicale.analyse(data);
@@ -45,7 +46,7 @@ public class ContenuAventure {
         }
 
         System.out.println(tokens);
-
+        /**
         tokens = List.of(new Token[]{
                 new Token(TypeDeToken.intVal, "1"),
                 new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
@@ -78,7 +79,7 @@ public class ContenuAventure {
                 new Token(TypeDeToken.stringVal, "Aller 1"),
                 new Token(TypeDeToken.separateurLigne),
                 new Token(TypeDeToken.finLieu)
-        });
+        });**/
 
         try {
             entryPoint =  analyseSyntaxique.analyse(tokens);

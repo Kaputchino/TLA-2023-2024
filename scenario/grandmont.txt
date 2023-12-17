@@ -30,8 +30,7 @@
 ##
 6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle <
 - 7 lui poser une question <
-- 7 fuir <
-
+- 2 fuir <
 ##
 7 Mr Brouard vous parle jusqu'à la fin des temps. FIN <
 - 7 RIP <
@@ -102,7 +101,7 @@
 ##
 24 bourreau entre <
 - 30 lui demander ce qu'il veut <
-- 2 fuir
+- 2 fuir <
 - 31 le regarder dans les yeux <
 - 32 lui demander si ca lui plait <
 ##
