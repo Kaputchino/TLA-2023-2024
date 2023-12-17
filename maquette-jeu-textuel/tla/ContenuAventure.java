@@ -30,20 +30,53 @@ public class ContenuAventure {
         String data;
 
         try {
-            scanner = new Scanner(new File("scenario/grandmont.txt"));
+            scanner = new Scanner(new File("scenario/grandmont.txt"));        scanner.useDelimiter("\\Z");
+            data = scanner.next();
+            scanner.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        scanner.useDelimiter("\\Z");
-        data = scanner.next();
-        scanner.close();
-
 
         try {
             tokens = analyseLexicale.analyse(data);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        /**
+        tokens = List.of(new Token[]{
+                new Token(TypeDeToken.intVal, "1"),
+                new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.tiret),
+                new Token(TypeDeToken.intVal, "0"),
+                new Token(TypeDeToken.stringVal, "Aller en 0"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.finLieu),
+
+                new Token(TypeDeToken.intVal, "0"),
+                new Token(TypeDeToken.stringVal, "Ceci est un lieu ddd"),
+                new Token(TypeDeToken.separateurLigne),
+                    new Token(TypeDeToken.tiret),
+                    new Token(TypeDeToken.intVal, "3"),
+                    new Token(TypeDeToken.stringVal, "Aller en 3"),
+                    new Token(TypeDeToken.separateurLigne),
+
+                    new Token(TypeDeToken.tiret),
+                    new Token(TypeDeToken.intVal, "0"),
+                    new Token(TypeDeToken.stringVal, "Aller en 0"),
+                    new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.finLieu),
+
+                new Token(TypeDeToken.intVal, "3"),
+                new Token(TypeDeToken.stringVal, "Ceci est un lieu qwdqwd"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.tiret),
+                new Token(TypeDeToken.intVal, "1"),
+                new Token(TypeDeToken.stringVal, "Aller 1"),
+                new Token(TypeDeToken.separateurLigne),
+                new Token(TypeDeToken.finLieu)
+        });**/
 
         try {
             entryPoint =  analyseSyntaxique.analyse(tokens);
@@ -56,6 +89,8 @@ public class ContenuAventure {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        System.out.println(lieux);
 
         return lieux;
     }

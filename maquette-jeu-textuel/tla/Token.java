@@ -28,4 +28,7 @@ public class Token {
             res = res + "(" + valeur + ")";
         return res;
     }
+    public void merge(Token t){
+        valeur += " " + t.getValeur();
+    }
 }

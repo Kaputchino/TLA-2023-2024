@@ -45,7 +45,7 @@ public class App implements ActionListener {
 
     public static void main(String[] args) {
         App app = new App();
-        SwingUtilities.invokeLater(() -> app.init());
+        SwingUtilities.invokeLater(app::init);
     }
 
     private void init() {
