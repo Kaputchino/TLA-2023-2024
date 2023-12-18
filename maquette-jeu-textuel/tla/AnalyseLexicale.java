@@ -6,6 +6,13 @@ import exception_tla.LexicalErrorException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * MULARD Andreas 
+ * BERTHEL Gabriel
+ * LAGASSE Adrian 
+ * YOUSRI Célia
+ */
+
 public class AnalyseLexicale {
 
     /*
