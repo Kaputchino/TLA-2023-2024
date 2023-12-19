@@ -4,5 +4,5 @@ public enum TypeDeNoeud {
 	statement,
 	ident, intVal,
 	and, or,
-	inf, sup, equ
+	inf, sup, equ, inverse
 }

@@ -9,5 +9,6 @@ public enum TypeDeToken {
 	ident,
 	inf,
 	sup,
-	equal
+	equal,
+	inverse
 }

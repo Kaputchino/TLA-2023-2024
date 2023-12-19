@@ -49,6 +49,7 @@ public class AnalyseSyntaxique {
 
 		return nodeStmt;
 	}
+	private
 
 
 	/*
