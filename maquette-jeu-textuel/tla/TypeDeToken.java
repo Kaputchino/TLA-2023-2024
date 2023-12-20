@@ -6,5 +6,13 @@ public enum TypeDeToken {
     EOF,
     separateurLigne,
     intVal,
-    finLieu
+    finLieu,
+    add,
+    pipe,
+    parLeft,
+    parRight,
+    esperl,
+    desc,
+    equal,
+    dieseSimple
 }
