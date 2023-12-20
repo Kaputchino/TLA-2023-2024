@@ -23,11 +23,6 @@ public class Interpretation {
 	et appel récursif sur les noeuds enfants de n
 	 */
 	public Boolean interpreter(Noeud n) {
-		if(n.getTypeDeNoeud().equals(TypeDeNoeud.statement)){
-			for(int i = 0; i < n.nombreEnfants(); i++){
-				interpreter(n.enfant(i));
-			}
-		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.equ)){
 			return mathematicalInterpreter(n.enfant(0)) == mathematicalInterpreter(n.enfant(1));
 		}
@@ -49,7 +44,7 @@ public class Interpretation {
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.ident)){
 			return listFlags.get(n.getValeurString());
 		}
-		return null;
+		return interpreter(n.enfant(0));
 	}
 	public int mathematicalInterpreter(Noeud n){
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.intVal)){
