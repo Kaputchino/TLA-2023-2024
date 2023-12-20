@@ -13,11 +13,12 @@ public class AnalyseLexicale {
      */
     private static Integer TRANSITIONS[][] = {
             // espace < - # chiffre caractere Autre_lettre f o s
-            /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
+            /* 0 */ { 0, 101, 102, 5, 2, 3, 4 },
             /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 107, 108, 109 },
             /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
             /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4, 4, 4 },
+            /* 5 */ { 106, 106, 106, 103, 106, 106,106, 107, 108, 109 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -66,7 +67,7 @@ public class AnalyseLexicale {
                 System.out.println("pas de transition depuis état " + etat + " avec symbole " + c);
                 throw new LexicalErrorException("pas de transition depuis état " + etat + " avec symbole " + c);
             }
-
+            System.out.println(etat + " char: " + c + ", indice: " + indiceSymbole(c) + "  " + e);
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
                 if (e == 101) {
@@ -169,14 +170,14 @@ public class AnalyseLexicale {
             return 2;
         if (c == '#')
             return 3;
-        if (Character.isDigit(c))
-            return 4;
         if (c == 'f')
             return 7;
         if (c == 'o')
             return 8;
         if (c == 's')
             return 9;
+        if (Character.isDigit(c))
+            return 4;
         if (Character.isLetter(c))
             return 6;
 
