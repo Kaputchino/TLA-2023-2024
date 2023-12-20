@@ -9,13 +9,12 @@ public class Interpretation {
 
 	// permet la lecture de chaîne au clavier
 	private static BufferedReader stdinReader = new BufferedReader(new InputStreamReader(System.in));
-	int sum = 0;
 	private HashMap<String, Integer> listVariables = new HashMap<>();
 	private HashMap<String, Boolean> listFlags = new HashMap<>();
 
 
 	public Interpretation() {
-		/* A COMPLETER */
+
 	}
 
 	/*

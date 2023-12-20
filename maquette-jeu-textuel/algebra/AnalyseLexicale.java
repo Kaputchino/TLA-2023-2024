@@ -13,7 +13,7 @@ public class AnalyseLexicale {
 			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  },
 			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  },
 			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  }
-
+							 //space and or  (  )  !     >   <  =     chiffe lettre
 			// 101 acceptation d'un +
 			// 102 acceptation d'un *
 			// 103 acceptation d'un (

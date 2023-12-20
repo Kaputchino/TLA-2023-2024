@@ -7,6 +7,17 @@ public class AnalyseSyntaxique {
 	private int pos;
 	private List<Token> tokens;
 
+	Token lireToken(){
+		Token token = tokens.get(pos);
+		pos++;
+		return token;
+	}
+
+	TypeDeToken getTypeDeToken(){
+
+		return tokens.get(pos).getTypeDeToken();
+	}
+
 	/*
 	effectue l'analyse syntaxique à partir de la liste de tokens
 	et retourne le noeud racine de l'arbre syntaxique abstrait
@@ -49,8 +60,36 @@ public class AnalyseSyntaxique {
 
 		return nodeStmt;
 	}
-	private
 
+	private Noeud statement() throws UnexpectedTokenException {
+		if (getTypeDeToken() == TypeDeToken.leftPar) {
+
+			// production B -> ( Expr )
+
+			lireToken();
+			Noeud s = Expr();
+
+			if (getTypeDeToken() == TypeDeToken.rightPar) {
+				lireToken();
+				return s;
+			}
+			throw new UnexpectedTokenException(") attendu");
+		}
+		if (getTypeDeToken() == TypeDeToken.intVal) {
+
+			// production B -> intVal
+
+			Token t = lireToken();
+			return new Noeud(TypeDeNoeud.intVal, t.getValeur());
+		}
+
+		if (getTypeDeToken() == TypeDeToken.ident) {
+
+			// production B -> ident
+
+			Token t = lireToken();
+			return new Noeud(TypeDeNoeud.ident, t.getValeur());
+	}
 
 	/*
 
