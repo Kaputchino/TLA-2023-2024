@@ -7,12 +7,7 @@ public enum TypeDeToken {
     separateurLigne,
     intVal,
     finLieu,
-    add,
-    pipe,
-    parLeft,
-    parRight,
-    esperl,
-    desc,
-    equal,
-    dieseSimple
+    objet,
+    stat,
+    flag
 }

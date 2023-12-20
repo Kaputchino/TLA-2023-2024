@@ -12,19 +12,23 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractere Autre lettre
+            // espace < - # chiffre caractere Autre_lettre f o s
             /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
-            /* 1 */ { 107, 107, 107, 103, 107, 107, 107 },
+            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 107, 108, 109 },
             /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
             /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
             /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
-            // 103 acceptation d'un # (retour Arriere)
+            // 103 acceptation d'un #
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
+
+            // 107 acceptation d'un flag
+            // 108 acceptation d'un objet
+            // 109 acceptation d'un stat
     };
 
     private String entree;
@@ -88,7 +92,11 @@ public class AnalyseLexicale {
                     }
                     retourArriere();
                 } else if (e == 107)
-                    tokens.add(new Token(TypeDeToken.dieseSimple));
+                    tokens.add(new Token(TypeDeToken.flag));
+                else if (e == 108)
+                    tokens.add(new Token(TypeDeToken.objet));
+                else if (e == 109)
+                    tokens.add(new Token(TypeDeToken.stat));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
                 // reinitialise buf
