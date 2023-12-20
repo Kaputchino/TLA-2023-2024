@@ -171,6 +171,12 @@ public class AnalyseLexicale {
             return 3;
         if (Character.isDigit(c))
             return 4;
+        if (c == 'f')
+            return 7;
+        if (c == 'o')
+            return 8;
+        if (c == 's')
+            return 9;
         if (Character.isLetter(c))
             return 6;
 
