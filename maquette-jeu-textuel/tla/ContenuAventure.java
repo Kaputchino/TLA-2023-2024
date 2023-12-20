@@ -54,8 +54,6 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
-        System.out.println(tokens);
-
         /**
          * tokens = List.of(new Token[]{
          * new Token(TypeDeToken.intVal, "1"),

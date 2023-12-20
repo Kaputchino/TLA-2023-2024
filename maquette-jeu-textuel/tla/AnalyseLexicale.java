@@ -12,12 +12,12 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - + | ( ) & : = # chiffre caractere Autre_lettre
-            /* 0 */ { 0, 101, 102, 107, 108, 109, 110, 111, 113, 1, 2, 3, 4 },
-            /* 1 */ { 114, 114, 114, 114, 114, 114, 114, 114, 114, 103, 114, 114, 114 },
-            /* 2 */ { 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 2, 104, 104 },
-            /* 3 */ { 3, 105, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 4 }
+            // espace < - # chiffre caractere Autre lettre
+            /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
+            /* 1 */ { 107, 107, 107, 103, 107, 107, 107 },
+            /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -25,14 +25,6 @@ public class AnalyseLexicale {
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
-
-            // 107 acceptation d'un +
-            // 108 acceptation d'un |
-            // 109 acceptation d'un (
-            // 110 acceptation d'un )
-            // 111 acceptation d'un &
-            // 113 acceptation d'un =
-            // 114 acceptation d'un # (sans retour arrière)
     };
 
     private String entree;
@@ -73,15 +65,15 @@ public class AnalyseLexicale {
 
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
-                if (e == 101)
+                if (e == 101) {
                     tokens.add(new Token(TypeDeToken.separateurLigne));
-                else if (e == 102) {
+                } else if (e == 102) {
                     if (first) {
                         tokens.add(new Token(TypeDeToken.tiret));
                     }
-                } else if (e == 103)
+                } else if (e == 103) {
                     tokens.add(new Token(TypeDeToken.finLieu));
-                else if (e == 104) {
+                } else if (e == 104) {
                     tokens.add(new Token(TypeDeToken.intVal, buf));
                     retourArriere();
                 } else if (e == 105) {
@@ -96,18 +88,6 @@ public class AnalyseLexicale {
                     }
                     retourArriere();
                 } else if (e == 107)
-                    tokens.add(new Token(TypeDeToken.add));
-                else if (e == 108)
-                    tokens.add(new Token(TypeDeToken.pipe));
-                else if (e == 109)
-                    tokens.add(new Token(TypeDeToken.parLeft));
-                else if (e == 110)
-                    tokens.add(new Token(TypeDeToken.parRight));
-                else if (e == 111)
-                    tokens.add(new Token(TypeDeToken.esperl));
-                else if (e == 113)
-                    tokens.add(new Token(TypeDeToken.equal));
-                else if (e == 114)
                     tokens.add(new Token(TypeDeToken.dieseSimple));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
@@ -124,9 +104,7 @@ public class AnalyseLexicale {
 
         } while (c != null);
 
-        return
-
-        fixMultiLine(tokens);
+        return fixMultiLine(tokens);
     }
 
     private Character lireCaractere() {
@@ -173,7 +151,7 @@ public class AnalyseLexicale {
         if (c == null)
             return 0;
         if (c == ' ') {
-            return 0;
+            return 5;
         }
         if (Character.isWhitespace(c))
             return 0;
@@ -181,25 +159,14 @@ public class AnalyseLexicale {
             return 1;
         if (c == '-')
             return 2;
-        if (c == '+')
-            return 3;
-        if (c == '|')
-            return 4;
-        if (c == '(')
-            return 5;
-        if (c == ')')
-            return 6;
-        if (c == '&')
-            return 7;
-        if (c == '=')
-            return 8;
         if (c == '#')
-            return 9;
+            return 3;
         if (Character.isDigit(c))
-            return 10;
+            return 4;
         if (Character.isLetter(c))
-            return 12;
+            return 6;
 
-        return 11;
+        return 5;
     }
+
 }
