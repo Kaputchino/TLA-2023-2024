@@ -114,6 +114,7 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.dieseSimple));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
+                System.out.println(buf);
                 // reinitialise buf
                 buf = "";
             } else {
@@ -184,21 +185,21 @@ public class AnalyseLexicale {
             return 1;
         if (c == '-')
             return 2;
-        if (c == '#')
-            return 3;
         if (c == '+')
-            return 4;
+            return 3;
         if (c == '|')
-            return 5;
+            return 4;
         if (c == '(')
-            return 6;
+            return 5;
         if (c == ')')
-            return 7;
+            return 6;
         if (c == '&')
-            return 8;
+            return 7;
         if (c == ':')
-            return 9;
+            return 8;
         if (c == '=')
+            return 9;
+        if (c == '#')
             return 10;
         if (Character.isDigit(c))
             return 11;
