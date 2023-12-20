@@ -13,11 +13,11 @@ public class AnalyseLexicale {
      */
     private static Integer TRANSITIONS[][] = {
             // espace < - + | ( ) & : = # chiffre caractere Autre_lettre
-            /* 0 */ { 0, 101, 102, 107, 108, 109, 110, 111, 112, 113, 1, 2, 3, 4 },
-            /* 1 */ { 114, 114, 114, 114, 114, 114, 114, 114, 114, 114, 103, 114, 114, 114 },
-            /* 2 */ { 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 2, 104, 104 },
-            /* 3 */ { 3, 105, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 4 }
+            /* 0 */ { 0, 101, 102, 107, 108, 109, 110, 111, 113, 1, 2, 3, 4 },
+            /* 1 */ { 114, 114, 114, 114, 114, 114, 114, 114, 114, 103, 114, 114, 114 },
+            /* 2 */ { 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 2, 104, 104 },
+            /* 3 */ { 3, 105, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 106 },
+            /* 4 */ { 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 4 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -31,7 +31,6 @@ public class AnalyseLexicale {
             // 109 acceptation d'un (
             // 110 acceptation d'un )
             // 111 acceptation d'un &
-            // 112 acceptation d'un :
             // 113 acceptation d'un =
             // 114 acceptation d'un # (sans retour arrière)
     };
@@ -106,8 +105,6 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.parRight));
                 else if (e == 111)
                     tokens.add(new Token(TypeDeToken.esperl));
-                else if (e == 112)
-                    tokens.add(new Token(TypeDeToken.desc));
                 else if (e == 113)
                     tokens.add(new Token(TypeDeToken.equal));
                 else if (e == 114)
@@ -194,17 +191,15 @@ public class AnalyseLexicale {
             return 6;
         if (c == '&')
             return 7;
-        if (c == ':')
-            return 8;
         if (c == '=')
-            return 9;
+            return 8;
         if (c == '#')
-            return 10;
+            return 9;
         if (Character.isDigit(c))
-            return 11;
+            return 10;
         if (Character.isLetter(c))
-            return 13;
+            return 12;
 
-        return 12;
+        return 11;
     }
 }
