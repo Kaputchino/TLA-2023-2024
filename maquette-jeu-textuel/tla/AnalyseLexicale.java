@@ -14,8 +14,8 @@ public class AnalyseLexicale {
     private static Integer TRANSITIONS[][] = {
             // espace < - + | ( ) & : = # chiffre caractere Autre_lettre
             /* 0 */ { 0, 101, 102, 107, 108, 109, 110, 111, 112, 113, 1, 2, 3, 4 },
-            /* 1 */ { 114, 114, 114, 114, 114, 114, 114, 114, 114, 114, 103, 114, 114 },
-            /* 2 */ { 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 2, 104, 106 },
+            /* 1 */ { 114, 114, 114, 114, 114, 114, 114, 114, 114, 114, 103, 114, 114, 114 },
+            /* 2 */ { 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 2, 104, 104 },
             /* 3 */ { 3, 105, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 106 },
             /* 4 */ { 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 106, 4 }
 
@@ -114,7 +114,6 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.dieseSimple));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
-                System.out.println(buf);
                 // reinitialise buf
                 buf = "";
             } else {
@@ -177,7 +176,7 @@ public class AnalyseLexicale {
         if (c == null)
             return 0;
         if (c == ' ') {
-            return 12;
+            return 0;
         }
         if (Character.isWhitespace(c))
             return 0;
