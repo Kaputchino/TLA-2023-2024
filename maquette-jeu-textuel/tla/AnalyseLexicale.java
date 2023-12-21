@@ -19,13 +19,13 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractere Autre_lettre f o s
-            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4, 4, 4 },
-            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 107, 108, 109 },
-            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 104, 104, 104 },
-            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106, 106, 106 },
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4, 4, 4 },
-            /* 5 */ { 106, 106, 106, 103, 106, 106, 106, 107, 108, 109 }
+          // espace < c e - # chiffre caractere Autre_lettre f o s
+            /* 0 */ { 0, 101, 110, 111, 102, 5, 2, 3, 4, 4, 4, 4 },
+            /* 1 */ { 3, 3, 110, 111, 3, 103, 3, 3, 3, 107, 108, 109 },
+            /* 2 */ { 104, 104, 104, 104, 104, 104, 2, 104, 106, 104, 104, 104 },
+            /* 3 */ { 3, 106, 106, 105, 105, 105, 105, 3, 106, 106, 106, 106 },
+            /* 4 */ { 106, 106, 4, 4, 106, 106, 4, 4, 4, 4, 4, 4 },
+            /* 5 */ { 106, 106, 110, 111, 106, 103, 106, 106, 106, 107, 108, 109 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -37,6 +37,8 @@ public class AnalyseLexicale {
             // 107 acceptation d'un flag
             // 108 acceptation d'un objet
             // 109 acceptation d'un stat
+            // 110 acceptation d'une condition
+            // 111 acceptation d'un effet
     };
 
     private String entree;
@@ -105,6 +107,10 @@ public class AnalyseLexicale {
                     tokens.add(new Token(TypeDeToken.objet));
                 else if (e == 109)
                     tokens.add(new Token(TypeDeToken.stat));
+                else if (e == 110)
+                    tokens.add(new Token(TypeDeToken.cond));
+                else if (e == 111)
+                    tokens.add(new Token(TypeDeToken.effet));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
                 // reinitialise buf
@@ -183,6 +189,10 @@ public class AnalyseLexicale {
             return 8;
         if (c == 's')
             return 9;
+        if (c == 'c')
+            return 10;
+        if (c == 'e')
+            return 11;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))
