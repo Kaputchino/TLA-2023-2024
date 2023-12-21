@@ -35,7 +35,7 @@ public class AnalyseLexicale {
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
 
-            // 107 acceptation d'un objet ou d'une condition en fonction du buffer
+            // 107 acceptation d'un objet, stats ou flag en fonction du buffer
             // 108 acceptation d'un : 
     };
 
