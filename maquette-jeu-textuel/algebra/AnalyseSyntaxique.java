@@ -22,6 +22,7 @@ public class AnalyseSyntaxique {
 	effectue l'analyse syntaxique à partir de la liste de tokens
 	et retourne le noeud racine de l'arbre syntaxique abstrait
 	 */
+	/**
 	public Noeud analyse(List<Token> tokens) throws Exception {
 		pos = 0;
 		this.tokens = tokens;
@@ -40,7 +41,7 @@ public class AnalyseSyntaxique {
 	S ->  Statement S'
 
 	 */
-
+/*
 	private Noeud S() throws UnexpectedTokenException {
 
 		Noeud nodeStmt = new Noeud(TypeDeNoeud.statement);
@@ -105,26 +106,11 @@ public class AnalyseSyntaxique {
 	 * Retourne la classe du prochain token à lire
 	 * SANS AVANCER au token suivant
 	 */
-	private TypeDeToken getTypeDeToken() {
-		if (pos >= tokens.size()) {
-			return null;
-		} else {
-			return tokens.get(pos).getTypeDeToken();
-		}
-	}
+
 
 	/*
 	 * Retourne le prochain token à lire
 	 * ET AVANCE au token suivant
 	 */
-	private Token lireToken() {
-		if (pos >= tokens.size()) {
-			return null;
-		} else {
-			Token t = tokens.get(pos);
-			pos++;
-			return t;
-		}
-	}
 
 }

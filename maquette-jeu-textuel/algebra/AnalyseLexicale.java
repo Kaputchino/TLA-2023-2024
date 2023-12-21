@@ -9,10 +9,10 @@ public class AnalyseLexicale {
 	Table de transition de l'analyse lexicale
 	 */
 	private static Integer TRANSITIONS[][] = {
-			//            espace    +    *    (    )    ,  chiffre  lettre
-			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  ,108,109,110},
-			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  ,106,106,106},
-			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  ,107,107,107}
+			//            espace  and   or  (  	   )   !     chiffe lettre    >      <   =
+			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110},
+			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106},
+			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107}
 							 //space and or  (  	)   !     chiffe lettre >   <  =
 			// 101 acceptation d'un and
 			// 102 acceptation d'un or
@@ -21,6 +21,9 @@ public class AnalyseLexicale {
 			// 105 acceptation d'un !
 			// 106 acceptation d'un entier                   (retourArriere)
 			// 107 acceptation d'un identifiant ou mot clé   (retourArriere)
+			// 108 acceptation d'un >
+			// 109 acceptation d'un <
+			// 110 acceptation d'un =
 
 	};
 
@@ -75,15 +78,12 @@ public class AnalyseLexicale {
 					retourArriere();
 				} else if (e == 108) {
 					tokens.add(new Token(TypeDeToken.sup, buf));
-					retourArriere();
 				}
 				else if (e == 109) {
 					tokens.add(new Token(TypeDeToken.inf, buf));
-					retourArriere();
 				}
 				else if (e == 110) {
 					tokens.add(new Token(TypeDeToken.equal, buf));
-					retourArriere();
 				}
 
 				// un état d'acceptation ayant été atteint, retourne à l'état 0
@@ -125,13 +125,16 @@ public class AnalyseLexicale {
 	private static int indiceSymbole(Character c) throws IllegalCharacterException {
 		if (c == null) return 0;
 		if (Character.isWhitespace(c)) return 0;
-		if (c == '+') return 1;
-		if (c == '*') return 2;
+		if (c == '&') return 1;
+		if (c == '|') return 2;
 		if (c == '(') return 3;
 		if (c == ')') return 4;
-		if (c == ',') return 5;
+		if (c == '!') return 5;
 		if (Character.isDigit(c)) return 6;
 		if (Character.isLetter(c)) return 7;
+		if (c == '>') return 8;
+		if (c == '<') return 9;
+		if (c == '=') return 10;
 		System.out.println("Symbole inconnu : " + c);
 		throw new IllegalCharacterException(c.toString());
 	}
