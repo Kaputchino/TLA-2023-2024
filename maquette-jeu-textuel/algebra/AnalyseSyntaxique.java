@@ -130,7 +130,29 @@ public class AnalyseSyntaxique {
 		throw new UnexpectedTokenException("input'' ou 'print' attendu");
 	}
 	private Noeud D() throws UnexpectedTokenException {
-
+		Noeud statement = new Noeud(TypeDeNoeud.statement);
+		//D-> or S
+		if (getTypeDeToken() == TypeDeToken.or) {
+			Token t = lireToken();
+			statement.ajout(new Noeud(TypeDeNoeud.or));
+			statement.ajout(S());
+			return statement;
+		}
+		//D-> and S
+		if (getTypeDeToken() == TypeDeToken.and) {
+			Token t = lireToken();
+			statement.ajout(new Noeud(TypeDeNoeud.and));
+			statement.ajout(S());
+			return statement;
+		}
+		//D->epsilon
+		if (getTypeDeToken() == TypeDeToken.inf) {
+			Token t = lireToken();
+			statement.ajout(new Noeud(TypeDeNoeud.and));
+			statement.ajout(S());
+			return statement;
+		}
+		throw new UnexpectedTokenException("input'' ou 'print' attendu");
 	}
 
 
