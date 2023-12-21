@@ -10,15 +10,15 @@ public class AnalyseLexicale {
 	 */
 	private static Integer TRANSITIONS[][] = {
 			//            espace    +    *    (    )    ,  chiffre  lettre
-			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  },
-			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  },
-			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  }
-							 //space and or  (  )  !     >   <  =     chiffe lettre
-			// 101 acceptation d'un +
-			// 102 acceptation d'un *
+			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  ,108,109,110},
+			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  ,106,106,106},
+			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  ,107,107,107}
+							 //space and or  (  	)   !     chiffe lettre >   <  =
+			// 101 acceptation d'un and
+			// 102 acceptation d'un or
 			// 103 acceptation d'un (
 			// 104 acceptation d'un )
-			// 105 acceptation d'un ,
+			// 105 acceptation d'un !
 			// 106 acceptation d'un entier                   (retourArriere)
 			// 107 acceptation d'un identifiant ou mot clé   (retourArriere)
 
@@ -58,30 +58,34 @@ public class AnalyseLexicale {
 			// cas particulier lorsqu'un état d'acceptation est atteint
 			if (e >= 100) {
 				if (e == 101) {
-					tokens.add(new Token(TypeDeToken.add));
+					tokens.add(new Token(TypeDeToken.and));
 				} else if (e == 102) {
-					tokens.add(new Token(TypeDeToken.multiply));
+					tokens.add(new Token(TypeDeToken.or));
 				} else if (e == 103) {
 					tokens.add(new Token(TypeDeToken.leftPar));
 				} else if (e == 104) {
 					tokens.add(new Token(TypeDeToken.rightPar));
 				} else if (e == 105) {
-					tokens.add(new Token(TypeDeToken.comma));
+					tokens.add(new Token(TypeDeToken.inverse));
 				} else if (e == 106) {
 					tokens.add(new Token(TypeDeToken.intVal, buf));
 					retourArriere();
 				} else if (e == 107) {
-					if (buf.equals("input")) {
-						tokens.add(new Token(TypeDeToken.kInput));
-					} else if (buf.equals("print")) {
-						tokens.add(new Token(TypeDeToken.kPrint));
-					} else if (buf.equals("pow")) {
-						tokens.add(new Token(TypeDeToken.kPow));
-					} else {
-						tokens.add(new Token(TypeDeToken.ident, buf));
-					}
+					tokens.add(new Token(TypeDeToken.ident, buf));
+					retourArriere();
+				} else if (e == 108) {
+					tokens.add(new Token(TypeDeToken.sup, buf));
 					retourArriere();
 				}
+				else if (e == 109) {
+					tokens.add(new Token(TypeDeToken.inf, buf));
+					retourArriere();
+				}
+				else if (e == 110) {
+					tokens.add(new Token(TypeDeToken.equal, buf));
+					retourArriere();
+				}
+
 				// un état d'acceptation ayant été atteint, retourne à l'état 0
 				etat = 0;
 				// reinitialise buf
