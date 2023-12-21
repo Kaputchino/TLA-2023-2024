@@ -19,19 +19,24 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            // espace < - # chiffre caractere Autre lettre
-            /* 0 */ { 0, 101, 102, 1, 2, 3, 4 },
-            /* 1 */ { 3, 3, 3, 103, 3, 3 },
-            /* 2 */ { 104, 104, 104, 104, 2, 104, 106 },
-            /* 3 */ { 3, 105, 105, 105, 105, 3, 106 },
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4 }
+            // espace < - # chiffre caractere Autre_lettre f o s
+            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4, 4, 4 },
+            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 107, 108, 109 },
+            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 104, 104, 104 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106, 106, 106 },
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4, 4, 4 },
+            /* 5 */ { 106, 106, 106, 103, 106, 106, 106, 107, 108, 109 }
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
-            // 103 acceptation d'un # (retour Arriere)
+            // 103 acceptation d'un #
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
+
+            // 107 acceptation d'un flag
+            // 108 acceptation d'un objet
+            // 109 acceptation d'un stat
     };
 
     private String entree;
@@ -69,13 +74,13 @@ public class AnalyseLexicale {
                 System.out.println("pas de transition depuis état " + etat + " avec symbole " + c);
                 throw new LexicalErrorException("pas de transition depuis état " + etat + " avec symbole " + c);
             }
-
+            System.out.println(etat + " char: " + c + ", indice: " + indiceSymbole(c) + "  " + e);
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
                 if (e == 101) {
                     tokens.add(new Token(TypeDeToken.separateurLigne));
                 } else if (e == 102) {
-                    if(first){
+                    if (first) {
                         tokens.add(new Token(TypeDeToken.tiret));
                     }
                 } else if (e == 103) {
@@ -85,16 +90,21 @@ public class AnalyseLexicale {
                     retourArriere();
                 } else if (e == 105) {
                     String buf2 = buf.replaceAll("\\s", "");
-                    if(!buf2.equals("\n")&&!buf2.equals("")){
+                    if (!buf2.equals("\n") && !buf2.equals("")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
                 } else if (e == 106) {
-                    if(!buf.equals(" ")){
+                    if (!buf.equals(" ")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
-                }
+                } else if (e == 107)
+                    tokens.add(new Token(TypeDeToken.flag));
+                else if (e == 108)
+                    tokens.add(new Token(TypeDeToken.objet));
+                else if (e == 109)
+                    tokens.add(new Token(TypeDeToken.stat));
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
                 // reinitialise buf
@@ -127,7 +137,8 @@ public class AnalyseLexicale {
     private void retourArriere() {
         pos = pos - 1;
     }
-    private List<Token> fixMultiLine(List<Token> tokens){
+
+    private List<Token> fixMultiLine(List<Token> tokens) {
         List<Token> fixedToken = new ArrayList<>();
         boolean previous = false;
         Token save = null;
@@ -155,7 +166,7 @@ public class AnalyseLexicale {
     private static int indiceSymbole(Character c) throws IllegalCharacterException {
         if (c == null)
             return 0;
-        if(c ==' '){
+        if (c == ' ') {
             return 5;
         }
         if (Character.isWhitespace(c))
@@ -166,6 +177,12 @@ public class AnalyseLexicale {
             return 2;
         if (c == '#')
             return 3;
+        if (c == 'f')
+            return 7;
+        if (c == 'o')
+            return 8;
+        if (c == 's')
+            return 9;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))
