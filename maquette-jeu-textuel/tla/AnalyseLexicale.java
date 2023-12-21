@@ -19,13 +19,14 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-          // espace < c e - # chiffre caractere Autre_lettre f o s
-            /* 0 */ { 0, 101, 110, 111, 102, 5, 2, 3, 4, 4, 4, 4 },
-            /* 1 */ { 3, 3, 110, 111, 3, 103, 3, 3, 3, 107, 108, 109 },
-            /* 2 */ { 104, 104, 104, 104, 104, 104, 2, 104, 106, 104, 104, 104 },
-            /* 3 */ { 3, 106, 106, 105, 105, 105, 105, 3, 106, 106, 106, 106 },
-            /* 4 */ { 106, 106, 4, 4, 106, 106, 4, 4, 4, 4, 4, 4 },
-            /* 5 */ { 106, 106, 110, 111, 106, 103, 106, 106, 106, 107, 108, 109 }
+          // espace < - # chiffre caractere Autre_lettre :
+            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4 },
+            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 3 },
+            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 106 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106},
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4 },
+            /* 5 */ { 106, 107, 106, 103, 106, 5, 5, 106 },
+            /* 6 {106, 106, 106, 103, 106, 106, 106 } */
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -34,11 +35,8 @@ public class AnalyseLexicale {
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
 
-            // 107 acceptation d'un flag
-            // 108 acceptation d'un objet
-            // 109 acceptation d'un stat
-            // 110 acceptation d'une condition
-            // 111 acceptation d'un effet
+            // 107 acceptation d'un objet ou d'une condition en fonction du buffer
+            // 108 acceptation d'un : 
     };
 
     private String entree;
@@ -76,7 +74,6 @@ public class AnalyseLexicale {
                 System.out.println("pas de transition depuis état " + etat + " avec symbole " + c);
                 throw new LexicalErrorException("pas de transition depuis état " + etat + " avec symbole " + c);
             }
-            System.out.println(etat + " char: " + c + ", indice: " + indiceSymbole(c) + "  " + e);
             // cas particulier lorsqu'un état d'acceptation est atteint
             if (e >= 100) {
                 if (e == 101) {
@@ -97,20 +94,27 @@ public class AnalyseLexicale {
                     }
                     retourArriere();
                 } else if (e == 106) {
-                    if (!buf.equals(" ")) {
+                    if(buf.equals("conds")){
+                        tokens.add(new Token(TypeDeToken.cond));
+                    }
+                    else if(buf.equals("effets")){
+                        tokens.add(new Token(TypeDeToken.effet));
+                    }
+                    else if (!buf.equals(" ")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
-                } else if (e == 107)
-                    tokens.add(new Token(TypeDeToken.flag));
-                else if (e == 108)
-                    tokens.add(new Token(TypeDeToken.objet));
-                else if (e == 109)
-                    tokens.add(new Token(TypeDeToken.stat));
-                else if (e == 110)
-                    tokens.add(new Token(TypeDeToken.cond));
-                else if (e == 111)
-                    tokens.add(new Token(TypeDeToken.effet));
+                } else if(e == 107){
+                    if(buf.equals("#stats")){
+                        tokens.add(new Token(TypeDeToken.stat));
+                    }
+                    else if(buf.equals("#flags")){
+                        tokens.add(new Token(TypeDeToken.flag));
+                    }
+                    else if(buf.equals("#objets")){
+                        tokens.add(new Token(TypeDeToken.objet));
+                    }
+                }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
                 // reinitialise buf
@@ -183,16 +187,8 @@ public class AnalyseLexicale {
             return 2;
         if (c == '#')
             return 3;
-        if (c == 'f')
-            return 7;
-        if (c == 'o')
-            return 8;
-        if (c == 's')
-            return 9;
-        if (c == 'c')
-            return 10;
-        if (c == 'e')
-            return 11;
+        if (c == ':')
+            return 4;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))
