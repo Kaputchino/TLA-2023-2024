@@ -44,6 +44,7 @@ public class AnalyseSyntaxique {
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
+			return nodeStmt;
 		}
 		//S->!SD
 		if (getTypeDeToken() == TypeDeToken.inverse) {
@@ -55,6 +56,7 @@ public class AnalyseSyntaxique {
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
+			return nodeStmt;
 		}
 		//S->(S)D
 		if (getTypeDeToken() == TypeDeToken.leftPar) {
@@ -68,11 +70,11 @@ public class AnalyseSyntaxique {
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
+			return nodeStmt;
 
 		}else {
 			throw new UnexpectedTokenException("'input' ou 'print' attendu");
 		}
-		return nodeStmt;
 	}
 	private Noeud A() throws UnexpectedTokenException {
 		//A->BC
@@ -105,11 +107,15 @@ public class AnalyseSyntaxique {
 	}
 	private Noeud C() throws UnexpectedTokenException {
 		Noeud statement = new Noeud(TypeDeNoeud.statement);
+		if(finAtteinte()){
+			return null;
+		}
 		//C-><B
 		if (getTypeDeToken() == TypeDeToken.inf) {
 			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.inf));
-			return B();
+			Noeud n = new Noeud(TypeDeNoeud.inf);
+			n.ajout(B());
+			return n;
 		}
 		//C->>B
 		if (getTypeDeToken() == TypeDeToken.sup) {
@@ -132,6 +138,9 @@ public class AnalyseSyntaxique {
 	private Noeud D() throws UnexpectedTokenException {
 		Noeud statement = new Noeud(TypeDeNoeud.statement);
 		//D-> or S
+		if(finAtteinte()){
+			return null;
+		}
 		if (getTypeDeToken() == TypeDeToken.or) {
 			Token t = lireToken();
 			statement.ajout(new Noeud(TypeDeNoeud.or));
@@ -147,10 +156,7 @@ public class AnalyseSyntaxique {
 		}
 		//D->epsilon
 		if (getTypeDeToken() == TypeDeToken.inf) {
-			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.and));
-			statement.ajout(S());
-			return statement;
+			return null;
 		}
 		throw new UnexpectedTokenException("input'' ou 'print' attendu");
 	}

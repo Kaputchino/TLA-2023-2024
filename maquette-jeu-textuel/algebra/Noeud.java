@@ -93,4 +93,11 @@ public class Noeud{
 		this.valeurInt = valeurInt;
 	}
 
+	public List<Noeud> getEnfants() {
+		return enfants;
+	}
+
+	public void setTypeDeNoeud(TypeDeNoeud typeDeNoeud) {
+		this.typeDeNoeud = typeDeNoeud;
+	}
 }
