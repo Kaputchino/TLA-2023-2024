@@ -12,7 +12,7 @@ public enum TypeDeToken {
     flag, 
     cond,
     effet, 
-    add,
-    set,
-    sub
+    condAdd,
+    condSet,
+    condSub
 }

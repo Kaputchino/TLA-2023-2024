@@ -18,28 +18,15 @@ Ceci est un titre. <
 - 9 Explorez vous le souterrain dans l'autre direction ? <
 ##
 
-2 Vous vous éloignez de la fresque et remontez la salle éboulée. Au bout de quelques mètres, vous discernez une odeur de moisissure ; et bientôt, dans le faisceau de votre lampe, vous découvrez une véritable assemblée de champignons barrant le passage. Que faites vous ? <
-- 19 Vous continuez votre chemin en bousculant les champignons? <
-- 23 Vous avez l'idée d'en manger ? <
-- 20 Vous préférez faire demi tour ? <
-##
-
-3 Des multiples yeux de la statue fuse un terifiant feu d'artifice. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN <
-- 3 RIP <
-##
-
-4 Grâce à la pointe de votre couteau, ce travail s'effectue sans difficulté. <
-- 2 Vous enfouissez votre larcin dans une de vos poches, puis vous revenez vers la salle à la fresque pour l'exploiter dans l'autre sens. <
-##
-
 5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN <
 - 5 RIP <
-conds: test<
-effets: test #add 2 #set< 
+condition: test<
+effets: test #add 2<
 
 6 Defffhkjez FIN <
 - 6 RIP <
 conds: test<
-effets: test #sub 2 #set 2< 
+condition: test #sub 2 <
+effets: test3 #set 3 <
 ##
 

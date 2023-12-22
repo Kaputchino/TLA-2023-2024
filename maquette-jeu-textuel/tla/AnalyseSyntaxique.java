@@ -85,6 +85,8 @@ public class AnalyseSyntaxique {
                         noeud.ajout(Proposition());
                         return noeud;
 			        }
+                    System.out.println(t2.getValeur());
+                    System.out.println(t1.getValeur());
                     throw new UnexpectedTokenException("< attendu");
             }
 			throw new UnexpectedTokenException("String attendu");

@@ -19,15 +19,14 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-          // espace < - # chiffre caractere Autre_lettre : + - =
-            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4, 4, 4, 4 },
-            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 3, 3, 3, 3 },
-            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 106, 106, 106, 106 },
-            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106, 106, 106, 106},
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4, 4, 4, 4 },
-            /* 5 */ { 106, 107, 106, 103, 106, 5, 5, 6, 6, 6, 6 },
-            /* 6 */ {106, 107, 106, 103, 106, 106, 106, 106, 108, 108, 108 },
-            /* 7 */ {106, 107, 106, 103, 106, 106, 106, 106, 108, 108, 2 },
+            //                      0       1       2       3       4       5       6       7
+            //                      blank   <       -       #       int     space   str     :
+            /* 0         */         { 0,    101,    102,    4,      1,      2,      3,      3       },
+            /* 1 dep int */         { 104,  104,    104,    104,    1,      104,    106,    106     },
+            /* 2 dep espace*/       { 2,    105,    105,    105,    105,    2,      106,    106     },
+            /* 3 dep str */         { 106,  106,    106,    106,    3,      3 ,     3,      5       },
+            /* 4 dep # */           { 3 ,   107,    3,      103,    3,      107,    4,      3       },
+            /* 5 dep : */           { 3,    106,    106,    107,    3,      107,    5,      3       },
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -35,10 +34,8 @@ public class AnalyseLexicale {
             // 104 acceptation d'un entier (retourArriere)
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
-
-            // 107 acceptation d'un objet, stats ou flag en fonction du buffer
-            // 108 acceptation d'un :, add, sb
-            // 109 acceptation d'un =
+            // 107 - acceptation d'un identifiant (retourArriere):
+            // => soit #objet, #stat, #flag, condition:, effet:, #add, #sub, #set
     };
 
     private String entree;
@@ -96,13 +93,7 @@ public class AnalyseLexicale {
                     }
                     retourArriere();
                 } else if (e == 106) {
-                    if(buf.equals("conds")){
-                        tokens.add(new Token(TypeDeToken.cond));
-                    }
-                    else if(buf.equals("effets")){
-                        tokens.add(new Token(TypeDeToken.effet));
-                    }
-                    else if (!buf.equals(" ")) {
+                    if (!buf.equals(" ")) {
                         tokens.add(new Token(TypeDeToken.stringVal, buf));
                     }
                     retourArriere();
@@ -116,16 +107,23 @@ public class AnalyseLexicale {
                     else if(buf.equals("#objets")){
                         tokens.add(new Token(TypeDeToken.objet));
                     }
-                } else if(e == 108){
-                    if(buf.equals("#add")){
-                        tokens.add(new Token(TypeDeToken.add));
+                    else if(buf.equals("#add")){
+                        tokens.add(new Token(TypeDeToken.condAdd));
                     }
                     else if(buf.equals("#sub")){
-                        tokens.add(new Token(TypeDeToken.sub));
+                        tokens.add(new Token(TypeDeToken.condSub));
                     }
                     else if(buf.equals("#set")){
-                        tokens.add(new Token(TypeDeToken.set));
+                        tokens.add(new Token(TypeDeToken.condSet));
                     }
+                    else if(buf.equals("condition:")){
+                        tokens.add(new Token(TypeDeToken.cond));
+                    }
+                    else if(buf.equals("effets:")){
+                        tokens.add(new Token(TypeDeToken.effet));
+                    }
+
+                    retourArriere();
                 }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
@@ -188,29 +186,21 @@ public class AnalyseLexicale {
     private static int indiceSymbole(Character c) throws IllegalCharacterException {
         if (c == null)
             return 0;
-        if (c == ' ') {
-            return 5;
-        }
         if (Character.isWhitespace(c))
-            return 0;
+            if (c == ' ') return 5;
+            else return 0;
         if (c == '<')
             return 1;
         if (c == '-')
             return 2;
         if (c == '#')
             return 3;
-        if (c == ':')
-            return 4;
-        if (c == '+')
-            return 6;
-        if (c == '-')
-            return 6;
-        if (c == '=')
-            return 6;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))
             return 6;
+        if (c == ':')
+            return 7;
 
         return 5;
     }
