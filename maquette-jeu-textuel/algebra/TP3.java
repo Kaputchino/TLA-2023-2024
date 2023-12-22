@@ -5,8 +5,8 @@ import java.util.List;
 public class TP3 {
 
 	public static void main(String[] args) {
-		//testAnalyseLexicale("a < 2 & (b | !c) & d < a & e = 3");
-		testAnalyseSyntaxique("a < 2 & b = 4 & c > a");
+		testAnalyseLexicale("a < 2 & b = 4 & c > a & tag1 | !tag2");
+		testAnalyseSyntaxique("a < 2 & b = 4 & c > a & tag1 | !tag2");
 		// testInterpretation("input a input b print 12+a*(b+2) print 2*3+5 print pow(a+1,b)+2");
 		// testInterpretation("input a input c print a+3*c");
 		//testInterpretation("print 1+3 print 2 print 3 print 4 print 3*2 print pow(4,3) input a print a print a * 2");
@@ -35,10 +35,16 @@ public class TP3 {
 
 	private static void testAnalyseSyntaxique(String entree) {
 		System.out.println("test analyse syntaxique");
+		System.out.println(entree);
 		try {
 			List<Token> tokens = new AnalyseLexicale().analyse(entree);
 			Noeud racine = new AnalyseSyntaxique().analyse(tokens);
+			Noeud.afficheNoeud(racine, 0);
+			System.out.println("post sorting");
 			racine = new Sorter().sort(racine);
+			Noeud.afficheNoeud(racine, 0);
+			boolean value = new Interpretation().interpreter(racine);
+			System.out.println(value);
 			Noeud.afficheNoeud(racine, 0);
 		} catch (Exception e) {
 			e.printStackTrace(System.out);

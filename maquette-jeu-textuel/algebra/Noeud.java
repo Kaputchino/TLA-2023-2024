@@ -100,4 +100,8 @@ public class Noeud{
 	public void setTypeDeNoeud(TypeDeNoeud typeDeNoeud) {
 		this.typeDeNoeud = typeDeNoeud;
 	}
+
+	public void setEnfants(List<Noeud> enfants) {
+		this.enfants = enfants;
+	}
 }

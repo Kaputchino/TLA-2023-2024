@@ -1,6 +1,5 @@
 package algebra;
 
-import java.util.Collection;
 import java.util.Collections;
 
 public class Sorter {
@@ -21,9 +20,31 @@ public class Sorter {
                     n.getEnfants().remove(0);
                     n.setTypeDeNoeud(TypeDeNoeud.and);
                 }
+                if(n.enfant(0).getTypeDeNoeud() == TypeDeNoeud.or && n.enfant(1).getTypeDeNoeud() == TypeDeNoeud.statement){
+                    n.getEnfants().remove(0);
+                    n.setTypeDeNoeud(TypeDeNoeud.or);
+                }
             }
         }
-
+        if(n.nombreEnfants() > 1){
+            if (n.enfant(1).nombreEnfants() > 0){
+                if(n.enfant(1).enfant(0).getTypeDeNoeud() == TypeDeNoeud.and){
+                    n.setTypeDeNoeud(TypeDeNoeud.and);
+                    n.enfant(1).getEnfants().remove(0);
+                }
+                if(n.enfant(1).enfant(0).getTypeDeNoeud() == TypeDeNoeud.or){
+                    n.setTypeDeNoeud(TypeDeNoeud.or);
+                    n.enfant(1).getEnfants().remove(0);
+                }
+            }
+        }
+        if(n.nombreEnfants() == 1){
+            if(n.getTypeDeNoeud() == TypeDeNoeud.statement){
+                if(n.enfant(0).getTypeDeNoeud() == TypeDeNoeud.statement){
+                    n = n.enfant(0);
+                }
+            }
+        }
         return n;
     }
 }

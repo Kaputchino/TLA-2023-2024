@@ -92,7 +92,7 @@ public class AnalyseSyntaxique {
 			// production B -> intVal
 
 			Token t = lireToken();
-			return new Noeud(TypeDeNoeud.intVal, t.getValeur());
+			return new Noeud(TypeDeNoeud.intVal, Integer.parseInt(t.getValeur()));
 		}
 
 		if (getTypeDeToken() == TypeDeToken.ident) {
@@ -120,17 +120,19 @@ public class AnalyseSyntaxique {
 		//C->>B
 		if (getTypeDeToken() == TypeDeToken.sup) {
 			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.sup));
-			return B();
+			Noeud n = new Noeud(TypeDeNoeud.sup);
+			n.ajout(B());
+			return n;
 		}
 		//C->=B
 		if (getTypeDeToken() == TypeDeToken.equal) {
 			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.equ));
-			return B();
+			Noeud n = new Noeud(TypeDeNoeud.equ);
+			n.ajout(B());
+			return n;
 		}
 		//C->epsilon
-		if(getTypeDeToken() == TypeDeToken.rightPar){
+		if(getTypeDeToken() == TypeDeToken.rightPar || getTypeDeToken() == TypeDeToken.or || getTypeDeToken() == TypeDeToken.and ){
 			return null;
 		}
 		throw new UnexpectedTokenException("input'' ou 'print' attendu");

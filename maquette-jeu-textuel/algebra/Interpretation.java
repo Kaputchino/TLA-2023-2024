@@ -1,7 +1,6 @@
 package algebra;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
@@ -12,8 +11,12 @@ public class Interpretation {
 	private HashMap<String, Integer> listVariables = new HashMap<>();
 	private HashMap<String, Boolean> listFlags = new HashMap<>();
 
-
 	public Interpretation() {
+		listVariables.put("a",1);
+		listVariables.put("b",4);
+		listVariables.put("c",12);
+		listFlags.put("tag1",false);
+		listFlags.put("tag2",false);
 
 	}
 
@@ -23,32 +26,55 @@ public class Interpretation {
 	 */
 	public Boolean interpreter(Noeud n) {
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.equ)){
-			return mathematicalInterpreter(n.enfant(0)) == mathematicalInterpreter(n.enfant(1));
+			boolean value = mathematicalInterpreter(n.enfant(0)) == mathematicalInterpreter(n.enfant(1));
+			n.setValeurBoolean(value);
+			return value;
 		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.sup)){
-			return mathematicalInterpreter(n.enfant(0)) > mathematicalInterpreter(n.enfant(1));
-		}
+			boolean value = mathematicalInterpreter(n.enfant(0)) > mathematicalInterpreter(n.enfant(1));
+			n.setValeurBoolean(value);
+			return value;		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.inf)){
-			return mathematicalInterpreter(n.enfant(0)) < mathematicalInterpreter(n.enfant(1));
-		}
+			boolean value = mathematicalInterpreter(n.enfant(0)) < mathematicalInterpreter(n.enfant(1));
+			n.setValeurBoolean(value);
+			return value;		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.or)){
-			return interpreter(n.enfant(0)) || interpreter(n.enfant(1));
+			boolean value1 = interpreter(n.enfant(0));
+			boolean value2 = interpreter(n.enfant(1));
+			boolean value = value1 || value2;
+			n.setValeurBoolean(value);
+			return value ;
 		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.inverse)){
-			return !interpreter(n.enfant(0));
+			boolean value = !interpreter(n.enfant(0));
+			n.setValeurBoolean(value);
+			return value;
 		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.and)){
-			return interpreter(n.enfant(0)) && interpreter(n.enfant(1));
+			boolean value1 = interpreter(n.enfant(0));
+			boolean value2 = interpreter(n.enfant(1));
+			boolean value = value1 && value2;
+			n.setValeurBoolean(value);
+			return value ;
 		}
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.ident)){
-			return listFlags.get(n.getValeurString());
+			boolean value = listFlags.get(n.getValeurString());
+			n.setValeurBoolean(value);
+			return value;
+		}
+		if(n.getTypeDeNoeud().equals(TypeDeNoeud.statement)){
+			boolean value = interpreter(n.enfant(0));
+			n.setValeurBoolean(value);
+			return value;
 		}
 		return interpreter(n.enfant(0));
 	}
 	public int mathematicalInterpreter(Noeud n){
 		if(n.getTypeDeNoeud().equals(TypeDeNoeud.intVal)){
+			//System.out.println(n.getValeurInt());
 			return n.getValeurInt();
 		}
+		//System.out.println(listVariables.get(n.getValeurString()));
 		return listVariables.get(n.getValeurString());
 	}
 
