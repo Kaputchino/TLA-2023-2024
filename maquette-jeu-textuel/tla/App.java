@@ -3,11 +3,10 @@
 Projet TLA 2023-24
 
 Réalisé par :
-- NOM Prénom 
-- NOM Prénom
-- NOM Prénom
-- NOM Prénom
-- NOM Prénom
+ * MULARD Andreas 
+ * BERTHEL Gabriel
+ * LAGASSE Adrian 
+ * YOUSRI Célia
 
 */
 

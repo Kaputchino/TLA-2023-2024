@@ -9,5 +9,7 @@ public enum TypeDeToken {
     finLieu,
     objet,
     stat,
-    flag
+    flag, 
+    cond,
+    effet
 }

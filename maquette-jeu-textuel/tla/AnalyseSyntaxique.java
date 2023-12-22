@@ -5,6 +5,13 @@ import exception_tla.UnexpectedTokenException;
 
 import java.util.List;
 
+/*
+ * MULARD Andreas 
+ * BERTHEL Gabriel
+ * LAGASSE Adrian 
+ * YOUSRI Célia
+ */
+
 public class AnalyseSyntaxique {
     private int pos;
     private List<Token> tokens;
