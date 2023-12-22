@@ -5,162 +5,163 @@ import java.util.List;
 public class AnalyseSyntaxique {
 
 	private int pos;
-	private List<Token> tokens;
+	private List<AlgebricToken> algebricTokens;
 
-	Token lireToken(){
-		Token token = tokens.get(pos);
+	AlgebricToken lireToken(){
+		AlgebricToken algebricToken = algebricTokens.get(pos);
 		pos++;
-		return token;
+		return algebricToken;
 	}
 
-	TypeDeToken getTypeDeToken(){
+	AlgebricTypeDeToken getTypeDeToken(){
 
-		return tokens.get(pos).getTypeDeToken();
+		return algebricTokens.get(pos).getTypeDeToken();
 	}
 
 	/*
-	effectue l'analyse syntaxique à partir de la liste de tokens
+	effectue l'analyse syntaxique à partir de la liste de algebricTokens
 	et retourne le noeud racine de l'arbre syntaxique abstrait
 	 */
 
-	public Noeud analyse(List<Token> tokens) throws Exception {
+	public AlgebricNoeud analyse(List<AlgebricToken> algebricTokens) throws Exception {
 		pos = 0;
-		this.tokens = tokens;
-		Noeud expr = S();
-		if (pos != tokens.size()) {
-			System.out.println("L'analyse syntaxique s'est terminé avant l'examen de tous les tokens");
-			throw new IncompleteParsingException();
+		this.algebricTokens = algebricTokens;
+		AlgebricNoeud expr = S();
+		if (pos != algebricTokens.size()) {
+			System.out.println("L'analyse syntaxique s'est terminé avant l'examen de tous les algebricTokens");
+			throw new AlgebricIncompleteParsingException();
 		}
 		return expr;
 	}
 
-	private Noeud S() throws UnexpectedTokenException {
-		Noeud nodeStmt = new Noeud(TypeDeNoeud.statement);
+	private AlgebricNoeud S() throws AlgebricUnexpectedTokenException {
+		AlgebricNoeud nodeStmt = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 
 		//S->AD
-		if (getTypeDeToken() == TypeDeToken.ident || getTypeDeToken() == TypeDeToken.intVal) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.ident || getTypeDeToken() == AlgebricTypeDeToken.intVal) {
 			nodeStmt.ajout(A());
-			Noeud d = D();
+			AlgebricNoeud d = D();
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
 			return nodeStmt;
 		}
 		//S->!SD
-		if (getTypeDeToken() == TypeDeToken.inverse) {
-			Noeud noeud = new Noeud(TypeDeNoeud.inverse);
-			Token t = lireToken();
-			nodeStmt.ajout(noeud);
-			noeud.ajout(S());
-			Noeud d = D();
+		if (getTypeDeToken() == AlgebricTypeDeToken.inverse) {
+			AlgebricNoeud algebricNoeud = new AlgebricNoeud(AlgebricTypeDeNoeud.inverse);
+			AlgebricToken t = lireToken();
+			nodeStmt.ajout(algebricNoeud);
+			algebricNoeud.ajout(S());
+			AlgebricNoeud d = D();
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
 			return nodeStmt;
 		}
 		//S->(S)D
-		if (getTypeDeToken() == TypeDeToken.leftPar) {
-			Noeud noeud = S();
+		if (getTypeDeToken() == AlgebricTypeDeToken.leftPar) {
 			lireToken();
-			if (getTypeDeToken() == TypeDeToken.rightPar) {
+			AlgebricNoeud algebricNoeud = S();
+			if (getTypeDeToken() == AlgebricTypeDeToken.rightPar) {
 				lireToken();
-				nodeStmt.ajout(noeud);
+				nodeStmt.ajout(algebricNoeud);
 			}
-			Noeud d = D();
+			AlgebricNoeud d = D();
 			if(d != null){
 				nodeStmt.ajout(d);
 			}
 			return nodeStmt;
 
 		}else {
-			throw new UnexpectedTokenException("'input' ou 'print' attendu");
+			throw new AlgebricUnexpectedTokenException("'input' ou 'print' attendu");
 		}
 	}
-	private Noeud A() throws UnexpectedTokenException {
+	private AlgebricNoeud A() throws AlgebricUnexpectedTokenException {
 		//A->BC
-		Noeud n = new Noeud(TypeDeNoeud.statement);
+		AlgebricNoeud n = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 		n.ajout(B());
-		Noeud c = C();
+		AlgebricNoeud c = C();
 		if(c != null){
 			n.ajout(c);
 		}
 		return n;
 	}
-	private Noeud B() throws UnexpectedTokenException {
-		if (getTypeDeToken() == TypeDeToken.intVal) {
+	private AlgebricNoeud B() throws AlgebricUnexpectedTokenException {
+		if (getTypeDeToken() == AlgebricTypeDeToken.intVal) {
 
 			// production B -> intVal
 
-			Token t = lireToken();
-			return new Noeud(TypeDeNoeud.intVal, Integer.parseInt(t.getValeur()));
+			AlgebricToken t = lireToken();
+			return new AlgebricNoeud(AlgebricTypeDeNoeud.intVal, Integer.parseInt(t.getValeur()));
 		}
 
-		if (getTypeDeToken() == TypeDeToken.ident) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.ident) {
 
 			// production B -> ident
 
-			Token t = lireToken();
-			return new Noeud(TypeDeNoeud.ident, t.getValeur());
+			AlgebricToken t = lireToken();
+			return new AlgebricNoeud(AlgebricTypeDeNoeud.ident, t.getValeur());
 		}
-		throw new UnexpectedTokenException("input'' ou 'print' attendu");
+		throw new AlgebricUnexpectedTokenException("input'' ou 'print' attendu");
 
 	}
-	private Noeud C() throws UnexpectedTokenException {
-		Noeud statement = new Noeud(TypeDeNoeud.statement);
+	private AlgebricNoeud C() throws AlgebricUnexpectedTokenException {
+		AlgebricNoeud statement = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 		if(finAtteinte()){
 			return null;
 		}
 		//C-><B
-		if (getTypeDeToken() == TypeDeToken.inf) {
-			Token t = lireToken();
-			Noeud n = new Noeud(TypeDeNoeud.inf);
+		if (getTypeDeToken() == AlgebricTypeDeToken.inf) {
+			AlgebricToken t = lireToken();
+			AlgebricNoeud n = new AlgebricNoeud(AlgebricTypeDeNoeud.inf);
 			n.ajout(B());
 			return n;
 		}
 		//C->>B
-		if (getTypeDeToken() == TypeDeToken.sup) {
-			Token t = lireToken();
-			Noeud n = new Noeud(TypeDeNoeud.sup);
+		if (getTypeDeToken() == AlgebricTypeDeToken.sup) {
+			AlgebricToken t = lireToken();
+			AlgebricNoeud n = new AlgebricNoeud(AlgebricTypeDeNoeud.sup);
 			n.ajout(B());
 			return n;
 		}
 		//C->=B
-		if (getTypeDeToken() == TypeDeToken.equal) {
-			Token t = lireToken();
-			Noeud n = new Noeud(TypeDeNoeud.equ);
+		if (getTypeDeToken() == AlgebricTypeDeToken.equal) {
+			AlgebricToken t = lireToken();
+			AlgebricNoeud n = new AlgebricNoeud(AlgebricTypeDeNoeud.equ);
 			n.ajout(B());
 			return n;
 		}
 		//C->epsilon
-		if(getTypeDeToken() == TypeDeToken.rightPar || getTypeDeToken() == TypeDeToken.or || getTypeDeToken() == TypeDeToken.and ){
+		if(getTypeDeToken() == AlgebricTypeDeToken.rightPar || getTypeDeToken() == AlgebricTypeDeToken.or || getTypeDeToken() == AlgebricTypeDeToken.and ){
 			return null;
 		}
-		throw new UnexpectedTokenException("input'' ou 'print' attendu");
+		throw new AlgebricUnexpectedTokenException("input'' ou 'print' attendu");
 	}
-	private Noeud D() throws UnexpectedTokenException {
-		Noeud statement = new Noeud(TypeDeNoeud.statement);
+	private AlgebricNoeud D() throws AlgebricUnexpectedTokenException {
+		AlgebricNoeud statement = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 		//D-> or S
 		if(finAtteinte()){
 			return null;
 		}
-		if (getTypeDeToken() == TypeDeToken.or) {
-			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.or));
+		if (getTypeDeToken() == AlgebricTypeDeToken.or) {
+			AlgebricToken t = lireToken();
+			statement.ajout(new AlgebricNoeud(AlgebricTypeDeNoeud.or));
 			statement.ajout(S());
 			return statement;
 		}
 		//D-> and S
-		if (getTypeDeToken() == TypeDeToken.and) {
-			Token t = lireToken();
-			statement.ajout(new Noeud(TypeDeNoeud.and));
+		if (getTypeDeToken() == AlgebricTypeDeToken.and) {
+			AlgebricToken t = lireToken();
+			statement.ajout(new AlgebricNoeud(AlgebricTypeDeNoeud.and));
 			statement.ajout(S());
 			return statement;
 		}
 		//D->epsilon
-		if (getTypeDeToken() == TypeDeToken.inf) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.inf ||getTypeDeToken() == AlgebricTypeDeToken.rightPar) {
 			return null;
 		}
-		throw new UnexpectedTokenException("input'' ou 'print' attendu");
+		System.out.println(getTypeDeToken());
+		throw new AlgebricUnexpectedTokenException("input'' ou 'print' attendu");
 	}
 
 
@@ -172,19 +173,19 @@ public class AnalyseSyntaxique {
 
 	 */
 /*
-	private Noeud S() throws UnexpectedTokenException {
+	private AlgebricNoeud S() throws AlgebricUnexpectedTokenException {
 
-		Noeud nodeStmt = new Noeud(TypeDeNoeud.statement);
+		AlgebricNoeud nodeStmt = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 
-		if (getTypeDeToken() == TypeDeToken.kInput ||
-				getTypeDeToken() == TypeDeToken.kPrint) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.kInput ||
+				getTypeDeToken() == AlgebricTypeDeToken.kPrint) {
 
 			nodeStmt.ajout(Statement());
 		} else {
-			throw new UnexpectedTokenException("input'' ou 'print' attendu");
+			throw new AlgebricUnexpectedTokenException("input'' ou 'print' attendu");
 		}
 
-		Noeud next = S_prime();
+		AlgebricNoeud next = S_prime();
 		if (next != null) {
 			nodeStmt.ajout(next);
 		}
@@ -192,34 +193,34 @@ public class AnalyseSyntaxique {
 		return nodeStmt;
 	}
 
-	private Noeud statement() throws UnexpectedTokenException {
-		if (getTypeDeToken() == TypeDeToken.leftPar) {
+	private AlgebricNoeud statement() throws AlgebricUnexpectedTokenException {
+		if (getTypeDeToken() == AlgebricTypeDeToken.leftPar) {
 
 			// production B -> ( Expr )
 
 			lireToken();
-			Noeud s = Expr();
+			AlgebricNoeud s = Expr();
 
-			if (getTypeDeToken() == TypeDeToken.rightPar) {
+			if (getTypeDeToken() == AlgebricTypeDeToken.rightPar) {
 				lireToken();
 				return s;
 			}
-			throw new UnexpectedTokenException(") attendu");
+			throw new AlgebricUnexpectedTokenException(") attendu");
 		}
-		if (getTypeDeToken() == TypeDeToken.intVal) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.intVal) {
 
 			// production B -> intVal
 
-			Token t = lireToken();
-			return new Noeud(TypeDeNoeud.intVal, t.getValeur());
+			AlgebricToken t = lireToken();
+			return new AlgebricNoeud(AlgebricTypeDeNoeud.intVal, t.getValeur());
 		}
 
-		if (getTypeDeToken() == TypeDeToken.ident) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.ident) {
 
 			// production B -> ident
 
-			Token t = lireToken();
-			return new Noeud(TypeDeNoeud.ident, t.getValeur());
+			AlgebricToken t = lireToken();
+			return new AlgebricNoeud(AlgebricTypeDeNoeud.ident, t.getValeur());
 	}
 
 	/*
@@ -229,7 +230,7 @@ public class AnalyseSyntaxique {
 	 */
 
 	private boolean finAtteinte() {
-		return pos >= tokens.size();
+		return pos >= algebricTokens.size();
 	}
 
 	/*

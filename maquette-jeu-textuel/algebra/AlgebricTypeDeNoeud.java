@@ -1,6 +1,6 @@
 package algebra;
 
-public enum TypeDeNoeud {
+public enum AlgebricTypeDeNoeud {
 	statement,
 	ident, intVal,
 	and, or,

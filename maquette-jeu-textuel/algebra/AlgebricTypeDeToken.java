@@ -1,6 +1,6 @@
 package algebra;
 
-public enum TypeDeToken {
+public enum AlgebricTypeDeToken {
 	and,
 	or,
 	leftPar,

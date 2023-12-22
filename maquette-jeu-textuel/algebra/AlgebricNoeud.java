@@ -3,9 +3,9 @@ package algebra;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Noeud{
-	private List<Noeud> enfants = new ArrayList<>();
-	private TypeDeNoeud typeDeNoeud;
+public class AlgebricNoeud {
+	private List<AlgebricNoeud> enfants = new ArrayList<>();
+	private AlgebricTypeDeNoeud algebricTypeDeNoeud;
 	private boolean valeurBoolean;
 	private int valeurInt;
 	private String valeurString;
@@ -18,28 +18,28 @@ public class Noeud{
 		this.valeurString = valeurString;
 	}
 
-	public Noeud(TypeDeNoeud typeDeNoeud, int valeur) {
-		this.typeDeNoeud = typeDeNoeud;
+	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, int valeur) {
+		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
 		this.valeurInt = valeur;
 	}
-	public Noeud(TypeDeNoeud typeDeNoeud, String valeur) {
-		this.typeDeNoeud = typeDeNoeud;
+	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, String valeur) {
+		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
 		this.valeurString = valeur;
 	}
-	public Noeud(TypeDeNoeud typeDeNoeud, boolean valeur) {
-		this.typeDeNoeud = typeDeNoeud;
+	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, boolean valeur) {
+		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
 		this.valeurBoolean = valeur;
 	}
 
-	public Noeud(TypeDeNoeud cl) {
-		this.typeDeNoeud = cl;
+	public AlgebricNoeud(AlgebricTypeDeNoeud cl) {
+		this.algebricTypeDeNoeud = cl;
 	}
 
-	public void ajout(Noeud n) {
+	public void ajout(AlgebricNoeud n) {
 		enfants.add(n);
 	}
 
-	public Noeud enfant(int i) {
+	public AlgebricNoeud enfant(int i) {
 		return this.enfants.get(i);
 	}
 
@@ -47,14 +47,14 @@ public class Noeud{
 		return this.enfants.size();
 	}
 
-	public TypeDeNoeud getTypeDeNoeud() {
-		return typeDeNoeud;
+	public AlgebricTypeDeNoeud getTypeDeNoeud() {
+		return algebricTypeDeNoeud;
 	}
 
 
 	public String toString() {
 		String s = "<";
-		if (typeDeNoeud != null) s = s + typeDeNoeud;
+		if (algebricTypeDeNoeud != null) s = s + algebricTypeDeNoeud;
 		s = s + ", " + valeurString+valeurBoolean+valeurInt;
 		return s + ">";
 	}
@@ -63,7 +63,7 @@ public class Noeud{
 	affiche le noeud n d'un arbre syntaxique avec un niveau d'indentation depth,
 	et appels récursifs sur les noeuds enfants de n à un niveau d'indendation depth+1
 	 */
-	static void afficheNoeud(Noeud n, int profondeur) {
+	static void afficheNoeud(AlgebricNoeud n, int profondeur) {
 		String s = "";
 		// identation
 		for(int i=0;i<profondeur;i++) s = s + "  ";
@@ -93,15 +93,15 @@ public class Noeud{
 		this.valeurInt = valeurInt;
 	}
 
-	public List<Noeud> getEnfants() {
+	public List<AlgebricNoeud> getEnfants() {
 		return enfants;
 	}
 
-	public void setTypeDeNoeud(TypeDeNoeud typeDeNoeud) {
-		this.typeDeNoeud = typeDeNoeud;
+	public void setTypeDeNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud) {
+		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
 	}
 
-	public void setEnfants(List<Noeud> enfants) {
+	public void setEnfants(List<AlgebricNoeud> enfants) {
 		this.enfants = enfants;
 	}
 }
