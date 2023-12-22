@@ -19,14 +19,15 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-          // espace < - # chiffre caractere Autre_lettre :
-            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4 },
-            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 3 },
-            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 106 },
-            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106},
-            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4 },
-            /* 5 */ { 106, 107, 106, 103, 106, 5, 5, 106 },
-            /* 6 {106, 106, 106, 103, 106, 106, 106 } */
+          // espace < - # chiffre caractere Autre_lettre : + - =
+            /* 0 */ { 0, 101, 102, 5, 2, 3, 4, 4, 4, 4, 4 },
+            /* 1 */ { 3, 3, 3, 103, 3, 3, 3, 3, 3, 3, 3 },
+            /* 2 */ { 104, 104, 104, 104, 2, 104, 106, 106, 106, 106, 106 },
+            /* 3 */ { 3, 105, 105, 105, 105, 3, 106, 106, 106, 106, 106},
+            /* 4 */ { 106, 106, 106, 106, 4, 4, 4, 4, 4, 4, 4 },
+            /* 5 */ { 106, 107, 106, 103, 106, 5, 5, 6, 6, 6, 6 },
+            /* 6 */ {106, 107, 106, 103, 106, 106, 106, 106, 108, 108, 108 },
+            /* 7 */ {106, 107, 106, 103, 106, 106, 106, 106, 108, 108, 2 },
 
             // 101 acceptation d'un <
             // 102 acceptation d'un -
@@ -36,7 +37,8 @@ public class AnalyseLexicale {
             // 106 acceptation d'une lettre (retourArriere)
 
             // 107 acceptation d'un objet, stats ou flag en fonction du buffer
-            // 108 acceptation d'un : 
+            // 108 acceptation d'un :, add, sb
+            // 109 acceptation d'un =
     };
 
     private String entree;
@@ -114,6 +116,16 @@ public class AnalyseLexicale {
                     else if(buf.equals("#objets")){
                         tokens.add(new Token(TypeDeToken.objet));
                     }
+                } else if(e == 108){
+                    if(buf.equals("#add")){
+                        tokens.add(new Token(TypeDeToken.add));
+                    }
+                    else if(buf.equals("#sub")){
+                        tokens.add(new Token(TypeDeToken.sub));
+                    }
+                    else if(buf.equals("#set")){
+                        tokens.add(new Token(TypeDeToken.set));
+                    }
                 }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
                 etat = 0;
@@ -189,6 +201,12 @@ public class AnalyseLexicale {
             return 3;
         if (c == ':')
             return 4;
+        if (c == '+')
+            return 6;
+        if (c == '-')
+            return 6;
+        if (c == '=')
+            return 6;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))
