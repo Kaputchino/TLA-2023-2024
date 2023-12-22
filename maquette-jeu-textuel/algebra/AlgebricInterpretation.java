@@ -12,11 +12,12 @@ public class AlgebricInterpretation {
 	private HashMap<String, Boolean> listFlags = new HashMap<>();
 
 	public AlgebricInterpretation() {
+		/** pour les tests
 		listVariables.put("a",1);
 		listVariables.put("b",4);
 		listVariables.put("c",12);
 		listFlags.put("tag1",false);
-		listFlags.put("tag2",false);
+		listFlags.put("tag2",false);**/
 
 	}
 
