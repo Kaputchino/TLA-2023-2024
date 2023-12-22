@@ -38,7 +38,7 @@ public class AlgebricMain {
 		System.out.println(entree);
 		try {
 			List<AlgebricToken> algebricTokens = new AlgebricAnalyseLexicale().analyse(entree);
-			AlgebricNoeud racine = new AnalyseSyntaxique().analyse(algebricTokens);
+			AlgebricNoeud racine = new AlgebricAnalyseSyntaxique().analyse(algebricTokens);
 			AlgebricNoeud.afficheNoeud(racine, 0);
 			System.out.println("post sorting");
 			racine = new AlgebricSorter().sort(racine);
@@ -61,7 +61,7 @@ public class AlgebricMain {
 		System.out.println("test interpretation");
 		try {
 			List<AlgebricToken> tokens = new AlgebricAnalyseLexicale().analyse(entree);
-			AlgebricNoeud racine = new AnalyseSyntaxique().analyse(tokens);
+			AlgebricNoeud racine = new AlgebricAnalyseSyntaxique().analyse(tokens);
 			AlgebricNoeud.afficheNoeud(racine, 0);
 			new AlgebricInterpretation().interpreter(racine);
 		} catch (Exception e) {

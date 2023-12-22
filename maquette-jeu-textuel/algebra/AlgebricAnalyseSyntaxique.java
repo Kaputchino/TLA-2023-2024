@@ -2,7 +2,7 @@ package algebra;
 
 import java.util.List;
 
-public class AnalyseSyntaxique {
+public class AlgebricAnalyseSyntaxique {
 
 	private int pos;
 	private List<AlgebricToken> algebricTokens;
