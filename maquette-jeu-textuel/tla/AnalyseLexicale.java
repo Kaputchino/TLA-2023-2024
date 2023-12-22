@@ -20,7 +20,7 @@ public class AnalyseLexicale {
      */
     private static Integer TRANSITIONS[][] = {
             //                      0       1       2       3       4       5       6       7
-            //                      blank   <       -       #       int     space   str     :
+            //                      blank   §       -       #       int     space   str     :
             /* 0         */         { 0,    101,    102,    4,      1,      2,      3,      3       },
             /* 1 dep int */         { 104,  104,    104,    104,    1,      104,    106,    106     },
             /* 2 dep espace*/       { 2,    105,    105,    105,    105,    2,      106,    106     },
@@ -28,7 +28,7 @@ public class AnalyseLexicale {
             /* 4 dep # */           { 3 ,   107,    3,      103,    3,      107,    4,      3       },
             /* 5 dep : */           { 3,    106,    106,    107,    3,      107,    5,      3       },
 
-            // 101 acceptation d'un <
+            // 101 acceptation d'un §
             // 102 acceptation d'un -
             // 103 acceptation d'un #
             // 104 acceptation d'un entier (retourArriere)
@@ -189,7 +189,7 @@ public class AnalyseLexicale {
         if (Character.isWhitespace(c))
             if (c == ' ') return 5;
             else return 0;
-        if (c == '<')
+        if (c == '§')
             return 1;
         if (c == '-')
             return 2;

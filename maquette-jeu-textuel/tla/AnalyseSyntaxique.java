@@ -87,7 +87,7 @@ public class AnalyseSyntaxique {
 			        }
                     System.out.println(t2.getValeur());
                     System.out.println(t1.getValeur());
-                    throw new UnexpectedTokenException("< attendu");
+                    throw new UnexpectedTokenException("§ attendu");
             }
 			throw new UnexpectedTokenException("String attendu");
 		} 
@@ -119,7 +119,7 @@ public class AnalyseSyntaxique {
                                 }
                                 return noeud;
                             }
-                            throw new UnexpectedTokenException("< attendu");
+                            throw new UnexpectedTokenException("§ attendu");
                     }
                     throw new UnexpectedTokenException("stringVal attendu");
             }
