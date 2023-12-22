@@ -39,7 +39,7 @@ public class ContenuAventure {
         String data;
 
         try {
-            scanner = new Scanner(file);        
+            scanner = new Scanner(file);
             scanner.useDelimiter("\\Z");
             data = scanner.next();
             scanner.close();
@@ -54,43 +54,46 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
+        System.out.println(tokens);
+
         /**
-        tokens = List.of(new Token[]{
-                new Token(TypeDeToken.intVal, "1"),
-                new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
-                new Token(TypeDeToken.separateurLigne),
-                new Token(TypeDeToken.tiret),
-                new Token(TypeDeToken.intVal, "0"),
-                new Token(TypeDeToken.stringVal, "Aller en 0"),
-                new Token(TypeDeToken.separateurLigne),
-                new Token(TypeDeToken.finLieu),
-
-                new Token(TypeDeToken.intVal, "0"),
-                new Token(TypeDeToken.stringVal, "Ceci est un lieu ddd"),
-                new Token(TypeDeToken.separateurLigne),
-                    new Token(TypeDeToken.tiret),
-                    new Token(TypeDeToken.intVal, "3"),
-                    new Token(TypeDeToken.stringVal, "Aller en 3"),
-                    new Token(TypeDeToken.separateurLigne),
-
-                    new Token(TypeDeToken.tiret),
-                    new Token(TypeDeToken.intVal, "0"),
-                    new Token(TypeDeToken.stringVal, "Aller en 0"),
-                    new Token(TypeDeToken.separateurLigne),
-                new Token(TypeDeToken.finLieu),
-
-                new Token(TypeDeToken.intVal, "3"),
-                new Token(TypeDeToken.stringVal, "Ceci est un lieu qwdqwd"),
-                new Token(TypeDeToken.separateurLigne),
-                new Token(TypeDeToken.tiret),
-                new Token(TypeDeToken.intVal, "1"),
-                new Token(TypeDeToken.stringVal, "Aller 1"),
-                new Token(TypeDeToken.separateurLigne),
-                new Token(TypeDeToken.finLieu)
-        });**/
+         * tokens = List.of(new Token[]{
+         * new Token(TypeDeToken.intVal, "1"),
+         * new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.tiret),
+         * new Token(TypeDeToken.intVal, "0"),
+         * new Token(TypeDeToken.stringVal, "Aller en 0"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.finLieu),
+         * 
+         * new Token(TypeDeToken.intVal, "0"),
+         * new Token(TypeDeToken.stringVal, "Ceci est un lieu ddd"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.tiret),
+         * new Token(TypeDeToken.intVal, "3"),
+         * new Token(TypeDeToken.stringVal, "Aller en 3"),
+         * new Token(TypeDeToken.separateurLigne),
+         * 
+         * new Token(TypeDeToken.tiret),
+         * new Token(TypeDeToken.intVal, "0"),
+         * new Token(TypeDeToken.stringVal, "Aller en 0"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.finLieu),
+         * 
+         * new Token(TypeDeToken.intVal, "3"),
+         * new Token(TypeDeToken.stringVal, "Ceci est un lieu qwdqwd"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.tiret),
+         * new Token(TypeDeToken.intVal, "1"),
+         * new Token(TypeDeToken.stringVal, "Aller 1"),
+         * new Token(TypeDeToken.separateurLigne),
+         * new Token(TypeDeToken.finLieu)
+         * });
+         **/
 
         try {
-            entryPoint =  analyseSyntaxique.analyse(tokens);
+            entryPoint = analyseSyntaxique.analyse(tokens);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

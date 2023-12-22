@@ -1,0 +1,40 @@
+Ceci est un titre. <
+
+#stats<
+- 1 2 3 test<
+- 2 3 4 blabla<
+
+#objets<
+- 3 moi<
+- 4 toi<
+
+#flags<
+- 3 qwjdwk<
+- 3 qwdqwd<
+
+##
+1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! <
+- 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? <
+- 9 Explorez vous le souterrain dans l'autre direction ? <
+##
+
+2 Vous vous éloignez de la fresque et remontez la salle éboulée. Au bout de quelques mètres, vous discernez une odeur de moisissure ; et bientôt, dans le faisceau de votre lampe, vous découvrez une véritable assemblée de champignons barrant le passage. Que faites vous ? <
+- 19 Vous continuez votre chemin en bousculant les champignons? <
+- 23 Vous avez l'idée d'en manger ? <
+- 20 Vous préférez faire demi tour ? <
+##
+
+3 Des multiples yeux de la statue fuse un terifiant feu d'artifice. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN <
+- 3 RIP <
+##
+
+4 Grâce à la pointe de votre couteau, ce travail s'effectue sans difficulté. <
+- 2 Vous enfouissez votre larcin dans une de vos poches, puis vous revenez vers la salle à la fresque pour l'exploiter dans l'autre sens. <
+##
+
+5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN <
+- 5 RIP <
+conds: test<
+effets: test + 2 set< 
+##
+

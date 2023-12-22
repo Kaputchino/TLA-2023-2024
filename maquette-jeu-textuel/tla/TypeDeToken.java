@@ -6,5 +6,10 @@ public enum TypeDeToken {
     EOF,
     separateurLigne,
     intVal,
-    finLieu
+    finLieu,
+    objet,
+    stat,
+    flag, 
+    cond,
+    effet
 }
