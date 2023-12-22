@@ -6,5 +6,6 @@ public enum TypeDeNoeud {
     lieu,
     string,
     facultatif,
-    lieuContainer
+    lieuContainer,
+    condition
 }
