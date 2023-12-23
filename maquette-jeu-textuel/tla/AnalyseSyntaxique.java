@@ -96,7 +96,6 @@ public class AnalyseSyntaxique {
      */
 
     private Noeud Proposition() throws UnexpectedTokenException {
-        System.out.println(getTypeDeToken());
         Token t = lireToken();
         Noeud noeud = new Noeud(TypeDeNoeud.proposition);
         if (t.getTypeDeToken() == TypeDeToken.tiret) {
