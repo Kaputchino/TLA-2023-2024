@@ -178,10 +178,50 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * PARAM-> #stat§ STAT #objet OBJET § #flag FLAG
+     * PARAM-> #stat § STAT #objet OBJET § #flag FLAG
      */
-    private Noeud Param() {
-        return null;
+    private Noeud Param() throws UnexpectedTokenException {
+        Noeud noeudParam = new Noeud(TypeDeNoeud.param);
+        Token t0 = lireToken();
+        if (t0.getTypeDeToken() == TypeDeToken.stat) {
+            noeudParam.ajout(new Noeud(TypeDeNoeud.stat, t0.getValeur()));
+
+            Token t1 = lireToken();
+            /* On lit § */
+            if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                Noeud stat = Stat();
+                if (stat != null)
+                    noeudParam.ajout(stat);
+
+                Token t2 = lireToken();
+                /* On lit #objet */
+                if (t2.getTypeDeToken() == TypeDeToken.objet) {
+                    noeudParam.ajout(new Noeud(TypeDeNoeud.objet, t2.getValeur()));
+
+                    Noeud objet = Objet();
+                    if (objet != null)
+                        noeudParam.ajout(objet);
+
+                    Token t3 = lireToken();
+                    /* On lit § */
+                    if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        Token t4 = lireToken();
+                        if (t4.getTypeDeToken() == TypeDeToken.flag) {
+                            Noeud flag = Flag();
+                            if (flag != null)
+                                noeudParam.ajout(flag);
+
+                            return noeudParam;
+                        }
+                        throw new UnexpectedTokenException("#flag attendu");
+                    }
+                    throw new UnexpectedTokenException("§ attendu");
+                }
+                throw new UnexpectedTokenException("#objet attendu");
+            }
+            throw new UnexpectedTokenException("§ attendu");
+        }
+        throw new UnexpectedTokenException("#stat attendu");
     }
 
     /*
