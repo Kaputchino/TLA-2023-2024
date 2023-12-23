@@ -143,11 +143,41 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * F -> ε
+     * F -> COND F'
      */
     // pour rajouter des conditions
-    private Noeud F() {
-        return null;
+    private Noeud F() throws UnexpectedTokenException {
+        Noeud noeud = new Noeud(TypeDeNoeud.facultatif);
+        Noeud cond = Cond();
+        Noeud ff = F_prime();
+        if (cond != null) {
+            noeud.ajout(cond);
+        }
+        if (ff != null) {
+            noeud.ajout(ff);
+        }
+        return noeud;
+    }
+
+    /*
+     * F' -> EFFET F' | ε
+     */
+    private Noeud F_prime() throws UnexpectedTokenException {
+        Noeud noeud = new Noeud(TypeDeNoeud.ffacultatif);
+        Noeud effet = Effet();
+        Noeud ff = F_prime();
+        if (finAtteinte()) {
+            return null;
+        }
+        else {
+            if (effet != null) {
+                noeud.ajout(effet);
+            }
+            if (ff != null){
+                noeud.ajout(ff);
+            }
+        }
+        return noeud;
     }
 
     /*
@@ -330,6 +360,74 @@ public class AnalyseSyntaxique {
             throw new UnexpectedTokenException("intVal attendu");
         }
         throw new UnexpectedTokenException("- ou intVal attendu");
+    }
+
+    /*
+     * COND-> condition: STATEMENT § | epsilon
+     */
+    private Noeud Cond() throws UnexpectedTokenException {
+        Noeud noeud = new Noeud(TypeDeNoeud.cond);
+        Token t0 = lireToken();
+        /* On lit condition: */
+        if (t0.getTypeDeToken() == TypeDeToken.cond) {
+                noeud.ajout(new Noeud(TypeDeNoeud.string));
+                /* On lit le token suivant */
+                Token t1 = lireToken();
+                /* On lit § */
+                if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                    finAtteinte();
+                }
+                throw new UnexpectedTokenException("§ attendu");
+            } else if (finAtteinte()) {
+                return null;
+            }
+        return noeud;
+    }
+
+    /*
+     * EFFET-> effect: string SYMBOL intval § | epsilon
+     */
+    private Noeud Effet() throws UnexpectedTokenException {
+        Noeud noeud = new Noeud(TypeDeNoeud.objet);
+        Token t0 = lireToken();
+        /*On lit effect: */
+        if (t0.getTypeDeToken() == TypeDeToken.effet) {
+            Token t1 = lireToken();
+            /* On lit string */
+            if (t1.getTypeDeToken() == TypeDeToken.stringVal) {
+                Noeud symbol = Symbol();
+                noeud.ajout(symbol);
+                /* On lit le token suivant */
+                Token t2 = lireToken();
+                /* On lit intval */
+                if (t2.getTypeDeToken() == TypeDeToken.intVal) {
+                    /* On lit le token suivant */
+                    Token t3 = lireToken();
+                    /* On lit § */
+                    if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        finAtteinte();
+                    }
+                    throw new UnexpectedTokenException("§ attendu");
+                }
+                throw new UnexpectedTokenException("Intval attendu");
+            }
+            throw new UnexpectedTokenException("Stringval attendu");
+        } else if (finAtteinte()) {
+                return null;
+        }
+        return noeud;
+    }
+
+    /*
+     * SYMBOL-> + | - | set
+     */
+    private Noeud Symbol() throws UnexpectedTokenException {
+        Token t = lireToken();
+        if (t.getTypeDeToken() == TypeDeToken.condAdd || t.getTypeDeToken() == TypeDeToken.condSub || t.getTypeDeToken() == TypeDeToken.condSet) {
+            return new Noeud(TypeDeNoeud.symbol, t.getValeur());
+        } else {
+            throw new UnexpectedTokenException("+ ou - ou set attendu");
+        }
     }
 
     /*

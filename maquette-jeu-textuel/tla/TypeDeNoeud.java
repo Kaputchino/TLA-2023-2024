@@ -6,10 +6,14 @@ public enum TypeDeNoeud {
     lieu,
     string,
     facultatif,
+    ffacultatif,
     lieuContainer,
     first,
     param,
     stat,
     objet,
-    flag
+    flag, 
+    cond,
+    effet, 
+    symbol
 }
