@@ -20,13 +20,8 @@ Ceci est un titre. §
 
 5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 5 RIP §
-condition: test§
-effets: test #add 2§
 
 6 Defffhkjez FIN §
 - 6 RIP §
-conds: test§
-condition: test #sub 2 §
-effets: test3 #set 3 §
 ##
 
