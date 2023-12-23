@@ -19,7 +19,7 @@ public class AnalyseSyntaxique {
     public Noeud analyse(List<Token> tokens) throws Exception {
         pos = 0;
         this.tokens = tokens;
-        Noeud expr = S();
+        Noeud expr = First();
         if (pos != tokens.size()) {
             System.out.println("L'analyse syntaxique s'est terminé avant l'examen de tous les tokens");
             throw new IncompleteParsingException();
@@ -228,11 +228,9 @@ public class AnalyseSyntaxique {
      * STAT-> - intval intval intval string § STAT | epsilon
      */
     private Noeud Stat() throws UnexpectedTokenException {
-        if (finAtteinte())
-            return null;
-
         Noeud noeudStat = new Noeud(TypeDeNoeud.stat);
         Token t0 = lireToken();
+        // System.out.println("v " + t0.getTypeDeToken());
         if (t0.getTypeDeToken() == TypeDeToken.tiret) {
             Token t1 = lireToken();
             /* On lit intval */
@@ -270,16 +268,15 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        throw new UnexpectedTokenException("- attendu");
+        // throw new UnexpectedTokenException("- attendu");
+
+        return Objet();
     }
 
     /*
      * OBJET-> - intval string § OBJET | epsilon
      */
     private Noeud Objet() throws UnexpectedTokenException {
-        if (finAtteinte())
-            return null;
-
         Noeud noeudObjet = new Noeud(TypeDeNoeud.stat);
         Token t0 = lireToken();
         if (t0.getTypeDeToken() == TypeDeToken.tiret) {
@@ -305,19 +302,18 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        throw new UnexpectedTokenException("- attendu");
+        // throw new UnexpectedTokenException("- attendu");
+
+        return Flag();
     }
 
     /*
      * FLAG-> - intval string § FLAG | epsilon
      */
     private Noeud Flag() throws UnexpectedTokenException {
-        if (finAtteinte())
-            return null;
-
         Noeud noeudFlag = new Noeud(TypeDeNoeud.stat);
-        Token t0 = lireToken();
-        if (t0.getTypeDeToken() == TypeDeToken.tiret) {
+        if (getTypeDeToken() == TypeDeToken.tiret) {
+            lireToken();
             Token t1 = lireToken();
             /* On lit intval */
             if (t1.getTypeDeToken() == TypeDeToken.intVal) {
@@ -340,7 +336,9 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        throw new UnexpectedTokenException("- attendu");
+        // throw new UnexpectedTokenException("- attendu");
+
+        return S();
     }
 
     /*
