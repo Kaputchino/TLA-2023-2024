@@ -32,7 +32,6 @@ public class AnalyseSyntaxique {
      */
     private Noeud S() throws UnexpectedTokenException {
         Noeud nvLieu = new Noeud(TypeDeNoeud.lieuContainer);
-        System.out.println(getTypeDeToken());
 
         if (getTypeDeToken() == TypeDeToken.intVal) {
             nvLieu.ajout(Lieu());
@@ -97,6 +96,7 @@ public class AnalyseSyntaxique {
      */
 
     private Noeud Proposition() throws UnexpectedTokenException {
+        System.out.println(getTypeDeToken());
         Token t = lireToken();
         Noeud noeud = new Noeud(TypeDeNoeud.proposition);
         if (t.getTypeDeToken() == TypeDeToken.tiret) {
@@ -185,8 +185,6 @@ public class AnalyseSyntaxique {
         Noeud noeudParam = new Noeud(TypeDeNoeud.param);
         Token t0 = lireToken();
         if (t0.getTypeDeToken() == TypeDeToken.stat) {
-            noeudParam.ajout(new Noeud(TypeDeNoeud.stat, t0.getValeur()));
-
             Token t1 = lireToken();
             /* On lit § */
             if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
@@ -195,10 +193,8 @@ public class AnalyseSyntaxique {
                     noeudParam.ajout(stat);
 
                 Token t2 = lireToken();
-                /* On lit #objet */
-                if (t2.getTypeDeToken() == TypeDeToken.objet) {
-                    noeudParam.ajout(new Noeud(TypeDeNoeud.objet, t2.getValeur()));
-
+                /* On lit § */
+                if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
                     Noeud objet = Objet();
                     if (objet != null)
                         noeudParam.ajout(objet);
@@ -206,19 +202,15 @@ public class AnalyseSyntaxique {
                     Token t3 = lireToken();
                     /* On lit § */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                        Token t4 = lireToken();
-                        if (t4.getTypeDeToken() == TypeDeToken.flag) {
-                            Noeud flag = Flag();
-                            if (flag != null)
-                                noeudParam.ajout(flag);
+                        Noeud flag = Flag();
+                        if (flag != null)
+                            noeudParam.ajout(flag);
 
-                            return noeudParam;
-                        }
-                        throw new UnexpectedTokenException("#flag attendu");
+                        return noeudParam;
                     }
                     throw new UnexpectedTokenException("§ attendu");
                 }
-                throw new UnexpectedTokenException("#objet attendu");
+                throw new UnexpectedTokenException("§ attendu");
             }
             throw new UnexpectedTokenException("§ attendu");
         }

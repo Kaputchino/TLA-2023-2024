@@ -19,6 +19,7 @@ Ceci est un titre. §
 
 5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 5 RIP §
+##
 
 6 Defffhkjez FIN §
 - 6 RIP §
