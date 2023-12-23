@@ -370,18 +370,22 @@ public class AnalyseSyntaxique {
         Token t0 = lireToken();
         /* On lit condition: */
         if (t0.getTypeDeToken() == TypeDeToken.cond) {
-                noeud.ajout(new Noeud(TypeDeNoeud.string));
+                noeud.ajout(new Noeud(TypeDeNoeud.cond));
                 /* On lit le token suivant */
                 Token t1 = lireToken();
-                /* On lit § */
-                if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                    finAtteinte();
-                }
-                throw new UnexpectedTokenException("§ attendu");
-            } else if (finAtteinte()) {
+                if (t1.getTypeDeToken() == TypeDeToken.stringVal) {
+                    noeud.ajout(new Noeud(TypeDeNoeud.string));
+                    /* On lit le token suivant */
+                    Token t2 = lireToken();
+                    /* On lit § */
+                    if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        finAtteinte();
+                    }
+                    throw new UnexpectedTokenException("§ attendu");
+                } throw new UnexpectedTokenException("string attendu");
+            } else {
                 return null;
             }
-        return noeud;
     }
 
     /*
