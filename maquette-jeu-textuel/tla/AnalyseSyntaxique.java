@@ -65,7 +65,7 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * LIEU -> intVal string < PROPOSITION
+     * LIEU -> intVal string § PROPOSITION
      */
     private Noeud Lieu() throws UnexpectedTokenException {
         Noeud noeud = new Noeud(TypeDeNoeud.lieu);
@@ -80,19 +80,19 @@ public class AnalyseSyntaxique {
                 /* On lit le token suivant */
                 Token t2 = lireToken();
                 noeud.ajout(new Noeud(TypeDeNoeud.string, t1.getValeur()));
-                /* On lit < */
+                /* On lit § */
                 if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
                     noeud.ajout(Proposition());
                     return noeud;
                 }
-                throw new UnexpectedTokenException("< attendu");
+                throw new UnexpectedTokenException("§ attendu");
             }
             throw new UnexpectedTokenException("String attendu");
         }
         throw new UnexpectedTokenException("intVal attendu");
     }
     /*
-     * PROPOSITION -> - intVal string < F P’
+     * PROPOSITION -> - intVal string § F P’
      */
 
     private Noeud Proposition() throws UnexpectedTokenException {
@@ -117,7 +117,7 @@ public class AnalyseSyntaxique {
                         }
                         return noeud;
                     }
-                    throw new UnexpectedTokenException("< attendu");
+                    throw new UnexpectedTokenException("§ attendu");
                 }
                 throw new UnexpectedTokenException("stringVal attendu");
             }
@@ -151,7 +151,7 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * FIRST-> string < PARAM S
+     * FIRST-> string § PARAM S
      */
     private Noeud First() throws UnexpectedTokenException {
         Noeud noeudFirst = new Noeud(TypeDeNoeud.first);
@@ -160,26 +160,32 @@ public class AnalyseSyntaxique {
             noeudFirst.ajout(new Noeud(TypeDeNoeud.string, t0.getValeur()));
 
             Token t1 = lireToken();
-            /* On lit < */
+            /* On lit § */
             if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                noeudFirst.ajout(Param());
-                noeudFirst.ajout(S());
+                Noeud param = Param();
+                Noeud s = S();
+                if (param != null) {
+                    noeudFirst.ajout(param);
+                }
+                if (s != null) {
+                    noeudFirst.ajout(s);
+                }
                 return noeudFirst;
             }
-            throw new UnexpectedTokenException("< attendu");
+            throw new UnexpectedTokenException("§ attendu");
         }
         throw new UnexpectedTokenException("String attendu");
     }
 
     /*
-     * PARAM-> #stat< STAT #objet OBJET < #flag FLAG
+     * PARAM-> #stat§ STAT #objet OBJET § #flag FLAG
      */
     private Noeud Param() {
         return null;
     }
 
     /*
-     * STAT-> - intval intval intval string < STAT | epsilon
+     * STAT-> - intval intval intval string § STAT | epsilon
      */
     private Noeud Stat() throws UnexpectedTokenException {
         if (finAtteinte())
@@ -209,12 +215,12 @@ public class AnalyseSyntaxique {
                             noeudStat.ajout(new Noeud(TypeDeNoeud.string, t4.getValeur()));
                             /* On lit le token suivant */
                             Token t5 = lireToken();
-                            /* On lit < */
+                            /* On lit § */
                             if (t5.getTypeDeToken() == TypeDeToken.separateurLigne) {
                                 noeudStat.ajout(Stat());
                                 return noeudStat;
                             }
-                            throw new UnexpectedTokenException("< attendu");
+                            throw new UnexpectedTokenException("§ attendu");
                         }
                         throw new UnexpectedTokenException("String attendu");
                     }
@@ -228,7 +234,7 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * OBJET-> - intval string < OBJET | epsilon
+     * OBJET-> - intval string § OBJET | epsilon
      */
     private Noeud Objet() throws UnexpectedTokenException {
         if (finAtteinte())
@@ -248,12 +254,12 @@ public class AnalyseSyntaxique {
                     noeudObjet.ajout(new Noeud(TypeDeNoeud.string, t2.getValeur()));
                     /* On lit le token suivant */
                     Token t3 = lireToken();
-                    /* On lit < */
+                    /* On lit § */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         noeudObjet.ajout(Objet());
                         return noeudObjet;
                     }
-                    throw new UnexpectedTokenException("< attendu");
+                    throw new UnexpectedTokenException("§ attendu");
                 }
                 throw new UnexpectedTokenException("String attendu");
             }
@@ -263,7 +269,7 @@ public class AnalyseSyntaxique {
     }
 
     /*
-     * FLAG-> - intval string < FLAG | epsilon
+     * FLAG-> - intval string § FLAG | epsilon
      */
     private Noeud Flag() throws UnexpectedTokenException {
         if (finAtteinte())
@@ -283,12 +289,12 @@ public class AnalyseSyntaxique {
                     noeudFlag.ajout(new Noeud(TypeDeNoeud.string, t2.getValeur()));
                     /* On lit le token suivant */
                     Token t3 = lireToken();
-                    /* On lit < */
+                    /* On lit § */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         noeudFlag.ajout(Flag());
                         return noeudFlag;
                     }
-                    throw new UnexpectedTokenException("< attendu");
+                    throw new UnexpectedTokenException("§ attendu");
                 }
                 throw new UnexpectedTokenException("String attendu");
             }

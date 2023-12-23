@@ -1,109 +1,109 @@
-0 Vous etes dehors <
-- 4 prendre le bus <
-- 1 aller au batiment l <
-- 2 aller au batiment f <
-- 3 aller au batiment e <
-- 5 aller au RU <
+0 Vous etes dehors §
+- 4 prendre le bus §
+- 1 aller au batiment l §
+- 2 aller au batiment f §
+- 3 aller au batiment e §
+- 5 aller au RU §
 ##
-1 batiment l <
-- 0 aller dehors <
-- 6 aller voir Mr Brouard <
-- 37 aller au bureau de la SCP <
+1 batiment l §
+- 0 aller dehors §
+- 6 aller voir Mr Brouard §
+- 37 aller au bureau de la SCP §
 ##
-2 batiment f <
-- 8 aller à la machine à café <
-- 0 sortir <
-- 9 aller à l'amphi bio <
-- 10 aller au stand de solidaire <
+2 batiment f §
+- 8 aller à la machine à café §
+- 0 sortir §
+- 9 aller à l'amphi bio §
+- 10 aller au stand de solidaire §
 ##
-3 batiment e <
-- 0 aller dehors <
-- 14 aller au département de Math <
+3 batiment e §
+- 0 aller dehors §
+- 14 aller au département de Math §
 ##
-4 arret de bus <
-- 0 aller à la fac <
-- 13 prendre le bus <
+4 arret de bus §
+- 0 aller à la fac §
+- 13 prendre le bus §
 ##
-5 RU <
-- 15 aller à l'étage <
-- 16 aller à la brasserie <
+5 RU §
+- 15 aller à l'étage §
+- 16 aller à la brasserie §
 ##
-6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle <
-- 7 lui poser une question <
-- 2 fuir <
+6 Vous êtes dans le bureau de Mr Brouard, il est présent dans la salle §
+- 7 lui poser une question §
+- 2 fuir §
 ##
-7 Mr Brouard vous parle jusqu'à la fin des temps. FIN <
-- 7 RIP <
+7 Mr Brouard vous parle jusqu'à la fin des temps. FIN §
+- 7 RIP §
 ##
-8 Machine à café <
-- 2 ne rien prendre <
-- 3 prendre un café <
+8 Machine à café §
+- 2 ne rien prendre §
+- 3 prendre un café §
 ##
-9 Amphi Bio <
-- 0 sortir dehors <
-- 2 sortir par la porte du batiment f <
-- 17 faire un dessin <
+9 Amphi Bio §
+- 0 sortir dehors §
+- 2 sortir par la porte du batiment f §
+- 17 faire un dessin §
 ##
-10 Stande de solidaire <
-- 18 apprendre sur le syndicalisme <
-- 2 partir <
+10 Stande de solidaire §
+- 18 apprendre sur le syndicalisme §
+- 2 partir §
 ##
-11 La machine à café bug et vous ne recevez rien <
-- 8 recommencer <
-- 2 partir <
-- 3 frapper la machine <
+11 La machine à café bug et vous ne recevez rien §
+- 8 recommencer §
+- 2 partir §
+- 3 frapper la machine §
 ##
-12 La machine à café vous à tué FIN <
-- 12 RIP <
+12 La machine à café vous à tué FIN §
+- 12 RIP §
 ##
-13 Quel bus <
-- 40 le 2 <
-- 41 le 16 <
-- 4 finalement je vas rester <
+13 Quel bus §
+- 40 le 2 §
+- 41 le 16 §
+- 4 finalement je vas rester §
 ##
-14 Vous entrer dans le département de math <
-- 3 partir <
-- 19 aller voir Boris <
+14 Vous entrer dans le département de math §
+- 3 partir §
+- 19 aller voir Boris §
 ##
-15 Quel stand <
-- 21 végétarien <
-- 20 grillade <
+15 Quel stand §
+- 21 végétarien §
+- 20 grillade §
 ##
-16 c'était pas ouf <
-- 0 sortir < 
+16 c'était pas ouf §
+- 0 sortir § 
 ##
-17 Vous faites un dessin <
-- 24 assumer <
-- 2 fuir <
+17 Vous faites un dessin §
+- 24 assumer §
+- 2 fuir §
 ##
-18 apprendre sur le syndicalisme <
-- 25 lutes des classes <
-- 26 gouvernement <
-- 27 rejoindre la lutte <
-- 2 partir <
+18 apprendre sur le syndicalisme §
+- 25 lutes des classes §
+- 26 gouvernement §
+- 27 rejoindre la lutte §
+- 2 partir §
 ##
-19 boris <
-- 19 c'est louche <
-- 28 lui poser une question <
-- 14 partir <
+19 boris §
+- 19 c'est louche §
+- 28 lui poser une question §
+- 14 partir §
 ##
-20 Vous allez au stand grillade, vous devez faire la queue pour payer <
-- 22 attendre <
+20 Vous allez au stand grillade, vous devez faire la queue pour payer §
+- 22 attendre §
 ##
-21 Vous allez au stand végetarien, vous devez faire la queue pour payer <
-- 23 attendre <
+21 Vous allez au stand végetarien, vous devez faire la queue pour payer §
+- 23 attendre §
 ##
-22 C'est long <
-- 42 enfin ! <
+22 C'est long §
+- 42 enfin ! §
 ##
-23 C'est long végé <
-- 16 enfin ! <
+23 C'est long végé §
+- 16 enfin ! §
 ##
-24 bourreau entre <
-- 30 lui demander ce qu'il veut <
-- 2 fuir <
-- 31 le regarder dans les yeux <
-- 32 lui demander si ca lui plait <
+24 bourreau entre §
+- 30 lui demander ce qu'il veut §
+- 2 fuir §
+- 31 le regarder dans les yeux §
+- 32 lui demander si ca lui plait §
 ##
 25 La lutte des classes, du point de vue syndicaliste, se définit par la dynamique conflictuelle entre deux groupes principaux au sein de la société : la classe ouvrière et la classe capitaliste. Elle découle d'une inégalité économique fondamentale, où les travailleurs, fournissant la force de travail nécessaire à la production, ne possèdent pas les moyens de production, tels que les entreprises et les usines.
 
@@ -115,9 +115,9 @@ Au-delà des revendications immédiates, certains syndicalistes envisagent la tr
 
 La solidarité internationale est également soulignée, car la lutte des classes ne se limite pas aux frontières nationales. La mondialisation a créé une interdépendance entre les travailleurs du monde entier, et les syndicats jouent un rôle crucial dans la promotion des droits des travailleurs à l'échelle internationale.
 
-Ainsi, pour un syndicaliste, la lutte des classes est la résultante de l'inégalité économique entre travailleurs et employeurs, nécessitant une action collective pour rétablir l'équilibre et promouvoir des conditions de travail plus justes. <
-- 27 rejoindre la lutte <
-- 18 retour au stand <
+Ainsi, pour un syndicaliste, la lutte des classes est la résultante de l'inégalité économique entre travailleurs et employeurs, nécessitant une action collective pour rétablir l'équilibre et promouvoir des conditions de travail plus justes. §
+- 27 rejoindre la lutte §
+- 18 retour au stand §
 ##
 26 En tant que syndicaliste, mes préoccupations à l'égard du gouvernement français actuel se concentrent sur plusieurs aspects qui influent directement sur les travailleurs.
 
@@ -133,61 +133,61 @@ La question des inégalités sociales et économiques est également cruciale. L
 
 Enfin, en tant que syndicaliste, je valorise le dialogue social. Un gouvernement ouvert au dialogue avec les syndicats, prêt à négocier et à prendre en compte les préoccupations des travailleurs, est perçu positivement.
 
-Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à répondre aux défis spécifiques aux travailleurs, à promouvoir la justice sociale et à collaborer de manière constructive avec les acteurs syndicaux pour améliorer les conditions de travail et la vie des travailleurs. <
-- 27 rejoindre la lutte <
-- 18 retour au stand <
+Dans l'ensemble, ma perception du gouvernement actuel dépend de sa capacité à répondre aux défis spécifiques aux travailleurs, à promouvoir la justice sociale et à collaborer de manière constructive avec les acteurs syndicaux pour améliorer les conditions de travail et la vie des travailleurs. §
+- 27 rejoindre la lutte §
+- 18 retour au stand §
 ##
-27 Bienvenue Camarade ! <
-- 2 quitter le stand <
-- 35 bloquer les tanneurs <
-- 36 faire un coup d'état <
+27 Bienvenue Camarade ! §
+- 2 quitter le stand §
+- 35 bloquer les tanneurs §
+- 36 faire un coup d'état §
 ##
-28 Vous lui poser des questions, cela vous plonge dans la folie des maths, dont il est impossible de sortir FIN <
-- 28 Ah ok <
+28 Vous lui poser des questions, cela vous plonge dans la folie des maths, dont il est impossible de sortir FIN §
+- 28 Ah ok §
 ##
-30 Il vous demande un mouton <
-- 33 OK <
-- 34 NON <
+30 Il vous demande un mouton §
+- 33 OK §
+- 34 NON §
 ##
-31 Vous etes mort de cringe FIN <
-- 31 RIP <
+31 Vous etes mort de cringe FIN §
+- 31 RIP §
 ##
-32 Il est très hereux, et le prend en photo, en revanche il doit effacer pour son court, vous partez <
-- 2 aurevoir <
+32 Il est très hereux, et le prend en photo, en revanche il doit effacer pour son court, vous partez §
+- 2 aurevoir §
 ##
-33 Il est content, en revanche il doit effacer pour son cours, vous partez <
-- 2 aurevoir <
+33 Il est content, en revanche il doit effacer pour son cours, vous partez §
+- 2 aurevoir §
 ##
-34 il est très en colère et vous enferme dans le batiment des GEII. FIN <
-- 34 RIP <
+34 il est très en colère et vous enferme dans le batiment des GEII. FIN §
+- 34 RIP §
 ##
-35 Vous bloquer les tanneurs, c'est sympa, vous faites des trivial poursuit avec les camarades <
-- 35 Macron démission <
-- 4 revenir sur Granmmont <
+35 Vous bloquer les tanneurs, c'est sympa, vous faites des trivial poursuit avec les camarades §
+- 35 Macron démission §
+- 4 revenir sur Granmmont §
 ##
-36 Plus besoin de faire de la TLA quand on est président ! FIN <
-- 36 par contre il faut encore se lever à 7h ... <
+36 Plus besoin de faire de la TLA quand on est président ! FIN §
+- 36 par contre il faut encore se lever à 7h ... §
 ##
-37 SCP <
-- 38 adherer <
-- 1 retourner au batiment L <
+37 SCP §
+- 38 adherer §
+- 1 retourner au batiment L §
 ##
-38 Maintenant que vous avez adherer vous avez accès au ressource de l'association <
-- 39 Manger <
-- 38 accèder au github de la scp <
-- 1 retourner au batiment L <
+38 Maintenant que vous avez adherer vous avez accès au ressource de l'association §
+- 39 Manger §
+- 38 accèder au github de la scp §
+- 1 retourner au batiment L §
 ##
-39 Il y a toujours de la nourriture à la SCP ! <
-- 39 Manger plus! <
-- 1 retourner au batiment L <
+39 Il y a toujours de la nourriture à la SCP ! §
+- 39 Manger plus! §
+- 1 retourner au batiment L §
 ##
-40 Vous rentrer chez vous <
-- 40 c'est quand même mieux chez soit ! <
-- 0 retourner à la fac <
+40 Vous rentrer chez vous §
+- 40 c'est quand même mieux chez soit ! §
+- 0 retourner à la fac §
 ##
-41 Vous attendez jusqu'a la fin de vos jours le 16. FIN <
-- 41 fallait prendre le 2 <
+41 Vous attendez jusqu'a la fin de vos jours le 16. FIN §
+- 41 fallait prendre le 2 §
 ##
-42 Le steak haché était de vendredi, la chaine du froid étant non respectée, vous attrapez une bactérie mortel et vous mourrer. FIN <
-- 42 Player was slain by Steack Haché <
+42 Le steak haché était de vendredi, la chaine du froid étant non respectée, vous attrapez une bactérie mortel et vous mourrer. FIN §
+- 42 Player was slain by Steack Haché §
 ##
