@@ -32,6 +32,7 @@ public class AnalyseSyntaxique {
      */
     private Noeud S() throws UnexpectedTokenException {
         Noeud nvLieu = new Noeud(TypeDeNoeud.lieuContainer);
+        System.out.println(getTypeDeToken());
 
         if (getTypeDeToken() == TypeDeToken.intVal) {
             nvLieu.ajout(Lieu());
@@ -267,17 +268,16 @@ public class AnalyseSyntaxique {
                 throw new UnexpectedTokenException("intVal attendu");
             }
             throw new UnexpectedTokenException("intVal attendu");
-        }
-        // throw new UnexpectedTokenException("- attendu");
-
-        return Objet();
+        } else if (t0.getTypeDeToken() == TypeDeToken.objet)
+            return noeudStat;
+        throw new UnexpectedTokenException("- ou #objet attendu");
     }
 
     /*
      * OBJET-> - intval string § OBJET | epsilon
      */
     private Noeud Objet() throws UnexpectedTokenException {
-        Noeud noeudObjet = new Noeud(TypeDeNoeud.stat);
+        Noeud noeudObjet = new Noeud(TypeDeNoeud.objet);
         Token t0 = lireToken();
         if (t0.getTypeDeToken() == TypeDeToken.tiret) {
             Token t1 = lireToken();
@@ -301,19 +301,21 @@ public class AnalyseSyntaxique {
                 throw new UnexpectedTokenException("String attendu");
             }
             throw new UnexpectedTokenException("intVal attendu");
-        }
-        // throw new UnexpectedTokenException("- attendu");
-
-        return Flag();
+        } else if (t0.getTypeDeToken() == TypeDeToken.flag)
+            return noeudObjet;
+        throw new UnexpectedTokenException("- ou #flag attendu");
     }
 
     /*
      * FLAG-> - intval string § FLAG | epsilon
      */
     private Noeud Flag() throws UnexpectedTokenException {
-        Noeud noeudFlag = new Noeud(TypeDeNoeud.stat);
-        if (getTypeDeToken() == TypeDeToken.tiret) {
-            lireToken();
+        if (getTypeDeToken() == TypeDeToken.intVal)
+            return null;
+
+        Noeud noeudFlag = new Noeud(TypeDeNoeud.flag);
+        Token t0 = lireToken();
+        if (t0.getTypeDeToken() == TypeDeToken.tiret) {
             Token t1 = lireToken();
             /* On lit intval */
             if (t1.getTypeDeToken() == TypeDeToken.intVal) {
@@ -336,9 +338,7 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu");
         }
-        // throw new UnexpectedTokenException("- attendu");
-
-        return S();
+        throw new UnexpectedTokenException("- ou intVal attendu");
     }
 
     /*
