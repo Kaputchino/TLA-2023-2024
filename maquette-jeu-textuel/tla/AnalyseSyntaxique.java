@@ -192,14 +192,14 @@ public class AnalyseSyntaxique {
                     noeudParam.ajout(stat);
 
                 Token t2 = lireToken();
-                /* On lit § */
+                /* On lit § (#objet lu dans Stat()) */
                 if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
                     Noeud objet = Objet();
                     if (objet != null)
                         noeudParam.ajout(objet);
 
                     Token t3 = lireToken();
-                    /* On lit § */
+                    /* On lit § (#flag lu dans Objet()) */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         Noeud flag = Flag();
                         if (flag != null)
