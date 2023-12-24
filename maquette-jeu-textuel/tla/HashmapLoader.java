@@ -7,6 +7,7 @@ import java.util.List;
 public class HashmapLoader {
 
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
+    private HashMap<String, Effect> settings = new HashMap<>();
 
     public HashMap<Integer, Lieu> getLieux() {
         return lieux;

@@ -8,6 +8,7 @@ package tla;
 public class Proposition {
     String texte;
     int numeroLieu;
+    String condition = null;
 
     public Proposition(String texte, int numeroLieu) {
         this.texte = texte;
