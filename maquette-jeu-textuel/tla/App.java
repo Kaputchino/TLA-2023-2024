@@ -124,10 +124,11 @@ public class App implements ActionListener {
                 try {
                     btn.setEnabled(lieuActuel.propositions.get(i).getValueOfCondition());
                 } catch (Exception e) {
-                    showMessageDialog(null, e,
+                    showMessageDialog(null, e +" \n par conséquent la condition est ingorée",
                             "Condition pour proposition du lieu n" +i + lieuActuel.propositions.get(i).condition +" non valide", ERROR_MESSAGE);
+                    btn.setEnabled(true);
                 }
-            
+
             mainPanel.add(btn, new GridBagConstraints() {{
                 this.gridwidth = GridBagConstraints.REMAINDER;
                 this.fill = GridBagConstraints.HORIZONTAL;
