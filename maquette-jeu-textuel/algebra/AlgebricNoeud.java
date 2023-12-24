@@ -7,7 +7,7 @@ public class AlgebricNoeud {
 	private List<AlgebricNoeud> enfants = new ArrayList<>();
 	private AlgebricTypeDeNoeud algebricTypeDeNoeud;
 	private boolean valeurBoolean;
-	private int valeurInt;
+	private float valeurFloat;
 	private String valeurString;
 
 	public String getValeurString() {
@@ -18,9 +18,9 @@ public class AlgebricNoeud {
 		this.valeurString = valeurString;
 	}
 
-	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, int valeur) {
+	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, float valeur) {
 		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
-		this.valeurInt = valeur;
+		this.valeurFloat = valeur;
 	}
 	public AlgebricNoeud(AlgebricTypeDeNoeud algebricTypeDeNoeud, String valeur) {
 		this.algebricTypeDeNoeud = algebricTypeDeNoeud;
@@ -55,7 +55,7 @@ public class AlgebricNoeud {
 	public String toString() {
 		String s = "<";
 		if (algebricTypeDeNoeud != null) s = s + algebricTypeDeNoeud;
-		s = s + ", " + valeurString+valeurBoolean+valeurInt;
+		s = s + ", " + valeurString+valeurBoolean+ valeurFloat;
 		return s + ">";
 	}
 
@@ -85,12 +85,12 @@ public class AlgebricNoeud {
 		this.valeurBoolean = valeurBoolean;
 	}
 
-	public int getValeurInt() {
-		return valeurInt;
+	public float getValeurFloat() {
+		return valeurFloat;
 	}
 
-	public void setValeurInt(int valeurInt) {
-		this.valeurInt = valeurInt;
+	public void setValeurFloat(int valeurFloat) {
+		this.valeurFloat = valeurFloat;
 	}
 
 	public List<AlgebricNoeud> getEnfants() {

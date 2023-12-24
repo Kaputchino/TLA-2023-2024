@@ -38,7 +38,7 @@ public class AlgebricAnalyseSyntaxique {
 		AlgebricNoeud nodeStmt = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 
 		//S->AD
-		if (getTypeDeToken() == AlgebricTypeDeToken.ident || getTypeDeToken() == AlgebricTypeDeToken.intVal) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.ident || getTypeDeToken() == AlgebricTypeDeToken.floatVal) {
 			nodeStmt.ajout(A());
 			AlgebricNoeud d = D();
 			if(d != null){
@@ -87,12 +87,12 @@ public class AlgebricAnalyseSyntaxique {
 		return n;
 	}
 	private AlgebricNoeud B() throws AlgebricUnexpectedTokenException {
-		if (getTypeDeToken() == AlgebricTypeDeToken.intVal) {
+		if (getTypeDeToken() == AlgebricTypeDeToken.floatVal) {
 
 			// production B -> intVal
 
 			AlgebricToken t = lireToken();
-			return new AlgebricNoeud(AlgebricTypeDeNoeud.intVal, Integer.parseInt(t.getValeur()));
+			return new AlgebricNoeud(AlgebricTypeDeNoeud.floatVal, Float.parseFloat(t.getValeur()));
 		}
 
 		if (getTypeDeToken() == AlgebricTypeDeToken.ident) {

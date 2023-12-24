@@ -1,5 +1,7 @@
 package algebra;
 
+import exception_tla.IllegalCharacterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,6 @@ public class AlgebricAnalyseLexicale {
 			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110},
 			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106},
 			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107}
-							 //space and or  (  	)   !     chiffe lettre >   <  =
 			// 101 acceptation d'un and
 			// 102 acceptation d'un or
 			// 103 acceptation d'un (
@@ -71,7 +72,11 @@ public class AlgebricAnalyseLexicale {
 				} else if (e == 105) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.inverse));
 				} else if (e == 106) {
-					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.intVal, buf));
+					if(buf.length() - buf.replaceAll("g","").length() > 1){
+						throw new IllegalCharacterException("trop de '.'");
+					}
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.floatVal, buf));
+
 					retourArriere();
 				} else if (e == 107) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.ident, buf));
@@ -135,6 +140,8 @@ public class AlgebricAnalyseLexicale {
 		if (c == '>') return 8;
 		if (c == '<') return 9;
 		if (c == '=') return 10;
+		if (c == '.') return 6;
+
 		System.out.println("Symbole inconnu : " + c);
 		throw new AlgebricIllegalCharacterException(c.toString());
 	}

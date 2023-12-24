@@ -5,7 +5,7 @@ public enum AlgebricTypeDeToken {
 	or,
 	leftPar,
 	rightPar,
-	intVal,
+    floatVal,
 	ident,
 	inf,
 	sup,
