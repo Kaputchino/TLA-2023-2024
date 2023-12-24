@@ -19,6 +19,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.*;
 
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 /*
  * Classe principale.
  * 
@@ -94,11 +97,9 @@ public class App implements ActionListener {
 
         // Démarre l'aventure au lieu n° 1
         lieuActuel = lieux.get(1);
-        try {
-            initLieu();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+        initLieu();
+
 
         frame.pack();
         frame.setVisible(true);
@@ -108,7 +109,7 @@ public class App implements ActionListener {
      * Affichage du lieu lieuActuel et créations des boutons de propositions correspondantes
      * à ce lieu
      */
-    void initLieu() throws Exception {
+    void initLieu(){
         for(JButton btn: btns) {
             mainPanel.remove(btn);
         }
@@ -119,8 +120,14 @@ public class App implements ActionListener {
             JButton btn = new JButton("<html><p>" + lieuActuel.propositions.get(i).texte + "</p></html>");
             btn.setActionCommand(String.valueOf(i));
             btn.addActionListener(this);
-            btn.setEnabled(lieuActuel.propositions.get(i).getValueOfCondition());
 
+                try {
+                    btn.setEnabled(lieuActuel.propositions.get(i).getValueOfCondition());
+                } catch (Exception e) {
+                    showMessageDialog(null, e,
+                            "Condition pour proposition du lieu n" +i + lieuActuel.propositions.get(i).condition +" non valide", ERROR_MESSAGE);
+                }
+            
             mainPanel.add(btn, new GridBagConstraints() {{
                 this.gridwidth = GridBagConstraints.REMAINDER;
                 this.fill = GridBagConstraints.HORIZONTAL;
@@ -159,7 +166,7 @@ public class App implements ActionListener {
         } else {
             // Cas particulier : le lieu est déclarée dans une proposition mais pas encore décrit
             // (lors de l'élaboration de l'aventure par exemple)
-            JOptionPane.showMessageDialog(null,"Lieu n° " + proposition.numeroLieu + " à implémenter"); 
+            showMessageDialog(null,"Lieu n° " + proposition.numeroLieu + " à implémenter");
         }
     }
 
