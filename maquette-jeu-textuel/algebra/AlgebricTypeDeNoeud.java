@@ -8,6 +8,7 @@ public enum AlgebricTypeDeNoeud {
 	leftpar, rightpar,
 	add,
 	sub,
-	mul
+	mul,
+	div
 
 }

@@ -104,4 +104,28 @@ public class AlgebricNoeud {
 	public void setEnfants(List<AlgebricNoeud> enfants) {
 		this.enfants = enfants;
 	}
+
+	public AlgebricTypeDeNoeud getAlgebricTypeDeNoeud() {
+		return algebricTypeDeNoeud;
+	}
+
+	public void invertNode(AlgebricNoeud n2){
+		List<AlgebricNoeud> enfantsn2 = n2.getEnfants();
+		AlgebricTypeDeNoeud algebricTypeDeNoeudn2 = n2.getTypeDeNoeud();
+		boolean valeurBooleann2 = n2.valeurBoolean;
+		float valeurFloatn2 = n2.valeurFloat;
+		String valeurStringn2 = n2.valeurString;
+
+		n2.enfants = this.enfants;
+		n2.algebricTypeDeNoeud = this.algebricTypeDeNoeud;
+		n2.valeurBoolean = this.valeurBoolean;
+		n2.valeurFloat = this.valeurFloat;
+		n2.valeurString = this.valeurString;
+
+		this.enfants = enfantsn2;
+		this.algebricTypeDeNoeud = algebricTypeDeNoeudn2;
+		this.valeurBoolean = valeurBooleann2;
+		this.valeurFloat = valeurFloatn2;
+		this.valeurString = valeurStringn2;
+	}
 }
