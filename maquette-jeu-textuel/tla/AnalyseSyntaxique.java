@@ -34,9 +34,13 @@ public class AnalyseSyntaxique {
         Noeud nvLieu = new Noeud(TypeDeNoeud.lieuContainer);
 
         if (getTypeDeToken() == TypeDeToken.intVal) {
-            nvLieu.ajout(Lieu());
+            Noeud lieu = Lieu();
+
+            if (lieu != null) {
+                nvLieu.ajout(lieu);
+            }
         } else {
-            throw new UnexpectedTokenException("'intVal' attendu");
+            throw new UnexpectedTokenException("'intVal' attendu a la fin d'un lieu.");
         }
 
         /*
@@ -50,7 +54,7 @@ public class AnalyseSyntaxique {
             }
             return nvLieu;
         }
-        throw new UnexpectedTokenException("'##' attendu");
+        throw new UnexpectedTokenException("'##' attendu a la fin d'un lieu.");
     }
 
     /*
@@ -85,11 +89,11 @@ public class AnalyseSyntaxique {
                     noeud.ajout(Proposition());
                     return noeud;
                 }
-                throw new UnexpectedTokenException("§ attendu");
+                throw new UnexpectedTokenException("§ attendu dans un lieu");
             }
-            throw new UnexpectedTokenException("String attendu");
+            throw new UnexpectedTokenException("String attendu dans un lieu");
         }
-        throw new UnexpectedTokenException("intVal attendu");
+        throw new UnexpectedTokenException("intVal attendu dans un lieu");
     }
     /*
      * PROPOSITION -> - intVal string § F P’
@@ -109,6 +113,7 @@ public class AnalyseSyntaxique {
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         Noeud f = F();
                         Noeud pp = P_prime();
+
                         if (f != null) {
                             noeud.ajout(f);
                         }
@@ -117,14 +122,14 @@ public class AnalyseSyntaxique {
                         }
                         return noeud;
                     }
-                    throw new UnexpectedTokenException("§ attendu");
+                    throw new UnexpectedTokenException("§ attendu dans une proposition");
                 }
-                throw new UnexpectedTokenException("stringVal attendu");
+                throw new UnexpectedTokenException("stringVal attendu dans une proposition");
             }
-            throw new UnexpectedTokenException("intVal attendu");
+            throw new UnexpectedTokenException("intVal attendu dans une proposition");
         }
         if (!t.getValeur().equals("\n")) {
-            throw new UnexpectedTokenException("- attendu");
+            throw new UnexpectedTokenException("- attendu en debut de proposition");
         }
         return null;
     }
@@ -148,36 +153,48 @@ public class AnalyseSyntaxique {
     // pour rajouter des conditions
     private Noeud F() throws UnexpectedTokenException {
         Noeud noeud = new Noeud(TypeDeNoeud.facultatif);
-        Noeud cond = Cond();
-        Noeud ff = F_prime();
-        if (cond != null) {
+
+        if (getTypeDeToken() == TypeDeToken.cond) {
+            Noeud cond = Cond();
             noeud.ajout(cond);
+
+            Noeud ff = F_prime();
+            if (ff != null) {
+                noeud.ajout(ff);
+                return noeud;
+            }
         }
+
+        Noeud ff = F_prime();
         if (ff != null) {
             noeud.ajout(ff);
+            return noeud;
+        } else {
+            return null;
         }
-        return noeud;
     }
+
+
 
     /*
      * F' -> EFFET F' | ε
      */
     private Noeud F_prime() throws UnexpectedTokenException {
-        Noeud noeud = new Noeud(TypeDeNoeud.ffacultatif);
-        Noeud effet = Effet();
-        Noeud ff = F_prime();
-        if (finAtteinte()) {
-            return null;
-        }
-        else {
+        if (getTypeDeToken() == TypeDeToken.effet) {
+            Noeud noeud = new Noeud(TypeDeNoeud.facultatif);
+            Noeud effet = Effet();
+            Noeud ff = F_prime();
+
             if (effet != null) {
                 noeud.ajout(effet);
             }
             if (ff != null){
                 noeud.ajout(ff);
             }
+            return noeud;
         }
-        return noeud;
+
+        return null;
     }
 
     /*
@@ -200,11 +217,12 @@ public class AnalyseSyntaxique {
                 if (s != null) {
                     noeudFirst.ajout(s);
                 }
+
                 return noeudFirst;
             }
-            throw new UnexpectedTokenException("§ attendu");
+            throw new UnexpectedTokenException("§ attendu apres votre titre.");
         }
-        throw new UnexpectedTokenException("String attendu");
+        throw new UnexpectedTokenException("Titre attendu");
     }
 
     /*
@@ -232,18 +250,19 @@ public class AnalyseSyntaxique {
                     /* On lit § (#flag lu dans Objet()) */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         Noeud flag = Flag();
+
                         if (flag != null)
                             noeudParam.ajout(flag);
 
                         return noeudParam;
                     }
-                    throw new UnexpectedTokenException("§ attendu");
+                    throw new UnexpectedTokenException("§ attendu apres un identifiant #object.");
                 }
-                throw new UnexpectedTokenException("§ attendu");
+                throw new UnexpectedTokenException("§ attendu apres un identifiant #stats.");
             }
-            throw new UnexpectedTokenException("§ attendu");
+            throw new UnexpectedTokenException("§ attendu dans les settings apres un idenfiant #flags");
         }
-        throw new UnexpectedTokenException("#stat attendu");
+        throw new UnexpectedTokenException("#stat attendu dans vos settings");
     }
 
     /*
@@ -280,18 +299,18 @@ public class AnalyseSyntaxique {
                                 noeudStat.ajout(Stat());
                                 return noeudStat;
                             }
-                            throw new UnexpectedTokenException("§ attendu");
+                            throw new UnexpectedTokenException("§ attendu dans les settings stats");
                         }
-                        throw new UnexpectedTokenException("String attendu");
+                        throw new UnexpectedTokenException("String attendu dans les settings stats");
                     }
-                    throw new UnexpectedTokenException("intVal attendu");
+                    throw new UnexpectedTokenException("intVal attendu dans les settings stats");
                 }
-                throw new UnexpectedTokenException("intVal attendu");
+                throw new UnexpectedTokenException("intVal attendu dans les settings stats");
             }
-            throw new UnexpectedTokenException("intVal attendu");
+            throw new UnexpectedTokenException("intVal attendu dans les settings stats");
         } else if (t0.getTypeDeToken() == TypeDeToken.objet)
             return noeudStat;
-        throw new UnexpectedTokenException("- ou #objet attendu");
+        throw new UnexpectedTokenException("- ou #objet attendu dans les settings");
     }
 
     /*
@@ -317,14 +336,14 @@ public class AnalyseSyntaxique {
                         noeudObjet.ajout(Objet());
                         return noeudObjet;
                     }
-                    throw new UnexpectedTokenException("§ attendu");
+                    throw new UnexpectedTokenException("§ attendu dans les settings objets");
                 }
-                throw new UnexpectedTokenException("String attendu");
+                throw new UnexpectedTokenException("String attendu dans les settings objets");
             }
-            throw new UnexpectedTokenException("intVal attendu");
+            throw new UnexpectedTokenException("intVal attendu dans les settings objets");
         } else if (t0.getTypeDeToken() == TypeDeToken.flag)
             return noeudObjet;
-        throw new UnexpectedTokenException("- ou #flag attendu");
+        throw new UnexpectedTokenException("- ou #flag attendu dans le settings");
     }
 
     /*
@@ -350,16 +369,21 @@ public class AnalyseSyntaxique {
                     Token t3 = lireToken();
                     /* On lit § */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                        noeudFlag.ajout(Flag());
+                        Noeud flag = Flag();
+
+                        if (flag != null) {
+                            noeudFlag.ajout(flag);
+                        }
+
                         return noeudFlag;
                     }
-                    throw new UnexpectedTokenException("§ attendu");
+                    throw new UnexpectedTokenException("§ attendu dans les settings flag");
                 }
-                throw new UnexpectedTokenException("String attendu");
+                throw new UnexpectedTokenException("String attendu dans les settings flag");
             }
-            throw new UnexpectedTokenException("intVal attendu");
+            throw new UnexpectedTokenException("intVal attendu dans les settings flag");
         }
-        throw new UnexpectedTokenException("- ou intVal attendu");
+        throw new UnexpectedTokenException("- ou intVal attendu dans les settings flag");
     }
 
     /*
@@ -370,55 +394,62 @@ public class AnalyseSyntaxique {
         Token t0 = lireToken();
         /* On lit condition: */
         if (t0.getTypeDeToken() == TypeDeToken.cond) {
-                noeud.ajout(new Noeud(TypeDeNoeud.cond));
-                /* On lit le token suivant */
+                Noeud statement = Statement();
                 Token t1 = lireToken();
-                if (t1.getTypeDeToken() == TypeDeToken.stringVal) {
-                    noeud.ajout(new Noeud(TypeDeNoeud.string));
-                    /* On lit le token suivant */
-                    Token t2 = lireToken();
-                    /* On lit § */
-                    if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                        finAtteinte();
-                    }
-                    throw new UnexpectedTokenException("§ attendu");
-                } throw new UnexpectedTokenException("string attendu");
-            } else {
-                return null;
-            }
+                if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                    noeud.ajout(statement);
+                    return noeud;
+                }
+                throw new UnexpectedTokenException("§ attendu apres un STATEMENT.");
+        }
+
+        return noeud;
+    }
+
+    private Noeud Statement() throws UnexpectedTokenException {
+        Token t0 = lireToken();
+        if (t0.getTypeDeToken() == TypeDeToken.statement) {
+            return new Noeud(TypeDeNoeud.statement, t0.getValeur());
+        }
+
+        throw new UnexpectedTokenException("'Statement' attendu apres un identifiant condition.");
     }
 
     /*
      * EFFET-> effect: string SYMBOL intval § | epsilon
      */
     private Noeud Effet() throws UnexpectedTokenException {
-        Noeud noeud = new Noeud(TypeDeNoeud.objet);
+        Noeud noeud = new Noeud(TypeDeNoeud.effet);
         Token t0 = lireToken();
+
         /*On lit effect: */
         if (t0.getTypeDeToken() == TypeDeToken.effet) {
             Token t1 = lireToken();
             /* On lit string */
             if (t1.getTypeDeToken() == TypeDeToken.stringVal) {
+                noeud.ajout(new Noeud(TypeDeNoeud.string, t1.getValeur()));
+
                 Noeud symbol = Symbol();
                 noeud.ajout(symbol);
                 /* On lit le token suivant */
                 Token t2 = lireToken();
                 /* On lit intval */
                 if (t2.getTypeDeToken() == TypeDeToken.intVal) {
+                    noeud.ajout(new Noeud(TypeDeNoeud.intVal, t2.getValeur()));
+
                     /* On lit le token suivant */
                     Token t3 = lireToken();
                     /* On lit § */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
-                        finAtteinte();
+                        return noeud;
                     }
-                    throw new UnexpectedTokenException("§ attendu");
+                    throw new UnexpectedTokenException("§ attendu a la fin d'un effet.");
                 }
-                throw new UnexpectedTokenException("Intval attendu");
+                throw new UnexpectedTokenException("Intval attendu dans un effet.");
             }
-            throw new UnexpectedTokenException("Stringval attendu");
-        } else if (finAtteinte()) {
-                return null;
+            throw new UnexpectedTokenException("Stringval attendu dans un effet.");
         }
+
         return noeud;
     }
 
@@ -426,12 +457,18 @@ public class AnalyseSyntaxique {
      * SYMBOL-> + | - | set
      */
     private Noeud Symbol() throws UnexpectedTokenException {
+
         Token t = lireToken();
-        if (t.getTypeDeToken() == TypeDeToken.condAdd || t.getTypeDeToken() == TypeDeToken.condSub || t.getTypeDeToken() == TypeDeToken.condSet) {
-            return new Noeud(TypeDeNoeud.symbol, t.getValeur());
-        } else {
-            throw new UnexpectedTokenException("+ ou - ou set attendu");
+
+        if (t.getTypeDeToken() == TypeDeToken.condAdd) {
+            return new Noeud(TypeDeNoeud.symbolAdd);
+        } else if (t.getTypeDeToken() == TypeDeToken.condSub) {
+            return new Noeud(TypeDeNoeud.symbolSub);
+        } else if (t.getTypeDeToken() == TypeDeToken.condSet) {
+            return new Noeud(TypeDeNoeud.symbolSet);
         }
+
+        throw new UnexpectedTokenException("#add ou #add ou #set attendu dans votre effet.");
     }
 
     /*

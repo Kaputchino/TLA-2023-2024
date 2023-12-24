@@ -1,3 +1,17 @@
+Ceci est un titre. §
+
+#stats§
+- 1 2 3 test§
+- 2 3 4 blabla§
+
+#objects§
+- 3 moi§
+- 4 toi§
+
+#flags§
+- 3 qwjdwk§
+- 3 qwdqwd§
+
 0 Vous etes dehors §
 - 4 prendre le bus §
 - 1 aller au batiment l §
