@@ -2,9 +2,6 @@ package tla;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
 /*
@@ -98,6 +95,7 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
+        Noeud.afficheNoeud(entryPoint, 1);
         try {
             lieux = HashmapLoader.getHashMap(entryPoint);
         } catch (Exception e) {

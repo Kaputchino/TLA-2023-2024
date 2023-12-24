@@ -7,5 +7,15 @@ public enum TypeDeNoeud {
     string,
     facultatif,
     lieuContainer,
-    condition
+    first,
+    param,
+    stat,
+    objet,
+    flag, 
+    cond,
+    statement,
+    effet, 
+    symbolAdd,
+    symbolSub,
+    symbolSet
 }
