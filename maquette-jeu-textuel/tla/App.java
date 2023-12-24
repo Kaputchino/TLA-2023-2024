@@ -35,6 +35,7 @@ public class App implements ActionListener {
     final int nbLignes = 20;
 
     Map<Integer, Lieu> lieux;
+    HashMap<String, Setting> settings;
     Lieu lieuActuel;
 
     JFrame frame;
@@ -70,7 +71,9 @@ public class App implements ActionListener {
 
 
         // Charge le contenu de l'aventure
-        lieux = ContenuAventure.init();
+        ContenuAventure.init();
+        lieux =  ContenuAventure.lieux;
+        settings = ContenuAventure.settings;
 
         // Prépare l'IHM
         labels = new JLabel[nbLignes];

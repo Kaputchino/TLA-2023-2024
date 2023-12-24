@@ -1,25 +1,28 @@
 Ceci est un titre. §
 
 #stats§
+- 1 2 3 test§
+- 2 3 4 blabla§
 
-
-#objects§
-
+#objets§
+- 3 moi§
+- 4 toi§
 
 #flags§
-
+- 3 DEF§
+- 3 ABC§
 
 1 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 6 RIP §
 condition: `5+4=2`§
-effect: hello #add 4§
-effect: blabla #sub 5§
-effect: dddd #set 4§
+effet: hello #add 4§
+effet: blabla #sub 5§
+effet: dddd #set 4§
 ##
 
 6 TESTEFFETUNIQUE FIN §
 - 6 RIP §
-effect: ddddd #set 4§
+effet: ddddd #set 4§
 ##
 
 2 TESTCONDITIONUNIQUE FIN §

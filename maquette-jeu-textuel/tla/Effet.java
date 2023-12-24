@@ -3,12 +3,12 @@ package tla;
 /*
  * Modeliste un effet
  */
-public class Effect {
+public class Effet {
     String variable;
     String operation;
     int valeur;
 
-    public Effect(String variable, String operation, int valeur) {
+    public Effet(String variable, String operation, int valeur) {
         this.variable = variable;
         this.operation = operation;
         this.valeur = valeur;
@@ -16,7 +16,7 @@ public class Effect {
 
     @Override
     public String toString() {
-        return "Effect{" +
+        return "Effet{" +
                 "variable='" + variable + '\'' +
                 ", operation='" + operation + '\'' +
                 ", valeur=" + valeur +

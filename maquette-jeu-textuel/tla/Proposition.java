@@ -16,12 +16,12 @@ public class Proposition {
     int numeroLieu;
     String condition = null;
 
-    List<Effect> effects;
+    List<Effet> effets;
 
     public Proposition(String texte, int numeroLieu) {
         this.texte = texte;
         this.numeroLieu = numeroLieu;
-        this.effects = new ArrayList<>();
+        this.effets = new ArrayList<>();
     }
     public boolean getValueOfCondition() throws Exception {
         if(condition == null){
@@ -38,7 +38,7 @@ public class Proposition {
                 "texte='" + texte + '\'' +
                 ", numeroLieu=" + numeroLieu +
                 ", condition='" + condition + '\'' +
-                ", effects=" + effects +
+                ", effets=" + effets +
                 '}';
     }
 }

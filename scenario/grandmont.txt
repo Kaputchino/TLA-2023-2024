@@ -1,16 +1,10 @@
-Ceci est un titre. §
+Granmont... §
 
 #stats§
-- 1 2 3 test§
-- 2 3 4 blabla§
 
-#objects§
-- 3 moi§
-- 4 toi§
+#objets§
 
 #flags§
-- 3 qwjdwk§
-- 3 qwdqwd§
 
 0 Vous etes dehors §
 - 4 prendre le bus §

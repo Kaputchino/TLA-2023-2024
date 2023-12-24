@@ -107,7 +107,7 @@ public class AnalyseLexicale {
                     else if(buf.equals("#flags")){
                         tokens.add(new Token(TypeDeToken.flag));
                     }
-                    else if(buf.equals("#objects")){
+                    else if(buf.equals("#objets")){
                         tokens.add(new Token(TypeDeToken.objet));
                     }
                     else if(buf.equals("#add")){
@@ -120,9 +120,9 @@ public class AnalyseLexicale {
                         tokens.add(new Token(TypeDeToken.condSet));
                     }
                     else if(buf.equals("condition:")){
-                        tokens.add(new Token(TypeDeToken.cond));
+                        tokens.add(new Token(TypeDeToken.condition));
                     }
-                    else if(buf.equals("effect:")){
+                    else if(buf.equals("effet:")){
                         tokens.add(new Token(TypeDeToken.effet));
                     }
 
