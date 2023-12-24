@@ -7,7 +7,7 @@ import java.util.List;
 public class HashmapLoader {
 
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
-    private HashMap<String, Effect> settings = new HashMap<>();
+    private HashMap<String, Effet> settings = new HashMap<>();
 
     private String title;
 
@@ -30,7 +30,7 @@ public class HashmapLoader {
             }
 
             if (entryPoint.enfant(1).getTypeDeNoeud() == TypeDeNoeud.param) {
-                // traiter setting
+                lieuxHistoire.entryPointSetting(entryPoint.enfant(1));
             } else {
                 throw new Exception ("Parametre attendue.");
             }
@@ -48,6 +48,28 @@ public class HashmapLoader {
         // traitement des erreurs toussa toussa
 
         return lieuxHistoire.getLieux();
+    }
+
+    private void entryPointSetting(Noeud n) {
+        Noeud stat = n.enfant(0);
+        Noeud object = n.enfant(1);
+        Noeud flag = n.enfant(2);
+
+        traiterStats(stat);
+        traiterObjects(object);
+        traiterFlags(flag);
+    }
+
+    private void traiterStats(Noeud n) {
+
+    }
+
+    private void traiterObjects(Noeud n) {
+
+    }
+
+    private void traiterFlags(Noeud n) {
+
     }
 
     private List<Proposition> traiterProposition(Noeud n, List<Proposition> propositions) throws Exception {
@@ -97,7 +119,7 @@ public class HashmapLoader {
                 String nom = current.enfant(0).getValeur();
                 String operation = current.enfant(1).getValeur();
                 int valeur = Integer.parseInt(current.enfant(2).getValeur());
-                proposition.effects.add(new Effect(nom, operation, valeur));
+                proposition.effets.add(new Effet(nom, operation, valeur));
             }
         }
 
