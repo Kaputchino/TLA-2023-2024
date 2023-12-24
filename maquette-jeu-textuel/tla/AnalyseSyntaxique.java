@@ -409,7 +409,7 @@ public class AnalyseSyntaxique {
      * COND-> condition: STATEMENT § | epsilon
      */
     private Noeud Cond() throws UnexpectedTokenException {
-        Noeud noeud = new Noeud(TypeDeNoeud.cond);
+        Noeud noeud = new Noeud(TypeDeNoeud.condition);
         Token t0 = lireToken();
         /* On lit condition: */
         if (t0.getTypeDeToken() == TypeDeToken.cond) {

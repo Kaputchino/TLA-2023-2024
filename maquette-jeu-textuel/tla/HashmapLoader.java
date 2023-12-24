@@ -82,31 +82,24 @@ public class HashmapLoader {
 
     private void traiterFacultatif(Noeud n, Proposition proposition) throws Exception {
 
-        Noeud premierEnfant = n.enfant(0);
-        if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.cond) {
-                String statement = premierEnfant.enfant(0).getValeur();
+        for (int i = 0; i < n.nombreEnfants(); i++) {
+            Noeud current = n.enfant(i);
+
+            if (current.getTypeDeNoeud() == TypeDeNoeud.condition) {
+                String statement = current.enfant(0).getValeur();
                 statement = statement.replaceAll("`", "");
                 statement = statement.trim();
                 proposition.condition = statement;
-
-                // traitement du reste du facultatif
-                if (n.nombreEnfants() == 2) {
-                    traiterFacultatif(n.enfant(1), proposition);
-                    return;
-                }
-        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.facultatif) {
-            traiterFacultatif(premierEnfant, proposition);
-        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.effet) {
-            String nom = premierEnfant.enfant(0).getValeur();
-            String operation = premierEnfant.enfant(1).getValeur();
-            int valeur = Integer.parseInt(premierEnfant.enfant(2).getValeur());
-            proposition.effects.add(new Effect(nom, operation, valeur));
-
-            if (n.nombreEnfants() == 2) {
-                traiterFacultatif(n.enfant(1), proposition);
+            } else if (current.getTypeDeNoeud() == TypeDeNoeud.facultatif) {
+                traiterFacultatif(n.enfant(i), proposition);
+                return;
+            } else if (current.getTypeDeNoeud() == TypeDeNoeud.effet) {
+                String nom = current.enfant(0).getValeur();
+                String operation = current.enfant(1).getValeur();
+                int valeur = Integer.parseInt(current.enfant(2).getValeur());
+                proposition.effects.add(new Effect(nom, operation, valeur));
             }
         }
-
 
     }
 
