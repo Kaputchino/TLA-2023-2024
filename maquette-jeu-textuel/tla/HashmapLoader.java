@@ -62,8 +62,15 @@ public class HashmapLoader {
         if (numeroLieu != -1 && texte != null) {
             proposition = new Proposition(texte, numeroLieu);
             propositions.add(proposition);
-            if (n.nombreEnfants() == 3 && n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
-                return traiterProposition(n.enfant(2), propositions);
+
+            if (n.nombreEnfants() == 3) {
+                if (n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.facultatif) {
+                    traiterFacultatif(n.enfant(2), proposition);
+                    return propositions;
+                } else if (n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
+                    return traiterProposition(n.enfant(2), propositions);
+                }
+
             }
 
             return propositions;
@@ -71,6 +78,36 @@ public class HashmapLoader {
 
 
         throw new Exception("Prosition non complete.");
+    }
+
+    private void traiterFacultatif(Noeud n, Proposition proposition) throws Exception {
+
+        Noeud premierEnfant = n.enfant(0);
+        if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.cond) {
+                String statement = premierEnfant.enfant(0).getValeur();
+                statement = statement.replaceAll("`", "");
+                statement = statement.trim();
+                proposition.condition = statement;
+
+                // traitement du reste du facultatif
+                if (n.nombreEnfants() == 2) {
+                    traiterFacultatif(n.enfant(1), proposition);
+                    return;
+                }
+        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.facultatif) {
+            traiterFacultatif(premierEnfant, proposition);
+        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.effet) {
+            String nom = premierEnfant.enfant(0).getValeur();
+            String operation = premierEnfant.enfant(1).getValeur();
+            int valeur = Integer.parseInt(premierEnfant.enfant(2).getValeur());
+            proposition.effects.add(new Effect(nom, operation, valeur));
+
+            if (n.nombreEnfants() == 2) {
+                traiterFacultatif(n.enfant(1), proposition);
+            }
+        }
+
+
     }
 
     private void entryPoint(Noeud n) throws Exception {
