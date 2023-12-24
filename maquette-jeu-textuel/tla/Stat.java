@@ -23,6 +23,16 @@ public class Stat implements Setting {
         return min;
     }
 
+    @Override
+    public String toString() {
+        return "Stat{" +
+                "min=" + min +
+                ", def=" + def +
+                ", max=" + max +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public void setMin(int min) {
         this.min = min;
     }

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HashmapLoader {
+public class nodeDecoder {
 
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
-    private HashMap<String, Effect> settings = new HashMap<>();
+    private HashMap<String, Setting> settings = new HashMap<>();
 
     private String title;
 
@@ -15,28 +15,36 @@ public class HashmapLoader {
         return lieux;
     }
 
-    private HashmapLoader() {
+    public String getTitle() {
+        return title;
+    }
+
+    public HashMap<String, Setting> getSettings() {
+        return settings;
+    }
+
+    private nodeDecoder() {
         // this is very secret u can't use it ;c
     }
 
-    public static HashMap<Integer, Lieu> getHashMap(Noeud entryPoint) throws Exception {
-        HashmapLoader lieuxHistoire = new HashmapLoader();
+    public static nodeDecoder getHashMap(Noeud entryPoint) throws Exception {
+        nodeDecoder hashmaps = new nodeDecoder();
 
         if (entryPoint.getTypeDeNoeud() == TypeDeNoeud.first) {
             if (entryPoint.enfant(0).getTypeDeNoeud() == TypeDeNoeud.string) {
-                lieuxHistoire.title = entryPoint.enfant(0).getValeur();
+                hashmaps.title = entryPoint.enfant(0).getValeur();
             } else {
                 throw new Exception ("Titre attendu.");
             }
 
             if (entryPoint.enfant(1).getTypeDeNoeud() == TypeDeNoeud.param) {
-                // traiter setting
+                hashmaps.entryPointSetting(entryPoint.enfant(1));
             } else {
                 throw new Exception ("Parametre attendue.");
             }
 
             if (entryPoint.enfant(2).getTypeDeNoeud() == TypeDeNoeud.lieuContainer) {
-                lieuxHistoire.entryPoint(entryPoint.enfant(2));
+                hashmaps.entryPoint(entryPoint.enfant(2));
             } else {
                 throw new Exception ("lieuContainer attendue.");
             }
@@ -44,10 +52,58 @@ public class HashmapLoader {
             throw new Exception ("Noeud first attendu.");
         }
 
+        return hashmaps;
+    }
 
-        // traitement des erreurs toussa toussa
+    private void entryPointSetting(Noeud n) {
+        Noeud stat = n.enfant(0);
+        Noeud object = n.enfant(1);
+        Noeud flag = n.enfant(2);
 
-        return lieuxHistoire.getLieux();
+        traiterStats(stat);
+        traiterObjects(object);
+        traiterFlags(flag);
+    }
+
+    private void traiterStats(Noeud n) {
+        if (n.nombreEnfants() >= 3) {
+            int min = Integer.parseInt(n.enfant(0).getValeur());
+            int def = Integer.parseInt(n.enfant(1).getValeur());
+            int max = Integer.parseInt(n.enfant(2).getValeur());
+            String name = n.enfant(3).getValeur();
+            Setting stat = new Stat(min, def, max, name);
+            settings.put(name, stat);
+
+            if (n.nombreEnfants() == 5) {
+                traiterStats(n.enfant(4));
+            }
+        }
+    }
+
+    private void traiterObjects(Noeud n) {
+        if (n.nombreEnfants() >= 2) {
+            int qte = Integer.parseInt(n.enfant(0).getValeur());
+            String name = n.enfant(1).getValeur();
+            Setting objet = new Object(qte, name);
+            settings.put(name, objet);
+
+            if (n.nombreEnfants() == 3) {
+                traiterObjects(n.enfant(2));
+            }
+        }
+    }
+
+    private void traiterFlags(Noeud n) {
+        if (n.nombreEnfants() >= 2) {
+            int id = Integer.parseInt(n.enfant(0).getValeur());
+            String name = n.enfant(1).getValeur();
+            Setting flag = new Flag(id, name);
+            settings.put(name, flag);
+
+            if (n.nombreEnfants() == 3) {
+                traiterFlags(n.enfant(2));
+            }
+        }
     }
 
     private List<Proposition> traiterProposition(Noeud n, List<Proposition> propositions) throws Exception {
@@ -82,31 +138,24 @@ public class HashmapLoader {
 
     private void traiterFacultatif(Noeud n, Proposition proposition) throws Exception {
 
-        Noeud premierEnfant = n.enfant(0);
-        if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.cond) {
-                String statement = premierEnfant.enfant(0).getValeur();
+        for (int i = 0; i < n.nombreEnfants(); i++) {
+            Noeud current = n.enfant(i);
+
+            if (current.getTypeDeNoeud() == TypeDeNoeud.condition) {
+                String statement = current.enfant(0).getValeur();
                 statement = statement.replaceAll("`", "");
                 statement = statement.trim();
                 proposition.condition = statement;
-
-                // traitement du reste du facultatif
-                if (n.nombreEnfants() == 2) {
-                    traiterFacultatif(n.enfant(1), proposition);
-                    return;
-                }
-        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.facultatif) {
-            traiterFacultatif(premierEnfant, proposition);
-        } else if (premierEnfant.getTypeDeNoeud() == TypeDeNoeud.effet) {
-            String nom = premierEnfant.enfant(0).getValeur();
-            String operation = premierEnfant.enfant(1).getValeur();
-            int valeur = Integer.parseInt(premierEnfant.enfant(2).getValeur());
-            proposition.effects.add(new Effect(nom, operation, valeur));
-
-            if (n.nombreEnfants() == 2) {
-                traiterFacultatif(n.enfant(1), proposition);
+            } else if (current.getTypeDeNoeud() == TypeDeNoeud.facultatif) {
+                traiterFacultatif(n.enfant(i), proposition);
+                return;
+            } else if (current.getTypeDeNoeud() == TypeDeNoeud.effet) {
+                String nom = current.enfant(0).getValeur();
+                String operation = current.enfant(1).getValeur();
+                int valeur = Integer.parseInt(current.enfant(2).getValeur());
+                proposition.effets.add(new Effet(nom, operation, valeur));
             }
         }
-
 
     }
 
