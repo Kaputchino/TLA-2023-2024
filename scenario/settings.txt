@@ -1,13 +1,16 @@
 Ceci est un titre. §
 
 #stats§
-
+- 1 2 3 test§
+- 2 3 4 blabla§
 
 #objects§
-
+- 3 moi§
+- 4 toi§
 
 #flags§
-
+- 3 qwjdwk§
+- 3 qwdqwd§
 
 1 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 6 RIP §
