@@ -1,5 +1,10 @@
 package algebra;
 
+import tla.ContenuAventure;
+import tla.Flag;
+import tla.Object;
+import tla.Setting;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -8,8 +13,6 @@ public class AlgebricInterpretation {
 
 	// permet la lecture de chaîne au clavier
 	private static BufferedReader stdinReader = new BufferedReader(new InputStreamReader(System.in));
-	private HashMap<String, Integer> listVariables = new HashMap<>();
-	private HashMap<String, Boolean> listFlags = new HashMap<>();
 
 	public AlgebricInterpretation() {
 		/** pour les tests
@@ -59,7 +62,9 @@ public class AlgebricInterpretation {
 			return value ;
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.ident)){
-			boolean value = listFlags.get(n.getValeurString());
+			Setting st =ContenuAventure.settings.get(n.getValeurString());
+			Flag flag = (Flag)st;
+			boolean value = flag.isValue();
 			n.setValeurBoolean(value);
 			return value;
 		}
@@ -76,7 +81,9 @@ public class AlgebricInterpretation {
 			return n.getValeurInt();
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
-		return listVariables.get(n.getValeurString());
+		Setting st = ContenuAventure.settings.get(n.getValeurString());
+		Object ob = (Object) st;
+		return ob.getQuantity();
 	}
 
 
