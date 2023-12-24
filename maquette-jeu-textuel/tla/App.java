@@ -94,7 +94,11 @@ public class App implements ActionListener {
 
         // Démarre l'aventure au lieu n° 1
         lieuActuel = lieux.get(1);
-        initLieu();
+        try {
+            initLieu();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         frame.pack();
         frame.setVisible(true);
@@ -104,7 +108,7 @@ public class App implements ActionListener {
      * Affichage du lieu lieuActuel et créations des boutons de propositions correspondantes
      * à ce lieu
      */
-    void initLieu() {
+    void initLieu() throws Exception {
         for(JButton btn: btns) {
             mainPanel.remove(btn);
         }
@@ -115,6 +119,8 @@ public class App implements ActionListener {
             JButton btn = new JButton("<html><p>" + lieuActuel.propositions.get(i).texte + "</p></html>");
             btn.setActionCommand(String.valueOf(i));
             btn.addActionListener(this);
+            btn.setEnabled(lieuActuel.propositions.get(i).getValueOfCondition());
+
             mainPanel.add(btn, new GridBagConstraints() {{
                 this.gridwidth = GridBagConstraints.REMAINDER;
                 this.fill = GridBagConstraints.HORIZONTAL;
@@ -145,7 +151,11 @@ public class App implements ActionListener {
 
             // Affichage du nouveau lieu et création des boutons des nouvelles propositions
             lieuActuel = lieu;
-            initLieu();
+            try {
+                initLieu();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         } else {
             // Cas particulier : le lieu est déclarée dans une proposition mais pas encore décrit
             // (lors de l'élaboration de l'aventure par exemple)
