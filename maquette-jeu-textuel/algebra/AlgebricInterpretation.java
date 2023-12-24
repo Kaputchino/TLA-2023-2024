@@ -2,12 +2,11 @@ package algebra;
 
 import tla.ContenuAventure;
 import tla.Flag;
-import tla.Object;
+import tla.Item;
 import tla.Setting;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 public class AlgebricInterpretation {
 
@@ -82,7 +81,7 @@ public class AlgebricInterpretation {
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
 		Setting st = ContenuAventure.settings.get(n.getValeurString());
-		Object ob = (Object) st;
+		Item ob = (Item) st;
 		return ob.getQuantity();
 	}
 
