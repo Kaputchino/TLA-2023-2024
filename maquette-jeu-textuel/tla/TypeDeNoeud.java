@@ -11,5 +11,11 @@ public enum TypeDeNoeud {
     param,
     stat,
     objet,
-    flag
+    flag,
+    condition,
+    statement,
+    effet, 
+    symbolAdd,
+    symbolSub,
+    symbolSet
 }
