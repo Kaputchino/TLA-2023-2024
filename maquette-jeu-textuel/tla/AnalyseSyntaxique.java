@@ -153,7 +153,7 @@ public class AnalyseSyntaxique {
     // pour rajouter des conditions
     private Noeud F() throws UnexpectedTokenException {
         Noeud noeud = new Noeud(TypeDeNoeud.facultatif);
-        if (getTypeDeToken() == TypeDeToken.cond) {
+        if (getTypeDeToken() == TypeDeToken.condition) {
             Noeud cond = Cond();
             noeud.ajout(cond);
 
@@ -412,7 +412,7 @@ public class AnalyseSyntaxique {
         Noeud noeud = new Noeud(TypeDeNoeud.condition);
         Token t0 = lireToken();
         /* On lit condition: */
-        if (t0.getTypeDeToken() == TypeDeToken.cond) {
+        if (t0.getTypeDeToken() == TypeDeToken.condition) {
 
                 Noeud statement = Statement();
                 Token t1 = lireToken();
