@@ -29,4 +29,12 @@ public class Flag implements Setting {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Flag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

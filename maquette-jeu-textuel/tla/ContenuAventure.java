@@ -49,12 +49,13 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
-        Noeud.afficheNoeud(entryPoint, 1);
         try {
             nodeDecoder hashMaps = nodeDecoder.getHashMap(entryPoint);
             ContenuAventure.lieux = hashMaps.getLieux();
             ContenuAventure.settings = hashMaps.getSettings();
             ContenuAventure.titre = hashMaps.getTitle();
+
+            System.out.println(settings);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

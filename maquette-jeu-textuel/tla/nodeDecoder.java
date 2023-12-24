@@ -88,7 +88,7 @@ public class nodeDecoder {
             settings.put(name, objet);
 
             if (n.nombreEnfants() == 3) {
-                traiterStats(n.enfant(2));
+                traiterObjects(n.enfant(2));
             }
         }
     }
@@ -101,7 +101,7 @@ public class nodeDecoder {
             settings.put(name, flag);
 
             if (n.nombreEnfants() == 3) {
-                traiterStats(n.enfant(2));
+                traiterFlags(n.enfant(2));
             }
         }
     }

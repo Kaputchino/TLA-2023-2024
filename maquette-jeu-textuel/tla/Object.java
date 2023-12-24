@@ -29,4 +29,13 @@ public class Object implements Setting {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Object{" +
+                "quantity=" + quantity +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+
