@@ -70,7 +70,7 @@ public class nodeDecoder {
             int min = Integer.parseInt(n.enfant(0).getValeur());
             int def = Integer.parseInt(n.enfant(1).getValeur());
             int max = Integer.parseInt(n.enfant(2).getValeur());
-            String name = n.enfant(3).getValeur();
+            String name = n.enfant(3).getValeur().trim();
             Setting stat = new Stat(min, def, max, name);
             settings.put(name, stat);
 
@@ -83,7 +83,7 @@ public class nodeDecoder {
     private void traiterObjects(Noeud n) {
         if (n.nombreEnfants() >= 2) {
             int qte = Integer.parseInt(n.enfant(0).getValeur());
-            String name = n.enfant(1).getValeur();
+            String name = n.enfant(1).getValeur().trim();
             Setting objet = new Object(qte, name);
             settings.put(name, objet);
 
@@ -96,7 +96,7 @@ public class nodeDecoder {
     private void traiterFlags(Noeud n) {
         if (n.nombreEnfants() >= 2) {
             int id = Integer.parseInt(n.enfant(0).getValeur());
-            String name = n.enfant(1).getValeur();
+            String name = n.enfant(1).getValeur().trim();
             Setting flag = new Flag(id, name);
             settings.put(name, flag);
 
@@ -150,9 +150,14 @@ public class nodeDecoder {
                 traiterFacultatif(n.enfant(i), proposition);
                 return;
             } else if (current.getTypeDeNoeud() == TypeDeNoeud.effet) {
-                String nom = current.enfant(0).getValeur();
+                String nom = current.enfant(0).getValeur().trim();
                 String operation = current.enfant(1).getValeur();
                 int valeur = Integer.parseInt(current.enfant(2).getValeur());
+
+                if (!this.settings.containsKey(nom)) {
+                    throw new Exception("Variable " + nom + " inconnu, référencé dans effet.");
+                }
+
                 proposition.effets.add(new Effet(nom, operation, valeur));
             }
         }

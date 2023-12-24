@@ -1,11 +1,11 @@
 Ceci est un titre. §
 
 #stats§
-- 1 2 3 test§
+- 1 2 3 hello§
 - 2 3 4 blabla§
 
 #objets§
-- 3 moi§
+- 3 dddd§
 - 4 toi§
 
 #flags§
@@ -22,7 +22,7 @@ effet: dddd #set 4§
 
 6 TESTEFFETUNIQUE FIN §
 - 6 RIP §
-effet: ddddd #set 4§
+effet: dddd #set 4§
 ##
 
 2 TESTCONDITIONUNIQUE FIN §
