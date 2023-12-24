@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HashmapLoader {
+public class nodeDecoder {
 
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
-    private HashMap<String, Effet> settings = new HashMap<>();
+    private HashMap<String, Setting> settings = new HashMap<>();
 
     private String title;
 
@@ -15,28 +15,36 @@ public class HashmapLoader {
         return lieux;
     }
 
-    private HashmapLoader() {
+    public String getTitle() {
+        return title;
+    }
+
+    public HashMap<String, Setting> getSettings() {
+        return settings;
+    }
+
+    private nodeDecoder() {
         // this is very secret u can't use it ;c
     }
 
-    public static HashMap<Integer, Lieu> getHashMap(Noeud entryPoint) throws Exception {
-        HashmapLoader lieuxHistoire = new HashmapLoader();
+    public static nodeDecoder getHashMap(Noeud entryPoint) throws Exception {
+        nodeDecoder hashmaps = new nodeDecoder();
 
         if (entryPoint.getTypeDeNoeud() == TypeDeNoeud.first) {
             if (entryPoint.enfant(0).getTypeDeNoeud() == TypeDeNoeud.string) {
-                lieuxHistoire.title = entryPoint.enfant(0).getValeur();
+                hashmaps.title = entryPoint.enfant(0).getValeur();
             } else {
                 throw new Exception ("Titre attendu.");
             }
 
             if (entryPoint.enfant(1).getTypeDeNoeud() == TypeDeNoeud.param) {
-                lieuxHistoire.entryPointSetting(entryPoint.enfant(1));
+                hashmaps.entryPointSetting(entryPoint.enfant(1));
             } else {
                 throw new Exception ("Parametre attendue.");
             }
 
             if (entryPoint.enfant(2).getTypeDeNoeud() == TypeDeNoeud.lieuContainer) {
-                lieuxHistoire.entryPoint(entryPoint.enfant(2));
+                hashmaps.entryPoint(entryPoint.enfant(2));
             } else {
                 throw new Exception ("lieuContainer attendue.");
             }
@@ -44,10 +52,7 @@ public class HashmapLoader {
             throw new Exception ("Noeud first attendu.");
         }
 
-
-        // traitement des erreurs toussa toussa
-
-        return lieuxHistoire.getLieux();
+        return hashmaps;
     }
 
     private void entryPointSetting(Noeud n) {
@@ -61,15 +66,44 @@ public class HashmapLoader {
     }
 
     private void traiterStats(Noeud n) {
+        if (n.nombreEnfants() >= 3) {
+            int min = Integer.parseInt(n.enfant(0).getValeur());
+            int def = Integer.parseInt(n.enfant(1).getValeur());
+            int max = Integer.parseInt(n.enfant(2).getValeur());
+            String name = n.enfant(3).getValeur();
+            Setting stat = new Stat(min, def, max, name);
+            settings.put(name, stat);
 
+            if (n.nombreEnfants() == 5) {
+                traiterStats(n.enfant(4));
+            }
+        }
     }
 
     private void traiterObjects(Noeud n) {
+        if (n.nombreEnfants() >= 2) {
+            int qte = Integer.parseInt(n.enfant(0).getValeur());
+            String name = n.enfant(1).getValeur();
+            Setting objet = new Object(qte, name);
+            settings.put(name, objet);
 
+            if (n.nombreEnfants() == 3) {
+                traiterStats(n.enfant(2));
+            }
+        }
     }
 
     private void traiterFlags(Noeud n) {
+        if (n.nombreEnfants() >= 2) {
+            int id = Integer.parseInt(n.enfant(0).getValeur());
+            String name = n.enfant(1).getValeur();
+            Setting flag = new Flag(id, name);
+            settings.put(name, flag);
 
+            if (n.nombreEnfants() == 3) {
+                traiterStats(n.enfant(2));
+            }
+        }
     }
 
     private List<Proposition> traiterProposition(Noeud n, List<Proposition> propositions) throws Exception {
