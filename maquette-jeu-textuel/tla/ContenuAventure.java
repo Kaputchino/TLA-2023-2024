@@ -2,23 +2,13 @@ package tla;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 
-/*
- * Contenu de l'aventure.
- *
- * La HashMap lieux attribue un numéro à chaque lieu qui compose l'aventure.
- *
- * Ces textes proviennent de l'aventure écrite par de Denis Gerfaud,
- * "Le mystère de la statue maudite", parue dans le numéro 31 (février/mars 1985)
- * du magazine Jeux et Stratégie, page 66 à 69
- */
 public class ContenuAventure {
 
-    final public static String titre = "Le mystère de la statue maudite";
+    public static String titre = "Le mystère de la statue maudite";
+    public static HashMap<String, Setting> settings;
+    public static HashMap<Integer, Lieu> lieux;
     private static File file;
 
     public static File getFile() {
@@ -29,8 +19,7 @@ public class ContenuAventure {
         ContenuAventure.file = file;
     }
 
-    static Map<Integer, Lieu> init() {
-        HashMap<Integer, Lieu> lieux = null;
+    static void init() {
         AnalyseLexicale analyseLexicale = new AnalyseLexicale();
         AnalyseSyntaxique analyseSyntaxique = new AnalyseSyntaxique();
         List<Token> tokens;
@@ -54,44 +43,6 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
-        System.out.println(tokens);
-
-        /**
-         * tokens = List.of(new Token[]{
-         * new Token(TypeDeToken.intVal, "1"),
-         * new Token(TypeDeToken.stringVal, "Ceci est un lieu"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.tiret),
-         * new Token(TypeDeToken.intVal, "0"),
-         * new Token(TypeDeToken.stringVal, "Aller en 0"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.finLieu),
-         * 
-         * new Token(TypeDeToken.intVal, "0"),
-         * new Token(TypeDeToken.stringVal, "Ceci est un lieu ddd"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.tiret),
-         * new Token(TypeDeToken.intVal, "3"),
-         * new Token(TypeDeToken.stringVal, "Aller en 3"),
-         * new Token(TypeDeToken.separateurLigne),
-         * 
-         * new Token(TypeDeToken.tiret),
-         * new Token(TypeDeToken.intVal, "0"),
-         * new Token(TypeDeToken.stringVal, "Aller en 0"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.finLieu),
-         * 
-         * new Token(TypeDeToken.intVal, "3"),
-         * new Token(TypeDeToken.stringVal, "Ceci est un lieu qwdqwd"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.tiret),
-         * new Token(TypeDeToken.intVal, "1"),
-         * new Token(TypeDeToken.stringVal, "Aller 1"),
-         * new Token(TypeDeToken.separateurLigne),
-         * new Token(TypeDeToken.finLieu)
-         * });
-         **/
-
         try {
             entryPoint = analyseSyntaxique.analyse(tokens);
         } catch (Exception e) {
@@ -99,13 +50,15 @@ public class ContenuAventure {
         }
 
         try {
-            lieux = HashmapLoader.getHashMap(entryPoint);
+            nodeDecoder hashMaps = nodeDecoder.getHashMap(entryPoint);
+            ContenuAventure.lieux = hashMaps.getLieux();
+            ContenuAventure.settings = hashMaps.getSettings();
+            ContenuAventure.titre = hashMaps.getTitle();
+
+            System.out.println(settings);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        System.out.println(lieux);
-
-        return lieux;
     }
 }
