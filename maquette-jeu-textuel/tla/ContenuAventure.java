@@ -95,6 +95,7 @@ public class ContenuAventure {
             throw new RuntimeException(e);
         }
 
+        Noeud.afficheNoeud(entryPoint, 1);
         try {
             lieux = HashmapLoader.getHashMap(entryPoint);
         } catch (Exception e) {

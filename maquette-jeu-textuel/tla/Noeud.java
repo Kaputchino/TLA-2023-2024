@@ -1,5 +1,8 @@
 package tla;
 
+import algebra.*;
+import exception_tla.WrongTypeOfNodeException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +69,7 @@ public class Noeud {
             afficheNoeud(n.enfant(i), profondeur + 1);
         }
     }
+
 
 
 

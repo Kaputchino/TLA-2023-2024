@@ -1,27 +1,33 @@
 Ceci est un titre. §
 
 #stats§
-- 1 2 3 test§
-- 2 3 4 blabla§
 
-#objets§
-- 3 moi§
-- 4 toi§
+
+#objects§
+
 
 #flags§
-- 3 qwjdwk§
-- 3 qwdqwd§
 
-1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! §
-- 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? §
-- 9 Explorez vous le souterrain dans l'autre direction ? §
-##
 
-5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
-- 5 RIP §
-##
-
-6 Defffhkjez FIN §
+1 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 6 RIP §
+condition: `5+4=2`§
+effect: hello #add 4§
+effect: blabla #sub 5§
+effect: dddd #set 4§
+##
+
+6 TESTEFFETUNIQUE FIN §
+- 6 RIP §
+effect: ddddd #set 4§
+##
+
+2 TESTCONDITIONUNIQUE FIN §
+- 3 RIP §
+condition: `5+4=2`§
+##
+
+8 Defffhkjez FIN §
+- 1 RIP §
 ##
 

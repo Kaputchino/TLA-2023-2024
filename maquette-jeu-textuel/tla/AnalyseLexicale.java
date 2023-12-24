@@ -19,15 +19,17 @@ public class AnalyseLexicale {
      * Table de transition de l'analyse lexicale
      */
     private static Integer TRANSITIONS[][] = {
-            //                      0       1       2       3       4       5       6       7
-            //                      blank   §       -       #       int     space   str     :
-            /* 0         */         { 0,    101,    102,    4,      1,      2,      3,      3       },
-            /* 1 dep int */         { 104,  104,    104,    104,    1,      104,    106,    106     },
-            /* 2 dep espace*/       { 2,    105,    105,    105,    105,    2,      106,    106     },
-            /* 3 dep str */         { 106,  106,    106,    106,    3,      3 ,     3,      5       },
-            /* 4 dep # */           { 3 ,   107,    3,      103,    3,      107,    4,      3       },
-            /* 5 dep : */           { 3,    106,    106,    107,    3,      107,    5,      3       },
+            //                      0       1       2       3       4       5       6       7       8
+            //                      blank   §       -       #       int     space   str     :       `
+            /* 0         */         { 0,    101,    102,    4,      1,      2,      3,      3,      6         },
+            /* 1 dep int */         { 104,  104,    104,    104,    1,      104,    106,    106,    3         },
+            /* 2 dep espace*/       { 2,    105,    105,    105,    105,    2,      106,    106,    6         },
+            /* 3 dep str */         { 106,  106,    106,    106,    3,      3 ,     3,      5,      3         },
+            /* 4 dep # */           { 3 ,   107,    3,      103,    3,      107,    4,      3,      3         },
+            /* 5 dep : */           { 3,    106,    106,    107,    3,      107,    5,      3,      6         },
+            /* 6 dep ` */           { 6,    108,      6,      3,    6,      6,      6,      3,      6         },
 
+            // condition: `statement` : ou espace, ou blank.
             // 101 acceptation d'un §
             // 102 acceptation d'un -
             // 103 acceptation d'un #
@@ -35,7 +37,8 @@ public class AnalyseLexicale {
             // 105 acceptation d'un caractere (retourArriere)
             // 106 acceptation d'une lettre (retourArriere)
             // 107 - acceptation d'un identifiant (retourArriere):
-            // => soit #objet, #stat, #flag, condition:, effet:, #add, #sub, #set
+            // =====> #objet, #stat, #flag, condition:, effet:, #add, #sub, #set\
+            // 108 acceptation d'un statement
     };
 
     private String entree;
@@ -104,7 +107,7 @@ public class AnalyseLexicale {
                     else if(buf.equals("#flags")){
                         tokens.add(new Token(TypeDeToken.flag));
                     }
-                    else if(buf.equals("#objets")){
+                    else if(buf.equals("#objects")){
                         tokens.add(new Token(TypeDeToken.objet));
                     }
                     else if(buf.equals("#add")){
@@ -119,10 +122,13 @@ public class AnalyseLexicale {
                     else if(buf.equals("condition:")){
                         tokens.add(new Token(TypeDeToken.cond));
                     }
-                    else if(buf.equals("effets:")){
+                    else if(buf.equals("effect:")){
                         tokens.add(new Token(TypeDeToken.effet));
                     }
 
+                    retourArriere();
+                }  else if (e == 108) {
+                    tokens.add(new Token(TypeDeToken.statement, buf));
                     retourArriere();
                 }
                 // un état d'acceptation ayant été atteint, retourne à l'état 0
@@ -195,6 +201,8 @@ public class AnalyseLexicale {
             return 2;
         if (c == '#')
             return 3;
+        if (c == '`')
+            return 8;
         if (Character.isDigit(c))
             return 4;
         if (Character.isLetter(c))

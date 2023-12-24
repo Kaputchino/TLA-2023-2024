@@ -14,5 +14,6 @@ public enum TypeDeToken {
     effet, 
     condAdd,
     condSet,
-    condSub
+    condSub,
+    statement
 }
