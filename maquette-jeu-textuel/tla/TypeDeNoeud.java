@@ -6,5 +6,10 @@ public enum TypeDeNoeud {
     lieu,
     string,
     facultatif,
-    lieuContainer
+    lieuContainer,
+    first,
+    param,
+    stat,
+    objet,
+    flag
 }
