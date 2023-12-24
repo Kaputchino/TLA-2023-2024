@@ -1,5 +1,7 @@
 package algebra;
 
+import exception_tla.IllegalCharacterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +11,10 @@ public class AlgebricAnalyseLexicale {
 	Table de transition de l'analyse lexicale
 	 */
 	private static Integer TRANSITIONS[][] = {
-			//            espace  and   or  (  	   )   !     chiffe lettre    >      <   =
-			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110},
-			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106},
-			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107}
-							 //space and or  (  	)   !     chiffe lettre >   <  =
+			//            espace  and   or  (  	   )   !     chiffe lettre    >      <   =     +    -    *   /
+			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110, 111, 112, 113 ,114},
+			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106, 106, 106, 106, 106},
+			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107, 107, 107, 107, 107}
 			// 101 acceptation d'un and
 			// 102 acceptation d'un or
 			// 103 acceptation d'un (
@@ -24,6 +25,10 @@ public class AlgebricAnalyseLexicale {
 			// 108 acceptation d'un >
 			// 109 acceptation d'un <
 			// 110 acceptation d'un =
+			// 111 acceptation d'un +
+			// 112 acceptation d'un -
+			// 113 acceptation d'un *
+			// 114 acceptation d'un /
 
 	};
 
@@ -71,7 +76,11 @@ public class AlgebricAnalyseLexicale {
 				} else if (e == 105) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.inverse));
 				} else if (e == 106) {
-					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.intVal, buf));
+					if(buf.length() - buf.replaceAll("g","").length() > 1){
+						throw new IllegalCharacterException("trop de '.'");
+					}
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.floatVal, buf));
+
 					retourArriere();
 				} else if (e == 107) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.ident, buf));
@@ -84,6 +93,16 @@ public class AlgebricAnalyseLexicale {
 				}
 				else if (e == 110) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.equal, buf));
+				} else if (e == 111) {
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.add));
+				} else if (e == 112) {
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.sub));
+				}
+				else if (e == 113) {
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.mul));
+				}
+				else if (e == 114) {
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.div));
 				}
 
 				// un état d'acceptation ayant été atteint, retourne à l'état 0
@@ -135,6 +154,13 @@ public class AlgebricAnalyseLexicale {
 		if (c == '>') return 8;
 		if (c == '<') return 9;
 		if (c == '=') return 10;
+		if (c == '.') return 6;
+		if (c == '+') return 11;
+		if (c == '-') return 12;
+		if (c == '*') return 13;
+		if (c == '/') return 14;
+
+
 		System.out.println("Symbole inconnu : " + c);
 		throw new AlgebricIllegalCharacterException(c.toString());
 	}
