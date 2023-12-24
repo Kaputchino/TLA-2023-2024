@@ -1,5 +1,8 @@
 package tla;
 
+import algebra.*;
+import exception_tla.WrongTypeOfNodeException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +23,15 @@ public class Proposition {
         this.numeroLieu = numeroLieu;
         this.effets = new ArrayList<>();
     }
-
+    public boolean getValueOfCondition() throws Exception {
+        if(condition == null){
+            return true;
+        }
+        List<AlgebricToken> algebricTokens = new AlgebricAnalyseLexicale().analyse(condition);
+        AlgebricNoeud racine = new AlgebricAnalyseSyntaxique().analyse(algebricTokens);
+        racine = new AlgebricSorter().sort(racine);
+        return new AlgebricInterpretation().interpreter(racine);
+    }
     @Override
     public String toString() {
         return "Proposition{" +
