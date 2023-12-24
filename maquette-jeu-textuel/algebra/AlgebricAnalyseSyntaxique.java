@@ -1,5 +1,7 @@
 package algebra;
 
+import tla.TypeDeNoeud;
+
 import java.util.List;
 
 public class AlgebricAnalyseSyntaxique {
@@ -87,17 +89,17 @@ public class AlgebricAnalyseSyntaxique {
 		return n;
 	}
 	private AlgebricNoeud B() throws AlgebricUnexpectedTokenException {
+		AlgebricNoeud statement = new AlgebricNoeud(AlgebricTypeDeNoeud.statement);
 		if (getTypeDeToken() == AlgebricTypeDeToken.floatVal) {
-
 			// production B -> intValE
-
 			AlgebricToken t = lireToken();
 			AlgebricNoeud al = new AlgebricNoeud(AlgebricTypeDeNoeud.floatVal, Float.parseFloat(t.getValeur()));
 			AlgebricNoeud e = E();
+			statement.ajout(al);
 			if(e!= null){
-				al.ajout(e);
+				statement.ajout(e);
 			}
-			return al;
+			return statement;
 		}
 
 		if (getTypeDeToken() == AlgebricTypeDeToken.ident) {
@@ -105,11 +107,12 @@ public class AlgebricAnalyseSyntaxique {
 			// production B -> identE
 			AlgebricToken t = lireToken();
 			AlgebricNoeud al = new AlgebricNoeud(AlgebricTypeDeNoeud.ident, t.getValeur());
+			statement.ajout(al);
 			AlgebricNoeud e = E();
 			if(e!= null){
-				al.ajout(e);
+				statement.ajout(e);
 			}
-			return al;
+			return statement;
 		}
 		throw new AlgebricUnexpectedTokenException("input'' ou 'print' attendu");
 

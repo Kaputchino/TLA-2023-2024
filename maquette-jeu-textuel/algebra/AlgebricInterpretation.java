@@ -13,6 +13,7 @@ public class AlgebricInterpretation {
 
 	public AlgebricInterpretation() {
 		// pour les tests
+		/**
 		listVariables.put("a",1.0f);
 		listVariables.put("b",4.0f);
 		listVariables.put("c",12.0f);
@@ -89,6 +90,10 @@ public class AlgebricInterpretation {
 		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.div)){
 			//System.out.println(n.getValeurInt());
 			return mathematicalInterpreter(n.enfant(0)) / mathematicalInterpreter(n.enfant(1));
+		}
+		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.statement)){
+			//System.out.println(n.getValeurInt());
+			return mathematicalInterpreter(n.enfant(0));
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
 		return listVariables.get(n.getValeurString());

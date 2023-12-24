@@ -54,6 +54,7 @@ public class AlgebricSorter {
                     n.setTypeDeNoeud(AlgebricTypeDeNoeud.or);
                     n.enfant(1).getEnfants().remove(0);
                 }
+
                 if(n.enfant(1).enfant(0).getTypeDeNoeud() == AlgebricTypeDeNoeud.add){
                     n.setTypeDeNoeud(AlgebricTypeDeNoeud.add);
                     n.enfant(1).getEnfants().remove(0);
@@ -76,25 +77,13 @@ public class AlgebricSorter {
 
         if(n.getTypeDeNoeud() == AlgebricTypeDeNoeud.floatVal || n.getTypeDeNoeud() == AlgebricTypeDeNoeud.ident){
             if(n.nombreEnfants() == 1){
-                AlgebricNoeud statement = n.enfant(0);
-                AlgebricNoeud add = n.enfant(0).enfant(0);
-                AlgebricNoeud floatval = n;
-                n.invertNode(statement);
-                add.ajout(floatval);
-                statement.ajout(n);
-                floatval.getEnfants().clear();
-                System.out.println(n);
-                System.out.println(statement);
-                //statement.enfant(0).ajout(floatval);
-                //statement.enfant(0).ajout(statement.enfant(1));
-                //statement.getEnfants().remove(1);
+
             }
         }
 
         if(n.nombreEnfants() == 1){
             if(n.getTypeDeNoeud() == AlgebricTypeDeNoeud.statement){
                 if(n.enfant(0).getTypeDeNoeud() == AlgebricTypeDeNoeud.statement){
-                    n = n.enfant(0);
                 }
             }
         }
