@@ -69,16 +69,7 @@ public class Noeud {
             afficheNoeud(n.enfant(i), profondeur + 1);
         }
     }
-    public boolean getValueOfCondition() throws Exception {
-        if(typeDeNoeud == TypeDeNoeud.condition){
-            List<AlgebricToken> algebricTokens = new AlgebricAnalyseLexicale().analyse(valeur);
-            AlgebricNoeud racine = new AlgebricAnalyseSyntaxique().analyse(algebricTokens);
-            racine = new AlgebricSorter().sort(racine);
-            boolean value = new AlgebricInterpretation().interpreter(racine);
-            return value;
-        }
-        throw new WrongTypeOfNodeException("Only condition can be consider as algebric");
-    }
+
 
 
 
