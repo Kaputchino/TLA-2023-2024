@@ -9,6 +9,8 @@ public class HashmapLoader {
     private HashMap<Integer, Lieu> lieux = new HashMap<>();
     private HashMap<String, Effect> settings = new HashMap<>();
 
+    private String title;
+
     public HashMap<Integer, Lieu> getLieux() {
         return lieux;
     }
@@ -17,9 +19,31 @@ public class HashmapLoader {
         // this is very secret u can't use it ;c
     }
 
-    public static HashMap<Integer, Lieu> getHashMap(Noeud premierLieu) throws Exception {
+    public static HashMap<Integer, Lieu> getHashMap(Noeud entryPoint) throws Exception {
         HashmapLoader lieuxHistoire = new HashmapLoader();
-        lieuxHistoire.entryPoint(premierLieu);
+
+        if (entryPoint.getTypeDeNoeud() == TypeDeNoeud.first) {
+            if (entryPoint.enfant(0).getTypeDeNoeud() == TypeDeNoeud.string) {
+                lieuxHistoire.title = entryPoint.enfant(0).getValeur();
+            } else {
+                throw new Exception ("Titre attendu.");
+            }
+
+            if (entryPoint.enfant(1).getTypeDeNoeud() == TypeDeNoeud.param) {
+                // traiter setting
+            } else {
+                throw new Exception ("Parametre attendue.");
+            }
+
+            if (entryPoint.enfant(2).getTypeDeNoeud() == TypeDeNoeud.lieuContainer) {
+                lieuxHistoire.entryPoint(entryPoint.enfant(2));
+            } else {
+                throw new Exception ("lieuContainer attendue.");
+            }
+        }else {
+            throw new Exception ("Noeud first attendu.");
+        }
+
 
         // traitement des erreurs toussa toussa
 
