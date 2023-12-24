@@ -38,7 +38,9 @@ public class AlgebricInterpretation {
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.inf)){
 			boolean value = mathematicalInterpreter(n.enfant(0)) < mathematicalInterpreter(n.enfant(1));
 			n.setValeurBoolean(value);
-			return value;		}
+			return value;
+		}
+
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.or)){
 			boolean value1 = interpreter(n.enfant(0));
 			boolean value2 = interpreter(n.enfant(1));
@@ -75,8 +77,19 @@ public class AlgebricInterpretation {
 			//System.out.println(n.getValeurInt());
 			return n.getValeurFloat();
 		}
+		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.add)){
+			//System.out.println(n.getValeurInt());
+			return mathematicalInterpreter(n.enfant(0)) + mathematicalInterpreter(n.enfant(1));
+		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.sub)){
+			//System.out.println(n.getValeurInt());
+			return mathematicalInterpreter(n.enfant(0)) - mathematicalInterpreter(n.enfant(1));
+		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.mul)){
+			//System.out.println(n.getValeurInt());
+			return mathematicalInterpreter(n.enfant(0)) * mathematicalInterpreter(n.enfant(1));
+		}
 		//System.out.println(listVariables.get(n.getValeurString()));
 		return listVariables.get(n.getValeurString());
+
 	}
 
 

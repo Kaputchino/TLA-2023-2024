@@ -10,5 +10,8 @@ public enum AlgebricTypeDeToken {
 	inf,
 	sup,
 	equal,
-	inverse
+	inverse,
+	add,
+	sub,
+	mul
 }

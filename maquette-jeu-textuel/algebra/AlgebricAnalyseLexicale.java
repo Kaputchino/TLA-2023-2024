@@ -141,6 +141,9 @@ public class AlgebricAnalyseLexicale {
 		if (c == '<') return 9;
 		if (c == '=') return 10;
 		if (c == '.') return 6;
+		if (c == '+') return 11;
+		if (c == '-') return 12;
+		if (c == '*') return 13;
 
 		System.out.println("Symbole inconnu : " + c);
 		throw new AlgebricIllegalCharacterException(c.toString());
