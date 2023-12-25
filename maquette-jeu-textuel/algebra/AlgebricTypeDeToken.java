@@ -5,10 +5,14 @@ public enum AlgebricTypeDeToken {
 	or,
 	leftPar,
 	rightPar,
-	intVal,
+    floatVal,
 	ident,
 	inf,
 	sup,
 	equal,
-	inverse
+	inverse,
+	add,
+	sub,
+	mul,
+	div
 }

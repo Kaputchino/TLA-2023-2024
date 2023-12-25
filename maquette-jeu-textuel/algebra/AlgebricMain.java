@@ -5,8 +5,8 @@ import java.util.List;
 public class AlgebricMain {
 
 	public static void main(String[] args) {
-		//testAnalyseLexicale("a < 2 & ( b = 4 & c > a & tag1 | !tag2 )");
-		testAnalyseSyntaxique("a < 2 & ( b = 4 & c > a & !tag1 ) & tag2 ");
+		//testAnalyseLexicale("a < 2.3 & ( b = 4 & c > a & tag1 | !tag2 )");
+		testAnalyseSyntaxique("a / 1 < 2.3 + 5 * 3 & ( b - 1 = 4 - 1 & c > a & !tag1 ) & tag2 ");
 		// testInterpretation("input a input b print 12+a*(b+2) print 2*3+5 print pow(a+1,b)+2");
 		// testInterpretation("input a input c print a+3*c");
 		//testInterpretation("print 1+3 print 2 print 3 print 4 print 3*2 print pow(4,3) input a print a print a * 2");
