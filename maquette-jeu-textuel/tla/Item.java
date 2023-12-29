@@ -6,7 +6,7 @@ package tla;
 public class Item implements Setting {
     // OBJET-> - intval string < OBJET | epsilon
 
-    int quantity;
+    float quantity;
     String name;
 
     public Item(int quantity, String name) {
@@ -14,11 +14,11 @@ public class Item implements Setting {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 
