@@ -30,7 +30,9 @@ public class Proposition {
         List<AlgebricToken> algebricTokens = new AlgebricAnalyseLexicale().analyse(condition);
         AlgebricNoeud racine = new AlgebricAnalyseSyntaxique().analyse(algebricTokens);
         racine = new AlgebricSorter().sort(racine);
-        return new AlgebricInterpretation().interpreter(racine);
+        boolean val = new AlgebricInterpretation().interpreter(racine);
+        AlgebricNoeud.afficheNoeud(racine, 0);
+        return val ;
     }
     @Override
     public String toString() {

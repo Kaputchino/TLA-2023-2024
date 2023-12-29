@@ -63,7 +63,7 @@ public class AlgebricNoeud {
 	affiche le noeud n d'un arbre syntaxique avec un niveau d'indentation depth,
 	et appels récursifs sur les noeuds enfants de n à un niveau d'indendation depth+1
 	 */
-	static void afficheNoeud(AlgebricNoeud n, int profondeur) {
+	public static void afficheNoeud(AlgebricNoeud n, int profondeur) {
 		String s = "";
 		// identation
 		for(int i=0;i<profondeur;i++) s = s + "  ";
@@ -89,7 +89,7 @@ public class AlgebricNoeud {
 		return valeurFloat;
 	}
 
-	public void setValeurFloat(int valeurFloat) {
+	public void setValeurFloat(float valeurFloat) {
 		this.valeurFloat = valeurFloat;
 	}
 
