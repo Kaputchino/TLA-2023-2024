@@ -5,4 +5,5 @@ package tla;
  */
 public interface Setting {
     float getQuantity();
+    void setValue(float value);
 }

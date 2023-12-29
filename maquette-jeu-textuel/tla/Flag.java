@@ -55,4 +55,9 @@ public class Flag implements Setting {
         }
         return 0;
     }
+
+    public void setValue(float value) {
+        int val = ((int)value)%2;
+        this.value = val == 1;
+    }
 }

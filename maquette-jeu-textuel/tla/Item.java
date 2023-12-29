@@ -18,6 +18,11 @@ public class Item implements Setting {
         return quantity;
     }
 
+    @Override
+    public void setValue(float value) {
+        quantity = value;
+    }
+
     public void setQuantity(float quantity) {
         this.quantity = quantity;
     }

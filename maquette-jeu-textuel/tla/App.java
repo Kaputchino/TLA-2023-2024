@@ -152,7 +152,16 @@ public class App implements ActionListener {
 
         // Retrouve la propostion
         Proposition proposition = lieuActuel.propositions.get(index);
+        for(Effet effet : proposition.effets){
+            Setting st = ContenuAventure.settings.get(effet.variable);
+            if(effet.operation.equals("+")){
 
+            }else if(effet.operation.equals("+")){
+
+            }else{
+                st.setValue(effet.valeur);
+            }
+        }
         // Recherche le lieu désigné par la proposition
         Lieu lieu = lieux.get(proposition.numeroLieu);
         if (lieu != null) {
