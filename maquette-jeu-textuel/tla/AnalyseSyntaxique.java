@@ -124,11 +124,16 @@ public class AnalyseSyntaxique {
                     }
                     throw new UnexpectedTokenException("§ attendu dans une proposition");
                 }
+                System.out.println(t1);
+                System.out.println(t2);
                 throw new UnexpectedTokenException("stringVal attendu dans une proposition");
             }
+            System.out.println(t);
+            System.out.println(t1);
             throw new UnexpectedTokenException("intVal attendu dans une proposition");
         }
         if (!t.getValeur().equals("\n")) {
+            System.out.println(t);
             throw new UnexpectedTokenException("- attendu en debut de proposition");
         }
         return null;
@@ -355,6 +360,8 @@ public class AnalyseSyntaxique {
 
                         return noeudObjet;
                     }
+                    System.out.println(t1);
+                    System.out.println(t2);
                     throw new UnexpectedTokenException("§ attendu dans les settings objets");
                 }
                 throw new UnexpectedTokenException("String attendu dans les settings objets");
