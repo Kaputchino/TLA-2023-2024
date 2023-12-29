@@ -60,4 +60,9 @@ public class Stat implements Setting {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public float getQuantity() {
+        return getDef();
+    }
 }

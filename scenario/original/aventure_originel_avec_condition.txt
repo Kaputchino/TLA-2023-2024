@@ -72,11 +72,11 @@ condition: `!gemme_rouge_taken`§
 effet: gemme_rouge_taken #set 1§
 - 4 La verte ? §
 condition: `!gemme_verte_taken`§
-effet: gemme_verte_taken #sub 1§
+effet: gemme_verte_taken #set 1§
 - 14 Les deux ? §
 condition: `!gemme_rouge_taken & !gemme_verte_taken`§
 effet: gemme_rouge_taken #set 1§
-effet: gemme_verte_taken #sub 1§
+effet: gemme_verte_taken #set 1§
 ## 
 12 De terrifiantes étincelles fusent des multiples yeux de la statue. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
 - 12 RIP §
