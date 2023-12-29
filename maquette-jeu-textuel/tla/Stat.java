@@ -65,4 +65,22 @@ public class Stat implements Setting {
     public float getQuantity() {
         return getDef();
     }
+
+    @Override
+    public void setValue(float value) {
+        def = (int) value;
+    }
+
+    @Override
+    public void addValue(float value) {
+        this.def += (int)value;
+    }
+
+    @Override
+    public void subValue(float value) {
+        addValue(-value);
+        if(def < 0){
+            def = 0;
+        }
+    }
 }
