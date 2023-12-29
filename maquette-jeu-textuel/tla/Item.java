@@ -3,22 +3,22 @@ package tla;
 /*
  * Modeliste un effet
  */
-public class Object implements Setting {
+public class Item implements Setting {
     // OBJET-> - intval string < OBJET | epsilon
 
-    int quantity;
+    float quantity;
     String name;
 
-    public Object(int quantity, String name) {
+    public Item(int quantity, String name) {
         this.quantity = quantity;
         this.name = name;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 
@@ -29,4 +29,13 @@ public class Object implements Setting {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "quantity=" + quantity +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
+

@@ -7,9 +7,11 @@ public class Flag implements Setting {
     // FLAG-> - intval string < FLAG | epsilon
 
     int id;
-    int name;
+    String name;
 
-    public Flag(int id, int name) {
+    boolean value;
+
+    public Flag(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -22,11 +24,27 @@ public class Flag implements Setting {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isValue() {
+        return value;
+    }
+
+    public void setValue(boolean value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "Flag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

@@ -2,9 +2,13 @@ package algebra;
 
 public enum AlgebricTypeDeNoeud {
 	statement,
-	ident, intVal,
+	ident, floatVal,
 	and, or,
 	inf, sup, equ, inverse,
-	leftpar, rightpar
+	leftpar, rightpar,
+	add,
+	sub,
+	mul,
+	div
 
 }

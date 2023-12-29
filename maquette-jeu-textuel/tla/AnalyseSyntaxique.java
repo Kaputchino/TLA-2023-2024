@@ -153,7 +153,7 @@ public class AnalyseSyntaxique {
     // pour rajouter des conditions
     private Noeud F() throws UnexpectedTokenException {
         Noeud noeud = new Noeud(TypeDeNoeud.facultatif);
-        if (getTypeDeToken() == TypeDeToken.cond) {
+        if (getTypeDeToken() == TypeDeToken.condition) {
             Noeud cond = Cond();
             noeud.ajout(cond);
 
@@ -236,20 +236,33 @@ public class AnalyseSyntaxique {
             /* On lit § */
             if (t1.getTypeDeToken() == TypeDeToken.separateurLigne) {
                 Noeud stat = Stat();
-                if (stat != null)
+                if (stat != null) {
                     noeudParam.ajout(stat);
+                } else {
+                    noeudParam.ajout(new Noeud(TypeDeNoeud.stat));
+                }
 
                 Token t2 = lireToken();
                 /* On lit § (#objet lu dans Stat()) */
                 if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
 
-                    noeudParam.ajout(Objet());
+                    Noeud objet = Objet();
+                    if (stat != null) {
+                        noeudParam.ajout(objet);
+                    } else {
+                        noeudParam.ajout(new Noeud(TypeDeNoeud.objet));
+                    }
 
                     Token t3 = lireToken();
                     /* On lit § (#flag lu dans Objet()) */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                        Noeud flag = Flag();
+                        if (stat != null) {
+                            noeudParam.ajout(flag);
+                        } else {
+                            noeudParam.ajout(new Noeud(TypeDeNoeud.flag));
+                        }
 
-                        noeudParam.ajout(Flag());
                         return noeudParam;
                     }
                     throw new UnexpectedTokenException("§ attendu apres un identifiant #object.");
@@ -310,7 +323,7 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu dans les settings stats");
         } else if (t0.getTypeDeToken() == TypeDeToken.objet)
-            return noeudStat;
+            return null;
         throw new UnexpectedTokenException("- ou #objet attendu dans les settings");
     }
 
@@ -348,7 +361,7 @@ public class AnalyseSyntaxique {
             }
             throw new UnexpectedTokenException("intVal attendu dans les settings objets");
         } else if (t0.getTypeDeToken() == TypeDeToken.flag)
-            return noeudObjet;
+            return null;
         throw new UnexpectedTokenException("- ou #flag attendu dans le settings");
     }
 
@@ -357,7 +370,7 @@ public class AnalyseSyntaxique {
      */
     private Noeud Flag() throws UnexpectedTokenException {
         if (getTypeDeToken() == TypeDeToken.intVal)
-            return new Noeud(TypeDeNoeud.flag);
+            return null;
 
         Noeud noeudFlag = new Noeud(TypeDeNoeud.flag);
         Token t0 = lireToken();
@@ -396,10 +409,10 @@ public class AnalyseSyntaxique {
      * COND-> condition: STATEMENT § | epsilon
      */
     private Noeud Cond() throws UnexpectedTokenException {
-        Noeud noeud = new Noeud(TypeDeNoeud.cond);
+        Noeud noeud = new Noeud(TypeDeNoeud.condition);
         Token t0 = lireToken();
         /* On lit condition: */
-        if (t0.getTypeDeToken() == TypeDeToken.cond) {
+        if (t0.getTypeDeToken() == TypeDeToken.condition) {
 
                 Noeud statement = Statement();
                 Token t1 = lireToken();
