@@ -155,9 +155,9 @@ public class App implements ActionListener {
         for(Effet effet : proposition.effets){
             Setting st = ContenuAventure.settings.get(effet.variable);
             if(effet.operation.equals("+")){
-
-            }else if(effet.operation.equals("+")){
-
+                st.addValue(effet.valeur);
+            }else if(effet.operation.equals("-")){
+                st.subValue(effet.valeur);
             }else{
                 st.setValue(effet.valeur);
             }
