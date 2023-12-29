@@ -1,0 +1,6 @@
+S->(S)D | !SD | AD
+A->BC
+B->intval | ident
+C-><B | >B | =B | epsilon
+D->|S | &S | epsilon
+E->+B | -B | *B | /B |epsilon

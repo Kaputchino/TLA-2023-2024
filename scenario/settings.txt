@@ -1,0 +1,36 @@
+Ceci est un titre. §
+
+#stats§
+- 1 2 3 hello§
+- 2 3 4 blabla§
+
+#objets§
+- 3 dddd§
+- 4 toi§
+
+#flags§
+- 3 DEF§
+- 3 ABC§
+
+1 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
+- 6 RIP §
+condition: `5+4=2`§
+effet: hello #add 4§
+effet: blabla #sub 5§
+effet: dddd #set 4§
+##
+
+6 TESTEFFETUNIQUE FIN §
+- 6 RIP §
+effet: dddd #set 4§
+##
+
+2 TESTCONDITIONUNIQUE FIN §
+- 3 RIP §
+condition: `5+4=2`§
+##
+
+8 Defffhkjez FIN §
+- 1 RIP §
+##
+

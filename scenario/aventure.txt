@@ -1,3 +1,12 @@
+Aventure fournie §
+
+#stats§
+
+#objets§
+
+#flags§
+
+
 1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! §
 - 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? §
 - 9 Explorez vous le souterrain dans l'autre direction ? §
@@ -50,7 +59,6 @@
 11 Chacune dans une alcôve et se faisant face, les statues représentent l'une une sorte de reptile et l'autre une sorte de grand singe. Chacune n'a qu'un seul oeil : une gemme légèrement luisante. L'oeil du reptile est roule et celui du singe est vert. Que faites vous ? §
 - 20 Vous ignorez ces statues et revenez vers la salle à la fresque ? §
 - 6 Vous les ignorez et continuez le couloir dans la direction opposée à la salle à la fresque ? §
-- Vous décidez de dessertir les gemmes et de les emporter; et dans ce cas §
 - 22 Voulez vous prendre la gemme rouge ? §
 - 4 La verte ? §
 - 14 Les deux ? §
@@ -127,7 +135,7 @@
 ##
 
 27 Vous vous retrouvez bientôt entre les deux statues. §
-- 11 §
+- 11 mmm...§
 ##
 
 28 Combien de gemmes possédez vous ? §
@@ -174,7 +182,7 @@
 
 37 Possédez vous des objets numérotés ? §
 - 3 Si vous n'en possédez pas. §
-- Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
+- 38 Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
 ##
 
 38 Que faites vous ensuite ? §
