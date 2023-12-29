@@ -60,4 +60,24 @@ public class Flag implements Setting {
         int val = ((int)value)%2;
         this.value = val == 1;
     }
+
+    @Override
+    public void addValue(float value) {
+        int x = 0;
+        if(this.value){
+            x = 1;
+        }
+        x = x + ((int)value)%2;
+        if(x == 2){
+            x = 0;
+        }else if(x == -1){
+            x = 1;
+        }
+        this.value = x == 1;
+    }
+
+    @Override
+    public void subValue(float value) {
+        addValue(-value);
+    }
 }
