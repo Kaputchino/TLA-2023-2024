@@ -14,7 +14,7 @@ Ceci est un titre. §
 
 1 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
 - 6 RIP §
-condition: `5+4=2`§
+condition: `5+4=9`§
 effet: hello #add 4§
 effet: blabla #sub 5§
 effet: dddd #set 4§
