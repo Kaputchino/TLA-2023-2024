@@ -1,15 +1,17 @@
 package algebra;
 
+import tla.ContenuAventure;
+import tla.Flag;
+import tla.Item;
+import tla.Setting;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 public class AlgebricInterpretation {
 
 	// permet la lecture de chaîne au clavier
 	private static BufferedReader stdinReader = new BufferedReader(new InputStreamReader(System.in));
-	private HashMap<String, Float> listVariables = new HashMap<>();
-	private HashMap<String, Boolean> listFlags = new HashMap<>();
 
 	public AlgebricInterpretation() {
 		// pour les tests
@@ -28,7 +30,9 @@ public class AlgebricInterpretation {
 	 */
 	public Boolean interpreter(AlgebricNoeud n) {
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.equ)){
-			boolean value = mathematicalInterpreter(n.enfant(0)) == mathematicalInterpreter(n.enfant(1));
+			float x = mathematicalInterpreter(n.enfant(0));
+			float y = mathematicalInterpreter(n.enfant(1));
+			boolean value = (x == y);
 			n.setValeurBoolean(value);
 			return value;
 		}
@@ -62,7 +66,9 @@ public class AlgebricInterpretation {
 			return value ;
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.ident)){
-			boolean value = listFlags.get(n.getValeurString());
+			Setting st =ContenuAventure.settings.get(n.getValeurString());
+			Flag flag = (Flag)st;
+			boolean value = flag.isValue();
 			n.setValeurBoolean(value);
 			return value;
 		}
@@ -80,7 +86,8 @@ public class AlgebricInterpretation {
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.add)){
 			//System.out.println(n.getValeurInt());
-			return mathematicalInterpreter(n.enfant(0)) + mathematicalInterpreter(n.enfant(1));
+			n.setValeurFloat(mathematicalInterpreter(n.enfant(0)) + mathematicalInterpreter(n.enfant(1)));
+			return n.getValeurFloat();
 		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.sub)){
 			//System.out.println(n.getValeurInt());
 			return mathematicalInterpreter(n.enfant(0)) - mathematicalInterpreter(n.enfant(1));
@@ -93,10 +100,13 @@ public class AlgebricInterpretation {
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.statement)){
 			//System.out.println(n.getValeurInt());
-			return mathematicalInterpreter(n.enfant(0));
+			n.setValeurFloat(mathematicalInterpreter(n.enfant(0)));
+			return n.getValeurFloat();
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
-		return listVariables.get(n.getValeurString());
+		Setting st = ContenuAventure.settings.get(n.getValeurString());
+		Item ob = (Item) st;
+		return ob.getQuantity();
 
 	}
 

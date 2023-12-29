@@ -9,6 +9,8 @@ public class Flag implements Setting {
     int id;
     String name;
 
+    boolean value;
+
     public Flag(int id, String name) {
         this.id = id;
         this.name = name;
@@ -28,6 +30,14 @@ public class Flag implements Setting {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isValue() {
+        return value;
+    }
+
+    public void setValue(boolean value) {
+        this.value = value;
     }
 
     @Override

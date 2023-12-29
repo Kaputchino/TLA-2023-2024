@@ -83,8 +83,9 @@ public class nodeDecoder {
     private void traiterObjects(Noeud n) {
         if (n.nombreEnfants() >= 2) {
             int qte = Integer.parseInt(n.enfant(0).getValeur());
+
             String name = n.enfant(1).getValeur().trim();
-            Setting objet = new Object(qte, name);
+            Setting objet = new Item(qte, name);
             settings.put(name, objet);
 
             if (n.nombreEnfants() == 3) {
@@ -126,7 +127,9 @@ public class nodeDecoder {
                 } else if (n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
                     return traiterProposition(n.enfant(2), propositions);
                 }
-
+            } else if (n.nombreEnfants() == 4) {
+                traiterFacultatif(n.enfant(2), proposition);
+                return traiterProposition(n.enfant(3), propositions);
             }
 
             return propositions;
