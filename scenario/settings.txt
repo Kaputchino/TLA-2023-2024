@@ -23,6 +23,11 @@ condition: `5+4=2`§
 effet: hello #add 4§
 effet: blabla #sub 5§
 effet: dddd #set 4§
+- 6 RIP2 §
+condition: `5+4=2`§
+effet: hello #add 4§
+effet: blabla #sub 5§
+effet: dddd #set 4§
 ##
 
 6 TESTEFFETUNIQUE FIN §

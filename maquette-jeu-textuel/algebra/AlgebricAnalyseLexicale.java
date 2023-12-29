@@ -105,6 +105,7 @@ public class AlgebricAnalyseLexicale {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.div));
 				}
 
+
 				// un état d'acceptation ayant été atteint, retourne à l'état 0
 				etat = 0;
 				// reinitialise buf
@@ -159,10 +160,11 @@ public class AlgebricAnalyseLexicale {
 		if (c == '-') return 12;
 		if (c == '*') return 13;
 		if (c == '/') return 14;
+		return 7;
 
 
-		System.out.println("Symbole inconnu : " + c);
-		throw new AlgebricIllegalCharacterException(c.toString());
+		//System.out.println("Symbole inconnu : " + c);
+		//throw new AlgebricIllegalCharacterException(c.toString());
 	}
 
 }

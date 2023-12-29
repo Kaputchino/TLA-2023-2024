@@ -47,4 +47,12 @@ public class Flag implements Setting {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    @Override
+    public float getQuantity() {
+        if(value){
+            return 1;
+        }
+        return 0;
+    }
 }

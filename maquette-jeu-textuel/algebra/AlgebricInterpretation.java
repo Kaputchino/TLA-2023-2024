@@ -1,9 +1,6 @@
 package algebra;
 
-import tla.ContenuAventure;
-import tla.Flag;
-import tla.Item;
-import tla.Setting;
+import tla.*;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -105,9 +102,7 @@ public class AlgebricInterpretation {
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
 		Setting st = ContenuAventure.settings.get(n.getValeurString());
-		Item ob = (Item) st;
-		return ob.getQuantity();
-
+		return st.getQuantity();
 	}
 
 
