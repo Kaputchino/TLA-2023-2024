@@ -83,6 +83,7 @@ public class nodeDecoder {
     private void traiterObjects(Noeud n) {
         if (n.nombreEnfants() >= 2) {
             int qte = Integer.parseInt(n.enfant(0).getValeur());
+
             String name = n.enfant(1).getValeur().trim();
             Setting objet = new Object(qte, name);
             settings.put(name, objet);
