@@ -126,7 +126,9 @@ public class nodeDecoder {
                 } else if (n.enfant(2).getTypeDeNoeud() == TypeDeNoeud.proposition) {
                     return traiterProposition(n.enfant(2), propositions);
                 }
-
+            } else if (n.nombreEnfants() == 4) {
+                traiterFacultatif(n.enfant(2), proposition);
+                return traiterProposition(n.enfant(3), propositions);
             }
 
             return propositions;
