@@ -30,7 +30,9 @@ public class AlgebricInterpretation {
 	 */
 	public Boolean interpreter(AlgebricNoeud n) {
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.equ)){
-			boolean value = mathematicalInterpreter(n.enfant(0)) == mathematicalInterpreter(n.enfant(1));
+			float x = mathematicalInterpreter(n.enfant(0));
+			float y = mathematicalInterpreter(n.enfant(1));
+			boolean value = (x == y);
 			n.setValeurBoolean(value);
 			return value;
 		}
@@ -84,7 +86,8 @@ public class AlgebricInterpretation {
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.add)){
 			//System.out.println(n.getValeurInt());
-			return mathematicalInterpreter(n.enfant(0)) + mathematicalInterpreter(n.enfant(1));
+			n.setValeurFloat(mathematicalInterpreter(n.enfant(0)) + mathematicalInterpreter(n.enfant(1)));
+			return n.getValeurFloat();
 		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.sub)){
 			//System.out.println(n.getValeurInt());
 			return mathematicalInterpreter(n.enfant(0)) - mathematicalInterpreter(n.enfant(1));
@@ -97,7 +100,8 @@ public class AlgebricInterpretation {
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.statement)){
 			//System.out.println(n.getValeurInt());
-			return mathematicalInterpreter(n.enfant(0));
+			n.setValeurFloat(mathematicalInterpreter(n.enfant(0)));
+			return n.getValeurFloat();
 		}
 		//System.out.println(listVariables.get(n.getValeurString()));
 		Setting st = ContenuAventure.settings.get(n.getValeurString());
