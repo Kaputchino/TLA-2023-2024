@@ -1,16 +1,11 @@
-Aventure §
+Aventure fournie §
 
 #stats§
-0 10 20 vie§
 
 #objets§
-0 gemme$
 
 #flags§
-0 gemme_rouge_taken$
-0 gemme_verte_taken$
-0 objet_num$
-0 brasselet_chauve_souris$
+
 
 1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! §
 - 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? §
@@ -64,21 +59,11 @@ Aventure §
 11 Chacune dans une alcôve et se faisant face, les statues représentent l'une une sorte de reptile et l'autre une sorte de grand singe. Chacune n'a qu'un seul oeil : une gemme légèrement luisante. L'oeil du reptile est roule et celui du singe est vert. Que faites vous ? §
 - 20 Vous ignorez ces statues et revenez vers la salle à la fresque ? §
 - 6 Vous les ignorez et continuez le couloir dans la direction opposée à la salle à la fresque ? §
-- 100 Vous décidez de dessertir les gemmes et de les emporter§
+- 22 Voulez vous prendre la gemme rouge ? §
+- 4 La verte ? §
+- 14 Les deux ? §
 ##
 
-100 Quel gemme prendre$
-- 22 Voulez vous prendre la gemme rouge ? §
-condition: `!gemme_rouge_taken`$
-effet: gemme_rouge_taken #set 1§
-- 4 La verte ? §
-condition: `!gemme_verte_taken`$
-effet: gemme_verte_taken #sub 1§
-- 14 Les deux ? §
-condition: `!gemme_rouge_taken & !gemme_verte_taken`$
-effet: gemme_rouge_taken #set 1§
-effet: gemme_verte_taken #sub 1§
-## 
 12 De terrifiantes étincelles fusent des multiples yeux de la statue. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
 - 12 RIP §
 ##
@@ -97,9 +82,7 @@ effet: gemme_verte_taken #sub 1§
 ##
 
 16 L'éboulement a l'air ancien et le travail est pénible. Vous avez dû poser votre lampe à terre pour avoir les deux mains libres. Après avoir ainsi retiré trois ou quatre pierres, vous remarquez une galerie circulaire d'une quarantaine de centimètres de diamètre. Vous prenez votre lampe pour l'eclairer... quand une pure horreur en surgit! Une sorte de mille pattes caparaçonné comme un scarabée, long de plus d'un mètre et pourvu d'énormes mandibules acérées. Il s ejette sur vous. Vous n'avez que le temps de sortir votre poignard. §
-- 27 Perdre 4 points de vie et gagner .Et décidez prudemment de faire demi tour. §
-condition: `vie > 4`$
-effet: vie #sub 4§
+- 27 Si vous pouvez perdre 4 points de survie, vous gagnez le combat.Et décidez prudemment de faire demi tour. §
 - 16 Sinon, c'en est fini de vous et de votre aventure. RIP §
 ##
 
@@ -114,9 +97,7 @@ effet: vie #sub 4§
 ##
 
 19 Peu à peu, les champignons se font moins nombreux et les murs moins humides; il n'y a plus de traces d'éboulement. Vous êtes arrivé à l'autre bout de la longue salle à la fresque et vous vous trouvez maintenant devant un escalier. Vous l'empruntez et débouchez dans une autre salle. Celle-ci est parfaitement circulaire, jonchée d'ossements et d'armes rouillées. Vous apercevez une porte en face de vous. Vous vous y dirigez prudemment ; et c'est à ce moment que se matérialise la pire des horreurs ! Les ossements épars se regroupent en un clin d'oeil et cinq squelettes animés vous entourent avec des rictus de très mauvais augure. Vous n'avez que le temps de saisir une vieille lance pour défendre votre vie. §
-- 26 Perdre 10 points de vie, vous réussissez à vous rapprocher de la porte, à l'ouvrir et à vous soustraire aux squelettes. §
-condition: `vie > 10`$
-effet: vie #sub 10§
+- 26 Si vous pouvez dépenser 10 points de survie, vous réussissez à vous rapprocher de la porte, à l'ouvrir et à vous soustraire aux squelettes. §
 - 19 Sinon, c'en est fini de vous et l'aventure est malheureusement terminée. RIP. §
 ##
 
@@ -154,19 +135,13 @@ effet: vie #sub 10§
 ##
 
 27 Vous vous retrouvez bientôt entre les deux statues. §
-- 11 §
+- 11 mmm...§
 ##
 
-28 Combien de gemmes mettre ? §
+28 Combien de gemmes possédez vous ? §
 - 24 Une ? §
-condition: `gemme > 0`$
-effet: gemme #sub 1§
 - 46 Deux ? §
-condition: `gemme > 1`$
-effet: gemme #sub 2§
 - 35 Trois ? §
-condition: `gemme > 2`$
-effet: gemme #sub 3§
 ##
 
 29 Vous déposez votre offrande dans les orbites profondes... et la réaction est immédiate! La statue se met à luire et à vibrer étrangement. une douleur infernale vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. §
@@ -207,8 +182,7 @@ effet: gemme #sub 3§
 
 37 Possédez vous des objets numérotés ? §
 - 3 Si vous n'en possédez pas. §
-- Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
-condition: `objet_num`$
+- 38 Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
 ##
 
 38 Que faites vous ensuite ? §
@@ -226,15 +200,12 @@ condition: `objet_num`$
 
 41 Un coffre est ouvert au fond de cette petite salle. Vous y jetez un coup d'oeil. Vous découvrez une petite clé et une paire de bracelets de bronze en forme d'ailes de chauve souris. Vous prenez la clé sans hésiter, mais ne savez que faire au sujet. §
 - 38 Vous les enfilez ? §
-effet: brasselet_chauve_souris #set 1$
 - 47 vous les laissez à leur place ? §
 ##
 
 42 Avez vous passé à vos poignets des bracelets en forme d'ailes de chauve souris ? §
 - 3 Oui ? §
-condition: `brasselet_chauve_souris`$
 - 37 non ? §
-condition: `!brasselet_chauve_souris`$
 ##
 
 43 Vous êtes au seuil d'une très grande salle. Près du mur de droite, à quelques pas de vous, se dresse une coloassale statue, parée d'ailes de chauve souris. Elle semble continuellement vibrer. Et soudain, alors que vous êtes toujours sur le seuil de la salle, voilà que la statue tourne lentement la tête vers vous ! Ses multiples yeux brillent intensément. Tout au fond de la salle, sur le mur opposé à la statue, vous distinguez une grande double porte. Il n efait maintenant aucun doute, la statue vous a vu! Que faites vous ? §
@@ -251,24 +222,11 @@ condition: `!brasselet_chauve_souris`$
 - 32 Vous faites demi tour pour retourner dans la galerie par le passage secret ? §
 ##
 
-46 Que faire. §
+46 Vous possédez une gemme rouge et une gemme verte. §
 - 29 Mettez vous la rouge dans l'orbite gauche et la verte dans l'orbite droite ? §
-condition: `gemme_rouge_taken & gemme_verte_taken`$
-effet: gemme_rouge_taken #set 0§
-effet: gemme_verte_taken #set 0§
 - 44 Mettez vous la rouge dans l'orbite droite et la verte dans l'orbite gauche ? §
-condition: `gemme_rouge_taken & gemme_verte_taken`$
-effet: gemme_rouge_taken #set 0§
-effet: gemme_verte_taken #set 0§
 - 35 Mettez vous les deux dans l'orbite droite ? §
-condition: `gemme_rouge_taken & gemme_verte_taken`$
-effet: gemme_rouge_taken #set 0§
-effet: gemme_verte_taken #set 0§
 - 24 Mettez vous les deux dans l'orbite gauche ? §
-condition: `gemme_rouge_taken & gemme_verte_taken`$
-effet: gemme_rouge_taken #set 0§
-effet: gemme_verte_taken #set 0§
-- 101 Rien faire$
 ##
 
 47 Que faites vous ensuite ? §
@@ -278,9 +236,4 @@ effet: gemme_verte_taken #set 0§
 
 48 Vous êtes retourné à l'extrémité de la galerie. Vous ouvrez la porte et... possédez vous 20 points de survie pour affronter les 10 squelettes qui se jettent maintenant sur vous ? C'est peu probable. Vous tombez sous leurs coups. L'aventure est malheureusement termiéne. FIN §
 - 48 RIP §
-##
-
-101 Vous êtes bloqué à vie RIP $
-- 101 RIP §
-- 46 se remettre en question et faire quelque chose$
-##
+## 
