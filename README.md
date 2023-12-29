@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Jalon 1 :
 
 ## Grammaire
@@ -34,3 +35,7 @@
 - un lieu est resprésenté par un identifiant (intVal) et est représenter par une description (string) à l'utlisateur
 - une lieu n'ayant qu'une proposition, qui renvoie vers ce même lieu est consideré comme terminal
 - "§" permet de détecter la fin d'un élément
+=======
+
+Permet de recuperer l'aventure avec et sans les modifs au cas ou
+>>>>>>> histoire_avec_condition

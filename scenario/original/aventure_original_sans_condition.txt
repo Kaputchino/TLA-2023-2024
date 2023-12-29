@@ -1,0 +1,254 @@
+<<<<<<< HEAD:scenario/aventure.txt
+Aventure fournie §
+
+#stats§
+
+#objets§
+
+#flags§
+
+
+=======
+>>>>>>> histoire_avec_condition:scenario/original/aventure_original_sans_condition.txt
+1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! §
+- 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? §
+- 9 Explorez vous le souterrain dans l'autre direction ? §
+##
+
+2 Vous vous éloignez de la fresque et remontez la salle éboulée. Au bout de quelques mètres, vous discernez une odeur de moisissure ; et bientôt, dans le faisceau de votre lampe, vous découvrez une véritable assemblée de champignons barrant le passage. Que faites vous ? §
+- 19 Vous continuez votre chemin en bousculant les champignons? §
+- 23 Vous avez l'idée d'en manger ? §
+- 20 Vous préférez faire demi tour ? §
+##
+
+3 Des multiples yeux de la statue fuse un terifiant feu d'artifice. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
+- 3 RIP §
+##
+
+4 Grâce à la pointe de votre couteau, ce travail s'effectue sans difficulté. §
+- 2 Vous enfouissez votre larcin dans une de vos poches, puis vous revenez vers la salle à la fresque pour l'exploiter dans l'autre sens. §
+##
+
+5 De terrifiantes étincelles fusent des multiples yeux de la statue. Une atroce douleur vous consume le cerveau. Vous sombrez dans le noir ... L'aventure est malheureusement terminée. FIN §
+- 5 RIP §
+##
+
+6 Au bout de quelques vingt ou trente mètres, le couloir se termine en cul de sac à cause d'un éboulement. §
+- 27 Faites vous demi tour ? §
+- 16 Décidez vous de vous frayez un passage à travers les gravats ? §
+##
+
+7 Des multiples yeux de la statue fuse dans un terrifiant feu d'artifice; et la porte située au bout de la salle, en face de la statue, s'ouvre d'elle même. Vous vous y précipitez... et bientôt, vous percevez la lumière du jour. Vous êtes sauvé, vous avez gagné! §
+- 7 Gagné ! §
+##
+
+8 Des étincelles terrifiantes fusent des multiples yeux de la statue. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
+- 8 RIP §
+##
+
+9 Quelque vingt mètres plus loin, vous arrivez au pied d'un escalier.Que faites vous ? §
+- 20 Vous examinez la fresque ? §
+- 18 Vou empruntez le couloir en face de l'escalier ? §
+- 2 Vous tournez à droite pour explorer le prolongement de la salle ? §
+##
+
+10 L'idole se met à gronder ! §
+- 39 Décidez vous d'enlever immédiatement le serre tête ? §
+- 15 L'anneau §
+- 5 Les deux ? §
+- 7 Aucun ? §
+##
+
+11 Chacune dans une alcôve et se faisant face, les statues représentent l'une une sorte de reptile et l'autre une sorte de grand singe. Chacune n'a qu'un seul oeil : une gemme légèrement luisante. L'oeil du reptile est roule et celui du singe est vert. Que faites vous ? §
+- 20 Vous ignorez ces statues et revenez vers la salle à la fresque ? §
+- 6 Vous les ignorez et continuez le couloir dans la direction opposée à la salle à la fresque ? §
+<<<<<<< HEAD:scenario/aventure.txt
+=======
+- Vous décidez de dessertir les gemmes et de les emporter; et dans ce cas §
+>>>>>>> histoire_avec_condition:scenario/original/aventure_original_sans_condition.txt
+- 22 Voulez vous prendre la gemme rouge ? §
+- 4 La verte ? §
+- 14 Les deux ? §
+##
+
+12 De terrifiantes étincelles fusent des multiples yeux de la statue. Une douleur atroce vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
+- 12 RIP §
+##
+
+13 L'éboulement est récent, et les gravats instables. Dans un soudain nuage de poussière, une pluie de pierres vous ensevelit. Perdez 2 points de survie. Si vous pouvez les dépenser, vous vous dégagez de la nouvelle avalanche. Quelle est ensuite votre décision ? §
+- 17 Vous continuez à tenter de déblayer ? §
+- 9 Vous abandonnez et commencez à explorer le couloir dans l'autre sens ? §
+##
+
+14 Grâce à la pointe de votre couteau, ce travail s'effectue sans difficulté. §
+- 2 Vous enfouissez votre larcin dans l'une de vos poches, puis vous retournez vers la salle à la fresque pour l'explorer dans l'autre sens. §
+##
+
+15 Des multiples yeux de la statue fusent de terrifiantes étincelles. Une douleur atroce vous consume le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
+- 15 RIP §
+##
+
+16 L'éboulement a l'air ancien et le travail est pénible. Vous avez dû poser votre lampe à terre pour avoir les deux mains libres. Après avoir ainsi retiré trois ou quatre pierres, vous remarquez une galerie circulaire d'une quarantaine de centimètres de diamètre. Vous prenez votre lampe pour l'eclairer... quand une pure horreur en surgit! Une sorte de mille pattes caparaçonné comme un scarabée, long de plus d'un mètre et pourvu d'énormes mandibules acérées. Il s ejette sur vous. Vous n'avez que le temps de sortir votre poignard. §
+- 27 Si vous pouvez perdre 4 points de survie, vous gagnez le combat.Et décidez prudemment de faire demi tour. §
+- 16 Sinon, c'en est fini de vous et de votre aventure. RIP §
+##
+
+17 Une nouvelle avalanche de gravats se déverse sur vous. §
+- 13 Vous continuez coûte que coûte à déblayer ? §
+- 9 Vous baissez les bras et commencez à explorer le couloir dans l'autre sens ? §
+##
+
+18 Une quinzaine de mètres plus loin, le couloir est creusé de deux alcôves à gauche et à droite, l'une est en face de l'autre. Ces alcôves contiennent chacune une statue où des gemmes luissent faiblement. §
+- 11 Vous les examinez de près ? §
+- 8 Vous continuez votre chemin. §
+##
+
+19 Peu à peu, les champignons se font moins nombreux et les murs moins humides; il n'y a plus de traces d'éboulement. Vous êtes arrivé à l'autre bout de la longue salle à la fresque et vous vous trouvez maintenant devant un escalier. Vous l'empruntez et débouchez dans une autre salle. Celle-ci est parfaitement circulaire, jonchée d'ossements et d'armes rouillées. Vous apercevez une porte en face de vous. Vous vous y dirigez prudemment ; et c'est à ce moment que se matérialise la pire des horreurs ! Les ossements épars se regroupent en un clin d'oeil et cinq squelettes animés vous entourent avec des rictus de très mauvais augure. Vous n'avez que le temps de saisir une vieille lance pour défendre votre vie. §
+- 26 Si vous pouvez dépenser 10 points de survie, vous réussissez à vous rapprocher de la porte, à l'ouvrir et à vous soustraire aux squelettes. §
+- 19 Sinon, c'en est fini de vous et l'aventure est malheureusement terminée. RIP. §
+##
+
+20 Vous êtes au fond de la salle, juste devant la fresque. Après l'avoir examinée, que décidez vous ? §
+- 18 Explorer le couloir en face de l'escalier ? §
+- 2 Explorer les éboulements vers l'autre bout de salle ? §
+##
+
+21 Que voulez vous y mettre ? §
+- 35 Des bouts de champignons ? §
+- 24 Des gravats ? §
+- 28 Des gemmes ? §
+##
+
+22 Grâce à la pointe de votre couteau, ce travail s'effectue sans difficulté. §
+- 2 Vous enfouissez votre larcin dans une de vos poches, puis vous retournez vers la salle à la fresque pour l'explorer dans l'autre sens. §
+##
+
+23 Ces champignons sont parfaitement comestibles et, même revigorants. Regagnez 6 points de survie. §
+- 19 Vous décidez d'en mettre quelques morceaux dans vos poches; et vous continuez d'avancer dans le même sens. §
+##
+
+24 Vous déposez votre offrance dans les mêmes orbites profondes... et la réaction est immédiate! La statue se met à luire et à vibrer étrangement. Une douleur infernale vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
+- 24 RIP §
+##
+
+25 Vous faites maintenant face à une affreuse statue d'une espèce de monstre hybride. Vous remarquez les deux orbites vides, larges et creuses, apparemment profondes. Que faites vous ? §
+- 34 Vous ignorez la statue et repartez sur votre gauche ?§
+- 48 Vous avez l'idée de déposer une offrace dans les orbites béantes. §
+##
+
+26 De justesse, vous refermez la porte derrière vous... ouf ! Devant vous, commence une longue galerie, une salle qui semble avoir la même disposition et la même forme que la salle à la fresque. Vous commencez à la remonter. Vous en êtes à mi chemin quand vous remarquez qu'elle se termine tout au fond, en face de vous, par une grille! A l'endroit précis où vous êtes, il y a une alcôve creusée dans le mur à votre droite. L'alcôve contient une statue. §
+- 34 Continuez vous vers la grille ? §
+- 25 Examinez vous la statue ? §
+##
+
+27 Vous vous retrouvez bientôt entre les deux statues. §
+<<<<<<< HEAD:scenario/aventure.txt
+- 11 mmm...§
+=======
+- 11 §
+>>>>>>> histoire_avec_condition:scenario/original/aventure_original_sans_condition.txt
+##
+
+28 Combien de gemmes possédez vous ? §
+- 24 Une ? §
+- 46 Deux ? §
+- 35 Trois ? §
+##
+
+29 Vous déposez votre offrande dans les orbites profondes... et la réaction est immédiate! La statue se met à luire et à vibrer étrangement. une douleur infernale vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. §
+- 29 RIP §
+##
+
+30 Vous débouchez dans un couloir parallèle. De l'endroit où vous êtes, vous pouvez voir qu'ill donne à gauche dans une petite salle et à droite dans une grande. §
+- 41 Allez vous à gauche ? §
+- 36 A droite ? §
+##
+
+31 Vous revenez sur vos pas. Vous arrivez bientôt à la hauteur d'une alcôve creusée dans le mur à votre gauche et contenant une statue. §
+- 25 Vous examinez la statue ? §
+- 48 Vous continuez tout droit ? §
+##
+
+32 Vous revoilà dans la galerie. Vous vous dirigez vers la grille et constatez que la clé trouvée dans le coffre peut en ouvrir la serrure. Vous l'ouvrez et entrez dans la salle hexagonale. Au centre, sur un autel de pierre noire, vous découvrez trois objets : un serre tête en or strié de lignes parallèles, un anneau de bronze en forme de serpent roulé sur lui même, et un anneau d'argent finement torsadé. Décidez vous de passer, d'enfiler, l'un ou l'autre, ou les trois, de ces bijoux ? Si vous le faites, notez en le(s) numéro(s) sur une feuille de papier : serre tête n°3, anneau de bronze n°5, anneau d'argent n°7. §
+- 43 Puis, paré ou non de bijoux, vous reprenez le passage secret resté ouvert et vous vous dirigez vers la grande salle entrevue. §
+##
+
+33 Entre temps, le passage secret s'est refermé; et de ce côté ci, rien ne semble prévu pour l'ouvrir. il ne vous reste plus qu'à vous armer de courage... §
+- 42 Vous revenez à la grande salle et vous vous risquez à passer devant l'idole colossale, dont les yeux flamboyants sont braqués sur vous. §
+##
+
+34 Le fond de la galerie est effectivement barré par une grille. Entre les barreaux, vous apercevez une salle hexagonale, la grille formant l'un des six côtés de l'hexagone. Un autel de pierre noire se dresse en son centre. La grille est fermée par une serrue. §
+- 40 Tentez vous de l'ouvrir ? §
+- 31 Faites vous demi tour ? §
+##
+
+35 Vous déposez votre offrande dans les orbites profondes... et la réaction est immédiate! La statue se met à luire et à vibrer étrangement. Une douleur infernale vous brûle le cerveau. Vous sombrez dans le noir... L'aventure est malheureusement terminée. FIN §
+- 35 RIP §
+##
+
+36 Vous êtes au seuil d'une très grande salle. Près du mur de droite, à quelques pas de vous, se dresse une colossale statue parée d'ailes de chauve souris. Elle semble continuellement vibrer. Et soudain, alors que vous êtes toujours sur le seuil de la salle, voilà qu'elle tourne lentement la tête vers vous. Ses multiples yeux brillent intensément. Tout au fon de la salle, sur le mur opposé à la statue, vous distinguez une grande double porte. Il ne fait maintenant aucun doute, la statue vous a vu! Que faites vous ? §
+- 42 Vous passez devant elle pour atteindre la grande porte ? §
+- 41 Faites vous demi tour pour inspecter la petite salle à l'autre bout du couloir ?§
+##
+
+37 Possédez vous des objets numérotés ? §
+- 3 Si vous n'en possédez pas. §
+<<<<<<< HEAD:scenario/aventure.txt
+- 38 Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
+=======
+- Si vous en possédez, additionnez en les numéros et reportez vous au paragraphe correspondant au résultat. §
+>>>>>>> histoire_avec_condition:scenario/original/aventure_original_sans_condition.txt
+##
+
+38 Que faites vous ensuite ? §
+- 32 Retournez vous dans la galerie par le passage secret resté ouvert ? §
+- 45 Allez vous voir la grande salle ? §
+##
+
+39 Des multiples yeux de la statue fuse un terifiant feu d'artifice; et la porte située au bout de la salle, en face de la statue, s'ouvre d'elle même. Vous vous y précipitez... et bientôt la lumière! Vous êtes sauvé, vous avez gagné! §
+- 39 Vous avez gagné ! §
+##
+
+40 La serrure de la grille est verrouillée et vous ne pouvez pas l'ouvrir. §
+- 31 Vous faites demi tour. §
+##
+
+41 Un coffre est ouvert au fond de cette petite salle. Vous y jetez un coup d'oeil. Vous découvrez une petite clé et une paire de bracelets de bronze en forme d'ailes de chauve souris. Vous prenez la clé sans hésiter, mais ne savez que faire au sujet. §
+- 38 Vous les enfilez ? §
+- 47 vous les laissez à leur place ? §
+##
+
+42 Avez vous passé à vos poignets des bracelets en forme d'ailes de chauve souris ? §
+- 3 Oui ? §
+- 37 non ? §
+##
+
+43 Vous êtes au seuil d'une très grande salle. Près du mur de droite, à quelques pas de vous, se dresse une coloassale statue, parée d'ailes de chauve souris. Elle semble continuellement vibrer. Et soudain, alors que vous êtes toujours sur le seuil de la salle, voilà que la statue tourne lentement la tête vers vous ! Ses multiples yeux brillent intensément. Tout au fond de la salle, sur le mur opposé à la statue, vous distinguez une grande double porte. Il n efait maintenant aucun doute, la statue vous a vu! Que faites vous ? §
+- 42 Vous passez devant elle pour atteindre la grande porte ? §
+- 33 Vous faites demi tour pour retourner dans la galerie par le passage secret ? §
+##
+
+44 Vous déposez votre offrande dans les orbites profondes... et la réaction est immédiate! La statue se met à luire et à vibrer. Une fente apparaît en son milieu; et toute la statue s'entrouve comme une porte. §
+- 30 Vite! Vous vous glissez dans l'étroit passage. §
+##
+
+45 Vous êtes au seuil d'une très grande salle. Près du mur de droite, à quelques pas de vous, se dresse une coloassale statue, parée d'ailes de chauve souris. Elle semble continuellement vibrer. Et soudain, alors que vous êtes toujours sur le seuil de la salle, voilà que la statue tourne lentement la tête vers vous ! Ses multiples yeux brillent intensément. Tout au fond de la salle, sur le mur opposé à la statue, vous distinguez une grande double porte. Il n efait maintenant aucun doute, la statue vous a vu! Que faites vous ? §
+- 42 Vous passez devant elle pour atteindre la grande porte ? §
+- 32 Vous faites demi tour pour retourner dans la galerie par le passage secret ? §
+##
+
+46 Vous possédez une gemme rouge et une gemme verte. §
+- 29 Mettez vous la rouge dans l'orbite gauche et la verte dans l'orbite droite ? §
+- 44 Mettez vous la rouge dans l'orbite droite et la verte dans l'orbite gauche ? §
+- 35 Mettez vous les deux dans l'orbite droite ? §
+- 24 Mettez vous les deux dans l'orbite gauche ? §
+##
+
+47 Que faites vous ensuite ? §
+- 32 Retournez vous dans la galerie par le passage secret resté ouvert ? §
+- 45 Allez vous voir la grande salle ? §
+##
+
+48 Vous êtes retourné à l'extrémité de la galerie. Vous ouvrez la porte et... possédez vous 20 points de survie pour affronter les 10 squelettes qui se jettent maintenant sur vous ? C'est peu probable. Vous tombez sous leurs coups. L'aventure est malheureusement termiéne. FIN §
+- 48 RIP §
+## 
