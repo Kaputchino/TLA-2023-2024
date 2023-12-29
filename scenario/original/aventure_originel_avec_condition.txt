@@ -1,16 +1,15 @@
 Aventure §
 
 #stats§
-0 10 20 vie§
+- 0 10 20 vie§
 
 #objets§
-0 gemme$
-
+- 0 gemme$
 #flags§
-0 gemme_rouge_taken$
-0 gemme_verte_taken$
-0 objet_num$
-0 brasselet_chauve_souris$
+- 0 gemme_rouge_taken$
+- 0 gemme_verte_taken$
+- 0 objet_num$
+- 0 brasselet_chauve_souris$
 
 1 Vous reprenez conscience. Vous êtes dans un souterrain en partie éboulé. L'un des bouts de souterrain se prolonge au delà de la portée de votre lampe. Tout près de vous, des pierres et des gravats bloquent entièrement le passage. Il faut maintenant sortir de là ! §
 - 13 Tentez vous de dégager l'éboulement pour éventuellement ressortir par où avez dû entrer ? §
