@@ -1,0 +1,111 @@
+Une journée comme les autres à vélo §
+
+#stats§
+
+#objets§
+
+#flags§
+
+
+1 Il est 7H, vous vous apprétez à partir, que faîtes-vous ? §
+- 2 Mettre son gilet jaune, son casque, son gros manteau et ses gants §
+- 3 Partir à vélo §
+##
+
+2 Parfait, on oublie pas les bases ! §
+- 4 Mettre de la musique sur son portable et partir à vélo §
+- 5 Partir à vélo §
+##
+
+3 Vous ne tenez pas à la vie ou quoi ? §
+- 2 Mettre son gilet jaune, son casque, son gros manteau et ses gants §
+##
+
+4 De la musique c'est toujours sympa, mais soit. Vous continuez votre chemin et devez traverser une départementale. §
+- 6 Y aller YOLO §
+- 7 Faire gaffe et y aller en 2 temps §
+- 8 Attendre qu'il n'y ait plus de voiture à l'horizon §
+##
+
+5 Vous continuez votre chemin et devez traverser une départementale. §
+- 6 Y aller YOLO §
+- 7 Faire gaffe et y aller en 2 temps §
+- 8 Attendre qu'il n'y ait plus de voiture à l'horizon §
+##
+
+6 Vous êtes mort. §
+- 5 Retour §
+##
+
+7 Vous réussissez à traverser la départementale après avoir attendu 5 minutes. Le chemin devant vous est boueux et endommagé. §
+- 9 Descendre du vélo et continuer à pieds §
+- 10 Faire attention aux trous et continuer §
+##
+
+8 Vous avez tellement attendu que vous en êtes mort §
+- 5 Retour §
+##
+
+9 Vous marcher 1km avec votre vélo à la main et arrivez en retard à la fac §
+- 7 Retour §
+##
+
+10 Tout faisant attention aux trous, vous pestez en votre for intérieur contre le tracteur qui passe régulièrement ici et endommage la route, même si vous savez qu'il n'a pas vraiment d'autres choix (sauf quand il a déposé ses cailloux plus loin). Vous pestez donc contre les pouvoirs publiques qui ont abandonné ce chemin. §
+- 11 Continuer §
+##
+
+11 Vous roulez au bord du Cher sur un chemin adpaté, c'est très agréable §
+- 12 Continuer §
+##
+
+12 Vous appréciez vraiment passer là, il n'y a personne, c'est calme §
+- 13 Continuer §
+##
+
+13 8km plus tard, vous arrivez sur au Parc Honoré de Balzac. Des personnes âgées sont dos à vous. §
+- 14 Faire un coup de sonette et ralentir §
+- 15 Se déporter à gauche sur l'herbe §
+##
+
+14 C'est inutile, les personnes âgées sont sourdes. §
+- 15 Se déporter à gauche sur l'herbe §
+##
+
+15 Vous dépassez les personnes âgées, plus loin se trouve une personne sur le côté gauche avec son chien en laisse de l'autre côté de la chaussée. §
+- 16 Faire un coup de sonette et ralentir §
+- 17 Passer entre les 2 §
+##
+
+16 La personne est au téléphone elle ne vous entend pas, vous devez posez le pieds au sol et redémarrer. §
+- 18 Continuer §
+##
+
+17 La personne tire sur la laisse sans raison, cette dernière vous stop dans votre élan et vous tomber de votre vélo. §
+- 15 Retour §
+##
+
+18 Vous arrivez devant la montée de Grandmont. §
+- 19 Prendre un plus petit braquet et attaquer la pente §
+- 20 Ne pas changer de braquet §
+##
+
+19 Vous passez la pente sans souci en évitant les cyclistes et trottinettes en contre-sens. §
+- 21 Continuer §
+##
+
+20 Impossible de continuer avec ce braquet. Vous posez le pied à terre et changez de braquet en levant votre roue arrière à la main puis repartez. §
+- 19 Continuer §
+##
+
+21 Vous arrivez à la fac, pour rentrer sur le campus vous devez passer par l'entrée réservée aux véhicules d'intervention, la barrière étant toujours fermée, l'entrée est étroite. §
+- 22 Se précipiter dessus §
+- 23 Indiquer que vous tourner et y aller doucement §
+##
+
+22 Une voiture passait par là (comme toujours), vous vous faîtes renverser. §
+- 21 Retour §
+##
+
+23 Vous êtes arrivés à la fac, vous attachez votre vélo au pince-roue en vous souvenant avec humour du mail de Mme Virginie Delarue qui vous conseillez de l'attacher au cadre. Avant de partir, vous vous rendez compte que votre pneu arrière est à plat.
+- 23 Vous verrez ça en rentrant §
+##
