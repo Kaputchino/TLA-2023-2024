@@ -1,0 +1,75 @@
+L'aventure d'Evangeline Fox §
+
+#stats§
+- 1 2 3 aide§
+
+#objets§
+- 1 dague§
+#flags§
+- 1 dague_taken§
+- 0 objet_num§
+- 0 livre_de_sorts§
+
+1 Vous vous réveillez en tant qu'Evangeline Fox, héroïne de la trigolie Il était une fois un coeur brisé de Stéphanie Garber! Vous vous trouvez dans sa chambre, fraîchement marié près du corp froid de votre mari, le Prince Appolo. Que faites-vous ?§
+- 2 Vous hurlez et prenez le risque d'alerter les gardes à votre porte. §
+- 3 Vous vous approchez du cadavre du prince héritier et vérifiez son poul. §
+- 4 Vous prenez la fuite. §
+##
+
+2 Les gardes, alertés par votre cri, font irruption dans votre chambre, les armes dédaignés. Vous essayez de leur expliquer la situation entre plusieurs sanglots mais les regards des gardes sont braqués sur le corp sans vie de leur prince. Halevock, le garde personnel du prince Appolo, se fige et demande votre arrestation. §
+- 5 Vous allez dans la prison royale. §
+##
+
+3 Vous posez vos mains sur le torse froid de votre prince en espérant y sentir un poul mais vous ne sentez rien. Vous posez votre oreille en espérant y entendre un battement mais vous n'entendez rien. Vous vous agitez et regarder autour de vous dans l'espoir de trouver quelque chose pour aider votre mari mais vous n'appercevez que votre verre de vin à moitié vide. Vous hurlez le prénom de votre mari.§
+- 2 Vous hurlez le prénom de votre mari. §
+##
+
+4 Vous êtes innocente mais vous savez que les gardes et le conseil royale vous incrimineront dès la découverte du cadavre de leur prince héritier. Vous devez vous enfuir et vous mettre en sécurité pour réfléchir un plan. Mais vous n'arrivez pas à contrôler vos larmes. Cela va poser problème. Que souhaitez-vous prendre ?§
+- 6 Votre dague. §
+condition: `!dague`§
+effet: dague_taken #set 1§
+##
+
+5 Vos sanglots ne s'arrètent pas et la peur commence à prendre possession de vous. Vous ne pouvez pas croupir en prison. Vous essayez d'expliquer aux gardes que vous n'êtes en rien impliqué dans le meurtre du prince Appolo mais vos larmes infernales vous empêches d'être claires. Vos pensées se tournent vers Jack. §
+- 7 Vous tentez de l'appeler à travers votre pensée. §
+condition: `aide > 3`§
+effet: aide #sub 1§
+- 8 Vous refusez de penser à lui et de chercher son aide. §
+condition: `aide > 3`§
+effet: aide #sub 0§
+##
+
+6 Vous vous dirigez vers la fenêtre et descendez par la rambard. §
+- 13 Vous ne réfléchissez pas et courrez vers la forêt. Tant pis pour votre réputation. C'est la fin. §
+- 9 Vous appercevez une tête blonde et vous hésitez un instant. §
+##
+
+13 C'est la fin. §
+- 13 LA FIN §
+##
+
+9 Vous entendez les hurlements des gardes et vous vous apprêtez à partir quand un garde vous remarque et attrape par le bras. Vos sanglots vous empêche de vous expliquer clairement. Vous allez en prison. §
+- 5 Vous allez dans la prison royale. §
+##
+
+7 Les gardes s'approchent de vous pour vous baillonez car vous songlots deviennent insupportable mais la pièce devient tout à coup froide. Vous appercevez une tête blonde à l'entrée. §
+- 10 Vous hurlez que Jack est le responsable de la mort du prince Appolo même si vous n'avez techniquement aucune preuve. §
+- 11 Vous faites appel à votre pensée pour tenter de lui expliquer votre innocence. §
+condition: `aide > 2`§
+##
+
+10 Jack sourit car vos sanglots rendent vos paroles incompréhensible mais fronce les sourcils lorsqu'il s'apperçoit de la marre de larmes à vos pieds. Il murmure quelque chose et les gardes se figent. Ils quittent la pièce sans broncher. §
+- 12 Jack sent la dague chachée sous votre jupe et la récupère en souriant pour défaire vos liens. §
+condition: `dague > 0`§
+effet: dague #sub 1§
+##
+
+11 Jack remarque la marre de larmes à vos pieds et s'inquiète. Il assome facilement les deux gardes devant lui et s'accroupit de devant vous. §
+- 12 Jack sent la dague chachée sous votre jupe et la récupère en souriant pour défaire vos liens. §
+condition: `dague > 0`§
+effet: dague #sub 1§
+##
+
+12 Jack vous prend dans ses bras et vous informe que vous avez été empoisonné, raison pour laquelle vous ne pouvez plus vous arrêter de pleurer. Si vous ne trouvez pas d'antidote, vous mourrez. §
+- 12 FIN §
+##
