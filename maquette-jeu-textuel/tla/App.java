@@ -153,10 +153,12 @@ public class App implements ActionListener {
         // Retrouve la propostion
         Proposition proposition = lieuActuel.propositions.get(index);
         for(Effet effet : proposition.effets){
+            System.out.println(effet.operation);
             Setting st = ContenuAventure.settings.get(effet.variable);
-            if(effet.operation.equals("+")){
+            if(effet.operation.equals("add")){
                 st.addValue(effet.valeur);
-            }else if(effet.operation.equals("-")){
+                System.out.println("hi");
+            }else if(effet.operation.equals("sub")){
                 st.subValue(effet.valeur);
             }else{
                 st.setValue(effet.valeur);
