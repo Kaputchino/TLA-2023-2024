@@ -1,0 +1,16 @@
+L'aventure d'Evangeline Fox §
+
+#stats§
+- 1 2 3 aide§
+#objets§
+
+#flags§
+
+1 Vos sanglots ne s'arrètent pas et la peur commence à prendre possession de vous. Vous ne pouvez pas croupir en prison. Vous essayez d'expliquer aux gardes que vous n'êtes en rien impliqué dans le meurtre du prince Appolo mais vos larmes infernales vous empêches d'être claires. Vos pensées se tournent vers Jack. §
+- 1 Vous tentez de l'appeler à travers votre pensée. §
+condition: `aide > 3`§
+effet: aide #add 1§
+- 1 Vous refusez de penser à lui et de chercher son aide. §
+condition: `aide < 3`§
+effet: aide #sub 0§
+##
