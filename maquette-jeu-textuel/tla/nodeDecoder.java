@@ -66,43 +66,49 @@ public class nodeDecoder {
     }
 
     private void traiterStats(Noeud n) {
-        if (n.nombreEnfants() >= 3) {
-            int min = Integer.parseInt(n.enfant(0).getValeur());
-            int def = Integer.parseInt(n.enfant(1).getValeur());
-            int max = Integer.parseInt(n.enfant(2).getValeur());
-            String name = n.enfant(3).getValeur().trim();
-            Setting stat = new Stat(min, def, max, name);
-            settings.put(name, stat);
+        if(n != null) {
+            if (n.nombreEnfants() >= 3) {
+                int min = Integer.parseInt(n.enfant(0).getValeur());
+                int def = Integer.parseInt(n.enfant(1).getValeur());
+                int max = Integer.parseInt(n.enfant(2).getValeur());
+                String name = n.enfant(3).getValeur().trim();
+                Setting stat = new Stat(min, def, max, name);
+                settings.put(name, stat);
 
-            if (n.nombreEnfants() == 5) {
-                traiterStats(n.enfant(4));
+                if (n.nombreEnfants() == 5) {
+                    traiterStats(n.enfant(4));
+                }
             }
         }
     }
 
     private void traiterObjects(Noeud n) {
-        if (n.nombreEnfants() >= 2) {
-            int qte = Integer.parseInt(n.enfant(0).getValeur());
+        if(n != null){
+            if (n.nombreEnfants() >= 2) {
+                int qte = Integer.parseInt(n.enfant(0).getValeur());
 
-            String name = n.enfant(1).getValeur().trim();
-            Setting objet = new Item(qte, name);
-            settings.put(name, objet);
+                String name = n.enfant(1).getValeur().trim();
+                Setting objet = new Item(qte, name);
+                settings.put(name, objet);
 
-            if (n.nombreEnfants() == 3) {
-                traiterObjects(n.enfant(2));
+                if (n.nombreEnfants() == 3) {
+                    traiterObjects(n.enfant(2));
+                }
             }
         }
     }
 
     private void traiterFlags(Noeud n) {
-        if (n.nombreEnfants() >= 2) {
-            int id = Integer.parseInt(n.enfant(0).getValeur());
-            String name = n.enfant(1).getValeur().trim();
-            Setting flag = new Flag(id, name);
-            settings.put(name, flag);
+        if(n != null) {
+            if (n.nombreEnfants() >= 2) {
+                int id = Integer.parseInt(n.enfant(0).getValeur());
+                String name = n.enfant(1).getValeur().trim();
+                Setting flag = new Flag(id, name);
+                settings.put(name, flag);
 
-            if (n.nombreEnfants() == 3) {
-                traiterFlags(n.enfant(2));
+                if (n.nombreEnfants() == 3) {
+                    traiterFlags(n.enfant(2));
+                }
             }
         }
     }

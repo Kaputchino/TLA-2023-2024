@@ -35,7 +35,7 @@ effet: dague_taken #set 1§
 condition: `aide > 3`§
 effet: aide #sub 1§
 - 8 Vous refusez de penser à lui et de chercher son aide. §
-condition: `aide > 3`§
+condition: `aide < 3`§
 effet: aide #sub 0§
 ##
 
