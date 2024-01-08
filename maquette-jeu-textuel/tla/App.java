@@ -39,7 +39,9 @@ public class App implements ActionListener {
     Lieu lieuActuel;
 
     JFrame frame;
+    JFrame infos;
     JPanel mainPanel;
+    JTextArea contenuInfos;
 
     // Labels composant la zone de texte
     JLabel[] labels;
@@ -82,6 +84,14 @@ public class App implements ActionListener {
         frame = new JFrame(ContenuAventure.titre);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        infos = new JFrame("Informations");
+        contenuInfos = new JTextArea();
+        infos.add(contenuInfos);
+        infos.setMinimumSize(new Dimension(400, 100));
+        infos.setLocationRelativeTo(frame);
+        contenuInfos.setLineWrap(true);
+        contenuInfos.setEditable(false);
+
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridBagLayout());
 
@@ -102,10 +112,13 @@ public class App implements ActionListener {
         lieuActuel = lieux.get(1);
 
         initLieu();
-
+        reloadInfos();
 
         frame.pack();
         frame.setVisible(true);
+
+        infos.pack();
+        infos.setVisible(true);
     }
 
     /*
@@ -142,6 +155,27 @@ public class App implements ActionListener {
         frame.pack();
     }
 
+    public void reloadInfos() {
+        String informations = "";
+        String flags = "Flags: ";
+        String items = "Inventaire: ";
+        String stats = "Statistiques: ";
+
+        for (Setting setting : settings.values()) {
+            if (setting instanceof Flag) {
+                flags += "\n- " + setting.toString(); 
+            } else if (setting instanceof Stat) {
+                stats += "\n- " + setting.toString(); 
+            } else if (setting instanceof Item) {
+                items += "\n- " + setting.toString(); 
+            }
+        }
+
+        informations = "-- Informations --" + "\n\n" + items + "\n\n" + stats + "\n\n" + flags; 
+        contenuInfos.setText(informations);
+        infos.pack();
+    }
+
     /*
      * Gère les clics sur les boutons de propostion
      */
@@ -175,6 +209,7 @@ public class App implements ActionListener {
             lieuActuel = lieu;
             try {
                 initLieu();
+                reloadInfos();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
