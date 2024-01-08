@@ -50,10 +50,7 @@ public class Item implements Setting {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "quantity=" + quantity +
-                ", name='" + name + '\'' +
-                '}';
+        return name + " x " + quantity;
     }
 }
 

@@ -55,9 +55,6 @@ public class ContenuAventure {
             ContenuAventure.settings = hashMaps.getSettings();
             ContenuAventure.titre = hashMaps.getTitle();
 
-            System.out.println(settings);
-            System.out.println(lieux);
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

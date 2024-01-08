@@ -42,10 +42,7 @@ public class Flag implements Setting {
 
     @Override
     public String toString() {
-        return "Flag{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name + ": " + value;
     }
 
     @Override

@@ -8,13 +8,13 @@ import java.util.Set;
 public class Stat implements Setting {
     // STAT-> - intval intval intval string < STAT | epsilon
     int min;
-    int def;
+    int value;
     int max;
     String name;
 
-    public Stat(int min, int def, int max, String name) {
+    public Stat(int min, int value, int max, String name) {
         this.min = min;
-        this.def = def;
+        this.value = value;
         this.max = max;
         this.name = name;
     }
@@ -25,24 +25,19 @@ public class Stat implements Setting {
 
     @Override
     public String toString() {
-        return "Stat{" +
-                "min=" + min +
-                ", def=" + def +
-                ", max=" + max +
-                ", name='" + name + '\'' +
-                '}';
+        return name + ": " + value + " (min: " + min + ", max: " + max + ")";
     }
 
     public void setMin(int min) {
         this.min = min;
     }
 
-    public int getDef() {
-        return def;
+    public int getvalue() {
+        return value;
     }
 
-    public void setDef(int def) {
-        this.def = def;
+    public void setvalue(int value) {
+        this.value = value;
     }
 
     public int getMax() {
@@ -63,24 +58,24 @@ public class Stat implements Setting {
 
     @Override
     public float getQuantity() {
-        return getDef();
+        return getvalue();
     }
 
     @Override
     public void setValue(float value) {
-        def = (int) value;
+        value = (int) value;
     }
 
     @Override
     public void addValue(float value) {
-        this.def += (int)value;
+        this.value += (int)value;
     }
 
     @Override
     public void subValue(float value) {
         addValue(-value);
-        if(def < 0){
-            def = 0;
+        if(value < 0){
+            value = 0;
         }
     }
 }

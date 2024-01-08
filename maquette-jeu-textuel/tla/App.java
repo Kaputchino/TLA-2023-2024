@@ -197,7 +197,7 @@ public class App implements ActionListener {
             }
         }
 
-        informations = "-- Informations --" + "\n" + items + "\n" + stats + "\n" + flags; 
+        informations = "-- Informations --" + "\n\n" + items + "\n\n" + stats + "\n\n" + flags; 
         contenuInfos.setText(informations);
         infos.pack();
     }
