@@ -87,7 +87,7 @@ public class App implements ActionListener {
         infos = new JFrame("Informations");
         contenuInfos = new JTextArea();
         infos.add(contenuInfos);
-        infos.setMinimumSize(new Dimension(400, 100));
+        infos.setMinimumSize(new Dimension(850, 500));
         infos.setLocationRelativeTo(frame);
         contenuInfos.setLineWrap(true);
         contenuInfos.setEditable(false);
@@ -114,6 +114,7 @@ public class App implements ActionListener {
         initLieu();
         reloadInfos();
 
+
         frame.pack();
         frame.setVisible(true);
 
@@ -130,7 +131,32 @@ public class App implements ActionListener {
             mainPanel.remove(btn);
         }
         btns.clear();
-        affiche(lieuActuel.description.split("\n"));
+
+        int charMax = 100;
+        int tailleDescription = lieuActuel.description.length();
+        String[] lignes = new String[Math.min(tailleDescription/charMax + 1, 20)];
+        
+        int characteresLus = 0;
+        int debut = 0;
+        int fin = 0;
+        for (int i = 0; i < lignes.length; i++) {
+            debut = fin;
+
+            if (debut + charMax < tailleDescription) {
+                fin = characteresLus + charMax;
+                while (lieuActuel.description.charAt(fin) != ' ') {
+                    fin--;
+                }
+            } else {
+                fin = tailleDescription;
+            }
+
+            lignes[i] = lieuActuel.description.substring(debut, fin);
+            characteresLus = fin;
+        }
+        System.out.println(lignes.toString());
+        affiche(lignes);
+        
         frame.pack();
         for(int i=0; i<lieuActuel.propositions.size(); i++) {
             JButton btn = new JButton("<html><p>" + lieuActuel.propositions.get(i).texte + "</p></html>");
@@ -171,7 +197,7 @@ public class App implements ActionListener {
             }
         }
 
-        informations = "-- Informations --" + "\n\n" + items + "\n\n" + stats + "\n\n" + flags; 
+        informations = "-- Informations --" + "\n" + items + "\n" + stats + "\n" + flags; 
         contenuInfos.setText(informations);
         infos.pack();
     }
@@ -233,6 +259,7 @@ public class App implements ActionListener {
         for(int i = 0; i<n; i++) {
             labels[nbLignes-n+i].setText(contenu[i]);
         }
+
     }
 
 }
