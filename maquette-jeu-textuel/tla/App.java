@@ -144,7 +144,7 @@ public class App implements ActionListener {
 
             if (debut + charMax < tailleDescription) {
                 fin = characteresLus + charMax;
-                while (lieuActuel.description.charAt(fin) != ' ') {
+                while (lieuActuel.description.charAt(fin - 1) != ' ') {
                     fin--;
                 }
             } else {
