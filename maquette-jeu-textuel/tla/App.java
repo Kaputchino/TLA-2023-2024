@@ -89,6 +89,7 @@ public class App implements ActionListener {
         infos.add(contenuInfos);
         infos.setMinimumSize(new Dimension(850, 500));
         infos.setLocationRelativeTo(frame);
+        infos.setDefaultCloseOperation(ERROR_MESSAGE);
         contenuInfos.setLineWrap(true);
         contenuInfos.setEditable(false);
 
