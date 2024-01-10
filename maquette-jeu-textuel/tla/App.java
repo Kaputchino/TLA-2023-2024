@@ -39,7 +39,9 @@ public class App implements ActionListener {
     Lieu lieuActuel;
 
     JFrame frame;
+    JFrame infos;
     JPanel mainPanel;
+    JTextArea contenuInfos;
 
     // Labels composant la zone de texte
     JLabel[] labels;
@@ -82,6 +84,15 @@ public class App implements ActionListener {
         frame = new JFrame(ContenuAventure.titre);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        infos = new JFrame("Informations");
+        contenuInfos = new JTextArea();
+        infos.add(contenuInfos);
+        infos.setMinimumSize(new Dimension(850, 500));
+        infos.setLocationRelativeTo(frame);
+        infos.setDefaultCloseOperation(ERROR_MESSAGE);
+        contenuInfos.setLineWrap(true);
+        contenuInfos.setEditable(false);
+
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridBagLayout());
 
@@ -102,10 +113,14 @@ public class App implements ActionListener {
         lieuActuel = lieux.get(1);
 
         initLieu();
+        reloadInfos();
 
 
         frame.pack();
         frame.setVisible(true);
+
+        infos.pack();
+        infos.setVisible(true);
     }
 
     /*
@@ -117,7 +132,32 @@ public class App implements ActionListener {
             mainPanel.remove(btn);
         }
         btns.clear();
-        affiche(lieuActuel.description.split("\n"));
+
+        int charMax = 100;
+        int tailleDescription = lieuActuel.description.length();
+        String[] lignes = new String[Math.min(tailleDescription/charMax + 1, 20)];
+        
+        int characteresLus = 0;
+        int debut = 0;
+        int fin = 0;
+        for (int i = 0; i < lignes.length; i++) {
+            debut = fin;
+
+            if (debut + charMax < tailleDescription) {
+                fin = characteresLus + charMax;
+                while (lieuActuel.description.charAt(fin - 1) != ' ') {
+                    fin--;
+                }
+            } else {
+                fin = tailleDescription;
+            }
+
+            lignes[i] = lieuActuel.description.substring(debut, fin);
+            characteresLus = fin;
+        }
+        System.out.println(lignes.toString());
+        affiche(lignes);
+        
         frame.pack();
         for(int i=0; i<lieuActuel.propositions.size(); i++) {
             JButton btn = new JButton("<html><p>" + lieuActuel.propositions.get(i).texte + "</p></html>");
@@ -142,6 +182,27 @@ public class App implements ActionListener {
         frame.pack();
     }
 
+    public void reloadInfos() {
+        String informations = "";
+        String flags = "Flags: ";
+        String items = "Inventaire: ";
+        String stats = "Statistiques: ";
+
+        for (Setting setting : settings.values()) {
+            if (setting instanceof Flag) {
+                flags += "\n- " + setting.toString(); 
+            } else if (setting instanceof Stat) {
+                stats += "\n- " + setting.toString(); 
+            } else if (setting instanceof Item) {
+                items += "\n- " + setting.toString(); 
+            }
+        }
+
+        informations = "-- Informations --" + "\n\n" + items + "\n\n" + stats + "\n\n" + flags; 
+        contenuInfos.setText(informations);
+        infos.pack();
+    }
+
     /*
      * Gère les clics sur les boutons de propostion
      */
@@ -152,7 +213,18 @@ public class App implements ActionListener {
 
         // Retrouve la propostion
         Proposition proposition = lieuActuel.propositions.get(index);
-
+        for(Effet effet : proposition.effets){
+            System.out.println(effet.operation);
+            Setting st = ContenuAventure.settings.get(effet.variable);
+            if(effet.operation.equals("add")){
+                st.addValue(effet.valeur);
+                System.out.println("hi");
+            }else if(effet.operation.equals("sub")){
+                st.subValue(effet.valeur);
+            }else{
+                st.setValue(effet.valeur);
+            }
+        }
         // Recherche le lieu désigné par la proposition
         Lieu lieu = lieux.get(proposition.numeroLieu);
         if (lieu != null) {
@@ -164,6 +236,7 @@ public class App implements ActionListener {
             lieuActuel = lieu;
             try {
                 initLieu();
+                reloadInfos();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -187,6 +260,7 @@ public class App implements ActionListener {
         for(int i = 0; i<n; i++) {
             labels[nbLignes-n+i].setText(contenu[i]);
         }
+
     }
 
 }

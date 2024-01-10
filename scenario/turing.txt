@@ -1,0 +1,68 @@
+Turing §
+
+#stats§
+- 0 0 1 pointer§
+- 0 1 500 value1§
+- 0 1 500 value2§
+
+#objets§
+
+#flags§
+
+1 etat 1 pointer ?§
+- 10 pointer à 0 §
+condition: `pointer = 0`§
+- 11 pointer à 1 §
+condition: `pointer = 1`§
+##
+
+2 etat 2 pointer ?§
+- 20 pointer à 0 §
+condition: `pointer = 0`§
+- 21 pointer à 1 §
+condition: `pointer = 1`§
+##
+
+10 etat 1 pointer 0§
+- 1 value1 = 0 §
+condition: `value1 = 0`§
+effet: pointer #add 1§
+effet: value1 #add 1§
+- 2 value1 = 1 §
+condition: `value1 = 1`§
+effet: pointer #add 1§
+effet: value1 #add 1§
+##
+
+11 etat 1 pointer 1§
+- 2 value1 = 1 §
+condition: `value1 = 1`§
+effet: pointer #sub 1§
+effet: value1 #add 1§
+- 1 value1 = 0 §
+condition: `value1 = 0`§
+effet: pointer #add 1§
+effet: value1 #add 1§
+##
+
+20 etat 2 pointer 0§
+- 2 value2 = 0 §
+condition: `value2 = 1`§
+effet: pointer #add 1§
+effet: value2 #add 1§
+- 1 value2 = 1 §
+condition: `value2 = 0`§
+effet: pointer #add 1§
+effet: value2 #add 1§
+##
+
+21 etat 2 pointer 1§
+- 2 value2 = 1 §
+condition: `value2 = 1`§
+effet: pointer #sub 1§
+effet: value2 #add 1§
+- 1 value2 = 0 §
+condition: `value2 = 0`§
+effet: pointer #add 1§
+effet: value2 #add 1§
+##

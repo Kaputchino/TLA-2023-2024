@@ -22,4 +22,5 @@ public class Effet {
                 ", valeur=" + valeur +
                 '}';
     }
+
 }
