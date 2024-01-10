@@ -97,6 +97,9 @@ public class AlgebricInterpretation {
 		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.div)){
 			//System.out.println(n.getValeurInt());
 			return mathematicalInterpreter(n.enfant(0)) / mathematicalInterpreter(n.enfant(1));
+		}if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.modulo)){
+			//System.out.println(n.getValeurInt());
+			return mathematicalInterpreter(n.enfant(0)) % mathematicalInterpreter(n.enfant(1));
 		}
 		if(n.getTypeDeNoeud().equals(AlgebricTypeDeNoeud.statement)){
 			//System.out.println(n.getValeurInt());

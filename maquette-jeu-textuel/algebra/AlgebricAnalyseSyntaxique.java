@@ -204,6 +204,12 @@ public class AlgebricAnalyseSyntaxique {
 			statement.ajout(B());
 			return statement;
 		}
+		if (getTypeDeToken() == AlgebricTypeDeToken.modulo) {
+			AlgebricToken t = lireToken();
+			statement.ajout(new AlgebricNoeud(AlgebricTypeDeNoeud.modulo));
+			statement.ajout(B());
+			return statement;
+		}
 		if (getTypeDeToken() == AlgebricTypeDeToken.rightPar || getTypeDeToken() == AlgebricTypeDeToken.sub || getTypeDeToken() == AlgebricTypeDeToken.equal || getTypeDeToken() == AlgebricTypeDeToken.inf || getTypeDeToken() == AlgebricTypeDeToken.and || getTypeDeToken() == AlgebricTypeDeToken.or || getTypeDeToken() == AlgebricTypeDeToken.sup) {
 			return null;
 		}

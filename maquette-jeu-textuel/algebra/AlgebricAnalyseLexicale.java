@@ -11,10 +11,10 @@ public class AlgebricAnalyseLexicale {
 	Table de transition de l'analyse lexicale
 	 */
 	private static Integer TRANSITIONS[][] = {
-			//            espace  and   or  (  	   )   !     chiffe lettre    >      <   =     +    -    *   /
-			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110, 111, 112, 113 ,114},
-			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106, 106, 106, 106, 106},
-			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107, 107, 107, 107, 107}
+			//            espace  and   or  (  	   )   !     chiffe lettre    >      <   =     +    -    *   /  %
+			/*  0 */    {      0, 101, 102, 103, 104, 105,       1,      2  , 108, 109, 110, 111, 112, 113 ,114, 115},
+			/*  1 */    {    106, 106, 106, 106, 106, 106,       1,    106  , 106, 106, 106, 106, 106, 106, 106, 115},
+			/*  2 */    {    107, 107, 107, 107, 107, 107,       2,      2  , 107, 107, 107, 107, 107, 107, 107, 115}
 			// 101 acceptation d'un and
 			// 102 acceptation d'un or
 			// 103 acceptation d'un (
@@ -29,6 +29,7 @@ public class AlgebricAnalyseLexicale {
 			// 112 acceptation d'un -
 			// 113 acceptation d'un *
 			// 114 acceptation d'un /
+			// 115 acceptation d'un %
 
 	};
 
@@ -103,6 +104,8 @@ public class AlgebricAnalyseLexicale {
 				}
 				else if (e == 114) {
 					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.div));
+				}else if (e == 115) {
+					algebricTokens.add(new AlgebricToken(AlgebricTypeDeToken.modulo));
 				}
 
 				// un état d'acceptation ayant été atteint, retourne à l'état 0
@@ -159,6 +162,11 @@ public class AlgebricAnalyseLexicale {
 		if (c == '-') return 12;
 		if (c == '*') return 13;
 		if (c == '/') return 14;
+<<<<<<< Updated upstream
+=======
+		if (c == '%') return 15;
+		return 7;
+>>>>>>> Stashed changes
 
 
 		System.out.println("Symbole inconnu : " + c);
