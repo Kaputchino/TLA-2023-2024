@@ -14,5 +14,6 @@ public enum AlgebricTypeDeToken {
 	add,
 	sub,
 	mul,
-	div
+	div,
+	modulo
 }

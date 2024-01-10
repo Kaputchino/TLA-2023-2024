@@ -9,6 +9,7 @@ public enum AlgebricTypeDeNoeud {
 	add,
 	sub,
 	mul,
-	div
+	div,
+	modulo
 
 }
