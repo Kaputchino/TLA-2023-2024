@@ -1,0 +1,35 @@
+L'aventure d'Evangeline Fox §
+
+#stats§
+- 0 1 2 pointer§
+- 0 1 10 value0§
+- 0 1 10 value1§
+- 0 1 10 value2§
+#objets§
+
+#flags§
+
+1 etat 1 emplacement inconnu§
+- 10 emplacement 0 §
+condition: pointer = 0`§
+effet: aide #sub 1§
+- 11 emplacement 1 §
+condition: pointer = 1`§
+effet: aide #sub 1§
+- 12 emplacement 2 §
+condition: pointer = 2`§
+effet: aide #sub 1§
+
+2 etat 2 emplacement inconnu§
+- 20 emplacement 0 §
+condition: pointer = 0`§
+effet: aide #sub 1§
+- 21 emplacement 1 §
+condition: pointer = 1`§
+effet: aide #sub 1§
+- 22 emplacement 2 §
+condition: pointer = 2`§
+effet: aide #sub 1§
+
+
+##
