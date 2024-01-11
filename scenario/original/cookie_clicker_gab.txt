@@ -1,0 +1,82 @@
+Cookie clicker §
+
+#stats§
+- 0 0 4096 cookies §
+
+#objets§
+- 0 clicks §
+- 0 last_cashout §
+
+#flags§
+- 0 dix_cookie_boutton §
+- 0 cent_cookie_boutton §
+- 0 mille_cookie_boutton §
+- 0 cashout_a §
+- 0 cashout_b §
+
+1 Que souhaitez-vous faire ? §
+- 1 Cuir 1 cookie §
+effet: cookies #add 1§
+effet: clicks #add 1 §
+- 1 Cuir 10 cookies §
+condition: `dix_cookie_boutton`§
+effet: cookies #add 10 §
+effet: clicks #add 1 §
+- 1 Cuir 100 cookies §
+condition: `cent_cookie_boutton`§
+effet: cookies #add 100 §
+effet: clicks #add 1 §
+- 1 Cuir 1000 cookies §
+condition: `mille_cookie_boutton`§
+effet: cookies #add 1000 §
+effet: clicks #add 1 §
+- 1 =========== §
+condition: `0=1`§
+- 10 Boutique §
+- 20 Cashout §
+- 1 =========== §
+condition: `0=1`§
+- 0 Victoire ! §
+condition: `cookies > 4095`§
+##
+
+20 Que souhaitez-vous faire ? §
+- 20 Cashout 50 clicks (Plus 250 cookies)§
+condition: `clicks - last_cashout > 49 `§
+effet: cookies #add 250 §
+effet: last_cashout #add 50 §
+- 20 Cashout 200 clicks (Plus 500 cookies)§
+condition: `clicks - last_cashout > 499 `§
+effet: cookies #add 500 §
+effet: last_cashout #add 200 §
+- 20 =========== §
+condition: `0=1`§
+- 1 Retour ! §
+##
+
+
+10 Que souhaitez-vous acheter? §
+- 10 Fourneau de 10 cookies (Cout, dix)§
+condition: `(!dix_cookie_boutton)`§
+effet: dix_cookie_boutton #set 1§
+effet: cookies #sub 10§
+- 10 Fourneau de 100 cookies (Cout, 100)§
+condition: `!cent_cookie_boutton`§
+effet: cent_cookie_boutton #set 1§
+effet: cookies #sub 100§
+- 10 Fourneau de 1000 cookies (Cout, 1000)§
+condition: `!mille_cookie_boutton`§
+effet: mille_cookie_boutton #set 1§
+effet: cookies #sub 1000§
+- 10 =========== §
+condition: `0=1`§
+- 10 Cashout 50 clicks (Cout, 100)§
+condition: `!cashout_a`§
+effet: cashout_a #set 1§
+- 10 Cashout 100 clicks (Cout, 200)§
+condition: `!cashout_b`§
+effet: cashout_b #set 1§
+- 10 =========== §
+condition: `0=1`§
+- 1 Retour ! §
+##
