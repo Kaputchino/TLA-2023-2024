@@ -249,10 +249,10 @@ public class AnalyseSyntaxique {
 
                 Token t2 = lireToken();
                 /* On lit § (#objet lu dans Stat()) */
-                if (t2.getTypeDeToken() == TypeDeToken.separateurLigne) {
+                if (t2.getTypeDeToken() == TypeDeToken.separateurLigne ) {
 
                     Noeud objet = Objet();
-                    if (stat != null) {
+                    if (objet != null) {
                         noeudParam.ajout(objet);
                     } else {
                         noeudParam.ajout(new Noeud(TypeDeNoeud.objet));
@@ -262,7 +262,7 @@ public class AnalyseSyntaxique {
                     /* On lit § (#flag lu dans Objet()) */
                     if (t3.getTypeDeToken() == TypeDeToken.separateurLigne) {
                         Noeud flag = Flag();
-                        if (stat != null) {
+                        if (flag != null) {
                             noeudParam.ajout(flag);
                         } else {
                             noeudParam.ajout(new Noeud(TypeDeNoeud.flag));
