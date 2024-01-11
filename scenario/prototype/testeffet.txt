@@ -1,9 +1,9 @@
 L'aventure d'Evangeline Fox §
 
 #stats§
-- 1 2 4 aide§
+- 1 2 3 aide§
 #objets§
-
+- 1 dague§
 #flags§
 
 1 Vos sanglots ne s'arrètent pas et la peur commence à prendre possession de vous. Vous ne pouvez pas croupir en prison. Vous essayez d'expliquer aux gardes que vous n'êtes en rien impliqué dans le meurtre du prince Appolo mais vos larmes infernales vous empêches d'être claires. Vos pensées se tournent vers Jack. §
